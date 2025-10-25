@@ -29,12 +29,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sevago/sso-fe.git"
+    "url": "git+https://github.com/dev1-gmail2025/sevago-sso-fe"
   },
   "bugs": {
-    "url": "https://github.com/sevago/sso-fe/issues"
+    "url": "https://github.com/dev1-gmail2025/sevago-sso-fe"
   },
-  "homepage": "https://github.com/sevago/sso-fe#readme",
+  "homepage": "https://github.com/dev1-gmail2025/sevago-sso-fe",
   "peerDependencies": {
     "@emotion/react": ">=11",
     "@emotion/styled": ">=11",
