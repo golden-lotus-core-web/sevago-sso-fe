@@ -1,0 +1,34 @@
+import { axiosRequest } from '../../common/config';
+import type {
+  ForgotPasswordDto,
+  LoginDto,
+  LogoutDto,
+  RefreshTokenDto,
+  ResetPasswordDto,
+  ResponseAuth,
+  ResponseFcm,
+  SubscribeUnsubscribeTopicDto,
+  TokenObject,
+  VerifyOtpDto,
+} from './auth.interface';
+
+export const login = async (body: LoginDto): Promise<ResponseAuth> => await axiosRequest.post('auth/login', body);
+
+export const logout = async (body: LogoutDto) => await axiosRequest.post('auth/logout', body);
+
+export const forgotPassword = async (body: ForgotPasswordDto) => await axiosRequest.post('auth/forgot-password', body);
+
+export const verifyOtp = async (body: VerifyOtpDto): Promise<TokenObject> =>
+  await axiosRequest.post('auth/verify-otp', body);
+
+export const resetPassword = async (body: ResetPasswordDto): Promise<ResponseAuth> =>
+  await axiosRequest.post('auth/reset-password', body);
+
+export const refreshToken = async (body: RefreshTokenDto): Promise<Omit<ResponseAuth, 'user'>> =>
+  await axiosRequest.post('auth/refresh-token', body);
+
+export const subscribeTopic = async (body: SubscribeUnsubscribeTopicDto): Promise<ResponseFcm> =>
+  await axiosRequest.post('auth/subscribe-topic', body);
+
+export const unsubscribeTopic = async (body: SubscribeUnsubscribeTopicDto) =>
+  await axiosRequest.post('auth/unsubscribe-topic', body);

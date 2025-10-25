@@ -1,0 +1,793 @@
+/* SCROLLBAR DEFAULT*/
+:root {
+  --scrollbar-size: 2px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #9e9e9e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --scrollbar-thumb: #5a5a5a;
+    --scrollbar-thumb-hover: #787878;
+  }
+}
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+/* Áp dụng chung cho toàn bộ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  /* dọc */
+  height: var(--scrollbar-size);
+  /* ngang */
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Riêng textarea và input multiline */
+:is(textarea, .MuiInputBase-inputMultiline) {
+  overflow: auto;
+}
+
+/* Scroll ngang riêng (nếu cần class) */
+.scroll-x {
+  overflow-x: auto;
+}
+
+.scroll-x::-webkit-scrollbar {
+  height: var(--scrollbar-size) !important;
+  /* ép nhỏ */
+}
+
+/* CLOCK COMPONENTS */
+.MuiMultiSectionDigitalClock-root,
+.MuiClock-root {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+.MuiMultiSectionDigitalClock-root::-webkit-scrollbar,
+.MuiClock-root::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+.MuiMultiSectionDigitalClock-root::-webkit-scrollbar-thumb,
+.MuiClock-root::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+/* FONT */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.ttf') format('truetype');
+  /* src: url('../../../public/fonts/Roboto-Variable.ttf') format('truetype'); */
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* RESET */
+ul,
+p {
+  margin: 0;
+  /* padding: 0; */
+}
+
+/* RESET AUTOFILL */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 99999s,
+    color 99999s;
+}
+
+input[data-autocompleted] {
+  background: transparent !important;
+}
+
+/* ANIMATION */
+@keyframes loading-gradient-row-table {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes zoom-from-right {
+  0% {
+    transform: scale(0);
+    transform-origin: top right;
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    transform-origin: top right;
+    opacity: 1;
+  }
+}
+
+/* CUSTOM */
+/* edit css from info user company  */
+.boc-edit-form {
+  width: 500px !important;
+}
+
+.boc-chart-menu {
+  display: flex !important;
+  background-color: #fff;
+  border-radius: 24px !important;
+  min-width: auto !important;
+}
+
+.boc-light .boc-chart-menu [data-item] {
+  background-color: #fff;
+  border: none !important;
+  cursor: pointer;
+}
+
+.boc-light .boc-chart-menu [data-item][data-item]:hover {
+  background-color: #07554b !important;
+}
+
+.boc-chart-menu [data-item]:first-child {
+  border-top-left-radius: 24px !important;
+  border-bottom-left-radius: 24px;
+  border-top-right-radius: 0px !important;
+}
+
+.boc-chart-menu [data-item]:last-child {
+  /* border-radius: 0px !important; */
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+.boc-edit-form-header {
+  background-color: #07554b !important;
+}
+
+/* .troly {
+  padding-top: 0 !important;
+}
+.troly::before {
+  height: 0 !important;
+  border-radius: 0 !important;
+}
+.troly::after {
+  height: 0 !important;
+}
+.initStyleAvaGroup {
+  width: 35px !important;
+  height: 35px !important;
+} */
+
+/* CSS FOR TREE */
+.tree-node-menu {
+  display: none;
+  animation: zoom-from-right 0.2s ease-out forwards;
+}
+
+.tree-node-icon-menu:hover>.tree-node-menu {
+  display: flex;
+  /* transform: translateY(-100%) !important; */
+}
+
+.tree-node-menu-item:hover {
+  /* Màu này đang không biết làm sao để lấy trong theme */
+  background-color: #eaeaea;
+}
+
+.node-button-foreign-object {
+  transform: translateY(9px);
+}
+
+path.link {
+  stroke: #b3b3b3 !important;
+  stroke-width: 1px !important;
+}
+
+.ck.ck-sticky-panel .ck-sticky-panel__content_sticky {
+  position: relative !important;
+  z-index: 0 !important;
+  box-shadow: none !important;
+}
+
+.ck .ck-sticky-panel__placeholder {
+  height: 0 !important;
+}
+
+/* ================================ custom ======================= */
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+  max-width: 300px;
+}
+
+
+.custom-node .react-flow__handle {
+  width: 12px;
+  height: 12px;
+  background: #3B82F6;
+  border: 2px solid #fff;
+}
+
+.react-flow__node {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.dndflow {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.dndflow .reactflow-wrapper {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.dndflow aside {
+  border-right: 1px solid #eee;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #fcfcfc;
+
+  width: 20%;
+  max-width: 250px;
+}
+
+.dndflow aside .description {
+  margin-bottom: 10px;
+}
+
+.dndflow .ghostnode {
+  position: fixed;
+  pointer-events: none;
+  width: 100px;
+}
+
+
+.dndflow .dndnode:active {
+  cursor: grabbing;
+}
+
+
+
+
+/* @import url('./xy-theme.css'); */
+
+
+/* .troly {
+  padding-top: 0 !important;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+.troly::before {
+  height: 0 !important;
+  border-radius: 0 !important;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+.troly::after {
+  height: 0 !important;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+.initStyleAvaGroup {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+} */
+
+
+
+
+/* .react-flow__node-zoom {
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid inherit;
+  border-radius: 5px;
+  text-align: center;
+  width: 150px;
+  padding: 10px;
+  line-height: 1.2;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.react-flow__node-zoom img {
+  pointer-events: none;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.placeholder {
+  display: contents;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.placeholder div {
+  background: #eee;
+  width: 100%;
+  height: 10px;
+  margin-bottom: 4px;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.placeholder div:last-child {
+  margin-bottom: 0;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow aside {
+  border-right: 1px solid #eee;
+  padding: 15px 10px;
+  font-size: 12px;
+  background: #fcfcfc;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow aside .description {
+  margin-bottom: 10px;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow .dndnode {
+  height: 20px;
+  padding: 4px;
+  border: 1px solid #1a192b;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow .dndnode.input {
+  border-color: #0041d0;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow .dndnode.output {
+  border-color: #ff0072;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow .reactflow-wrapper {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+.dndflow .selectall {
+  margin-top: 10px;
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+@media screen and (min-width: 768px) {
+  .dndflow {
+    flex-direction: row;
+  }
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+
+  .dndflow aside {
+    width: 20%;
+    max-width: 250px;
+  }
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+}
+}
+
+.custom-node {
+  position: relative;
+  min-width: 120px;
+  min-height: 80px;
+}
+
+.custom-node .react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #555;
+  border: 2px solid #fff;
+}
+
+.custom-node .react-flow__handle-left {
+  left: -4px;
+}
+
+.custom-node .react-flow__handle-right {
+  right: -4px;
+} */
