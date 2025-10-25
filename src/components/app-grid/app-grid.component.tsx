@@ -1,8 +1,6 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
-import IconLeft from "../../assets/icon/icon-left";
-import IconRight from "../../assets/icon/icon-right";
 import {
   BORDER_COLOR_CARD,
   BORDER_RADIUS_ELEMENT_WRAPPER,
@@ -16,6 +14,8 @@ import { getAppColor } from "../../common/utils/other/app.utils";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
 import { MotionBox } from "../motion/motion-box.component";
+import IconRight from "../../assets/icon/icon-right";
+import IconLeft from "../../assets/icon/icon-left";
 
 export interface AppGridProps {
   apps: AppModule[];
