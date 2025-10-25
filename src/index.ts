@@ -15,3 +15,6 @@ export * from "./router"; // Export router utilities
 export * from "./components"; // Export common components
 //Export redux : do bị trùng, chưa config được
 // export * from "./redux";
+
+// Keep pages alive for library bundling (avoid tree-shaking)
+import "./pages";
