@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 
-// https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const isLibrary = mode === "library";
 
@@ -12,8 +11,8 @@ export default defineConfig(({ mode }) => {
       plugins: [
         react(),
         dts({
-          insertTypesEntry: true, // tự thêm field "types" vào package.json khi build
-          outDir: "dist", // xuất file .d.ts vào thư mục dist
+          insertTypesEntry: true, // Thêm field "types" vào package.json
+          outDir: "dist", // Xuất file .d.ts vào thư mục dist
         }),
       ],
       build: {
@@ -27,6 +26,7 @@ export default defineConfig(({ mode }) => {
           external: [
             "react",
             "react-dom",
+            "react/jsx-runtime", // Bổ sung thêm react/jsx-runtime để tránh bundle React runtime
             "@emotion/react",
             "@emotion/styled",
             "@mui/material",
@@ -40,6 +40,7 @@ export default defineConfig(({ mode }) => {
             globals: {
               react: "React",
               "react-dom": "ReactDOM",
+              "react/jsx-runtime": "jsxRuntime",
               "@emotion/react": "EmotionReact",
               "@emotion/styled": "EmotionStyled",
               "@mui/material": "MaterialUI",
@@ -53,10 +54,15 @@ export default defineConfig(({ mode }) => {
         },
         sourcemap: true,
         minify: false,
+        emptyOutDir: true,
+      },
+      resolve: {
+        preserveSymlinks: false, // Quan trọng: đảm bảo React không bị duplicate khi link
       },
     };
   }
 
+  // Cấu hình dev mode
   return {
     plugins: [react()],
     server: {
