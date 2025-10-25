@@ -1,6 +1,6 @@
 {
   "name": "sevago-sso-fe",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Sevago SSO Frontend Library - A comprehensive SSO solution with React components",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -36,13 +36,13 @@
   },
   "homepage": "https://github.com/dev1-gmail2025/sevago-sso-fe",
   "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17",
     "@emotion/react": ">=11",
     "@emotion/styled": ">=11",
     "@mui/material": ">=5",
-    "@mui/system": "^7.3.3",
+    "@mui/system": ">=5",
     "@reduxjs/toolkit": "^2.9.2",
-    "react": ">=17",
-    "react-dom": ">=17",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.4",
     "redux-persist": "^6.0.0"
