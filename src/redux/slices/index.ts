@@ -1,2 +1,2 @@
 // Export slices
-export * from './remaining-weight.slice'
+export * from "./remaining-weight.slice";
