@@ -1,6 +1,10 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import IconLeft from "../../assets/icon/icon-left";
+import IconRight from "../../assets/icon/icon-right";
 import {
   BORDER_COLOR_CARD,
   BORDER_RADIUS_ELEMENT_WRAPPER,
@@ -9,13 +13,12 @@ import {
   PADDING_GAP_ITEM_SMALL,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { type AppModule } from "../../common/enums/app-category.enum";
+import { AppModule } from "../../common/enums/app-category.enum";
 import { getAppColor } from "../../common/utils/other/app.utils";
+import { GlobalReduxState } from "../../redux/store.interface";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
 import { MotionBox } from "../motion/motion-box.component";
-import IconRight from "../../assets/icon/icon-right";
-import IconLeft from "../../assets/icon/icon-left";
 
 export interface AppGridProps {
   apps: AppModule[];
@@ -56,6 +59,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const pageSize = Math.max(1, columns * Math.max(1, rows));
   const totalPages = Math.max(1, Math.ceil(apps.length / pageSize));
   const [page, setPage] = React.useState(0);
+  const { user } = useSelector((state: GlobalReduxState) => state.account);
 
   React.useEffect(() => {
     setPage((prev) => (prev >= totalPages ? totalPages - 1 : prev));
@@ -65,6 +69,18 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
+  const findLink = (app: AppModule) => {
+    if (!app.children?.length) {
+      return app.path;
+    }
+    for (const i of app.children || []) {
+      if (user?.type && i.allowUserTypes.includes(user?.type)) {
+        if (i.path) {
+          return `${i.path}`;
+        }
+      }
+    }
+  };
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -77,57 +93,66 @@ export const AppGrid: React.FC<AppGridProps> = ({
         {visibleApps.map((app, index) => {
           const isSelected = selectedAppId === app.key;
           return (
-            <MotionBox
+            <Link
               key={app.key}
-              preset="staggerItem"
-              index={index}
-              hover
-              onClick={() => onClickItem?.(app)}
-              sx={{
-                cursor: "pointer",
-                display: "flex",
-                flex: 1,
-                alignItems: "center",
-                flexDirection: "column",
+              to={findLink(app) || "#"}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                width: "100%",
               }}
             >
-              <Box
+              <MotionBox
+                preset="staggerItem"
+                index={index}
+                hover
+                onClick={() => onClickItem?.(app)}
                 sx={{
-                  width: iconSize,
-                  height: iconSize,
-                  borderRadius: iconRadius,
-                  mb: 1.5,
+                  cursor: "pointer",
                   display: "flex",
+                  flex: 1,
                   alignItems: "center",
-                  justifyContent: "center",
-                  background: getAppColor(app.category),
-                  boxShadow: isSelected
-                    ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
-                    : iconShadow,
+                  flexDirection: "column",
                 }}
               >
-                {app.icon.startsWith("/") && (
-                  <ImageElement
-                    sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
-                    url={app.icon}
-                    sizeType={ImageSizeType.SQUARE}
-                  />
-                )}
-              </Box>
+                <Box
+                  sx={{
+                    width: iconSize,
+                    height: iconSize,
+                    borderRadius: iconRadius,
+                    mb: 1.5,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: getAppColor(app.category),
+                    boxShadow: isSelected
+                      ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
+                      : iconShadow,
+                  }}
+                >
+                  {app.icon.startsWith("/") && (
+                    <ImageElement
+                      sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
+                      url={app.icon}
+                      sizeType={ImageSizeType.SQUARE}
+                    />
+                  )}
+                </Box>
 
-              <Typography
-                variant={titleVariant}
-                sx={{ color: titleColor ?? theme.palette.common.white }}
-              >
-                {app.title}
-              </Typography>
-              <Typography
-                variant={captionVariant}
-                sx={{ color: captionColor ?? theme.palette.common.white }}
-              >
-                {app.caption}
-              </Typography>
-            </MotionBox>
+                <Typography
+                  variant={titleVariant}
+                  sx={{ color: titleColor ?? theme.palette.common.white }}
+                >
+                  {app.title}
+                </Typography>
+                <Typography
+                  variant={captionVariant}
+                  sx={{ color: captionColor ?? theme.palette.common.white }}
+                >
+                  {app.caption}
+                </Typography>
+              </MotionBox>
+            </Link>
           );
         })}
       </Box>
