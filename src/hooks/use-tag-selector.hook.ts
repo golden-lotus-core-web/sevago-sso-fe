@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'; 
-import { getErrorMessage } from '../common/utils/string.utils';
-import { SnackbarType, useSnackbar } from './use-snackbar.hook';
+import { useCallback, useEffect, useState } from "react";
+import { getErrorMessage } from "../common/utils/string.utils";
+import { SnackbarType, useSnackbar } from "./use-snackbar.hook";
 
 export interface TaggedUser {
   id: string;
@@ -34,7 +34,7 @@ interface UseTagSelectorReturn {
 export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
   const [showTagSelector, setShowTagSelector] = useState(false);
   const [tagPosition, setTagPosition] = useState<TagPosition | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState<TaggedUser[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<TaggedUser[]>([]);
   const [selectedUserIndex, setSelectedUserIndex] = useState(0);
@@ -58,12 +58,16 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
   useEffect(() => {
     if (searchQuery.trim()) {
       const filtered = users
-        .filter((user) => user.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        .filter((user) =>
+          user.name.toLowerCase().includes(searchQuery.toLowerCase())
+        )
         .filter((user) => !taggedUserIds.has(user.id)); // Chỉ hiển thị user chưa được tag
       setFilteredUsers(filtered);
       setSelectedUserIndex(0);
     } else {
-      const availableUsers = users.filter((user) => !taggedUserIds.has(user?.id)); // Chỉ hiển thị user chưa được tag
+      const availableUsers = users.filter(
+        (user) => !taggedUserIds.has(user?.id)
+      ); // Chỉ hiển thị user chưa được tag
       setFilteredUsers(availableUsers);
       setSelectedUserIndex(0);
     }
@@ -71,19 +75,22 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
 
   // Handle input change and detect @ symbol
   const handleInputChange = useCallback((newValue: string) => {
-    if (newValue?.trim() === '') {
+    if (newValue?.trim() === "") {
       resetAll();
       return;
     }
-    const lastAtSymbol = newValue?.lastIndexOf('@');
+    const lastAtSymbol = newValue?.lastIndexOf("@");
     if (lastAtSymbol !== -1) {
       const afterAt = newValue?.substring(lastAtSymbol + 1);
-      const spaceIndex = afterAt?.indexOf(' ');
+      const spaceIndex = afterAt?.indexOf(" ");
 
       if (spaceIndex === -1) {
         // Still typing the tag
         setSearchQuery(afterAt);
-        setTagPosition({ start: lastAtSymbol, end: lastAtSymbol + afterAt.length + 1 });
+        setTagPosition({
+          start: lastAtSymbol,
+          end: lastAtSymbol + afterAt.length + 1,
+        });
         setShowTagSelector(true);
         return;
       }
@@ -97,7 +104,7 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
   const resetTagSelector = useCallback(() => {
     setShowTagSelector(false);
     setTagPosition(null);
-    setSearchQuery('');
+    setSearchQuery("");
   }, []);
 
   // Select a user and insert tag
@@ -154,22 +161,22 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
       const totalOptions = filteredUsers.length + 1; // +1 for @all option
 
       switch (e.key) {
-        case 'ArrowDown':
+        case "ArrowDown":
           e.preventDefault();
           setSelectedUserIndex((prev) => {
             if (totalOptions === 0) return 0;
             return prev < totalOptions - 1 ? prev + 1 : 0;
           });
           break;
-        case 'ArrowUp':
+        case "ArrowUp":
           e.preventDefault();
           setSelectedUserIndex((prev) => {
             if (totalOptions === 0) return 0;
             return prev > 0 ? prev - 1 : totalOptions - 1;
           });
           break;
-        case 'Enter':
-        case 'Tab':
+        case "Enter":
+        case "Tab":
           e.preventDefault();
           if (totalOptions === 0) return null;
 
@@ -188,20 +195,20 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
           //   }
           // }
           break;
-        case 'Escape':
+        case "Escape":
           resetTagSelector();
           break;
       }
       return null;
     },
-    [showTagSelector, filteredUsers, selectedUserIndex, resetTagSelector],
+    [showTagSelector, filteredUsers, selectedUserIndex, resetTagSelector]
   );
 
   // Reset hoàn toàn để có thể tag lại
   const resetAll = useCallback(() => {
     setShowTagSelector(false);
     setTagPosition(null);
-    setSearchQuery('');
+    setSearchQuery("");
     setTaggedUserIds(new Set()); // Reset danh sách user đã tag
   }, []);
 
@@ -213,7 +220,7 @@ export const useTagSelector = (movementId: string): UseTagSelectorReturn => {
         return newSet;
       });
     },
-    [taggedUserIds],
+    [taggedUserIds]
   );
 
   return {

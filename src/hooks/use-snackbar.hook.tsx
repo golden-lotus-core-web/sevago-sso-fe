@@ -1,13 +1,18 @@
-import React, { createContext, useState, useContext, type ReactNode } from 'react';
-import Snackbar from '@mui/material/Snackbar';
-import { STYLE } from '../common/constant';
-import { Alert } from '@mui/material';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  type ReactNode,
+} from "react";
+import Snackbar from "@mui/material/Snackbar";
+import { STYLE } from "../common/constant";
+import { Alert } from "@mui/material";
 
 export enum SnackbarType {
-  INFO = 'info',
-  SUCCESS = 'success',
-  ERROR = 'error',
-  WARNING = 'warning',
+  INFO = "info",
+  SUCCESS = "success",
+  ERROR = "error",
+  WARNING = "warning",
 }
 
 export interface SnackbarContext {
@@ -19,18 +24,24 @@ export interface SnackbarContextType {
   showSnackbar: (params: SnackbarContext) => void;
 }
 
-const SnackbarContext = createContext<SnackbarContextType | undefined>(undefined);
+const SnackbarContext = createContext<SnackbarContextType | undefined>(
+  undefined
+);
 
 export interface SnackbarProviderProps {
   children?: ReactNode;
 }
 
-export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) => {
-  const [snackbar, setSnackbar] = useState<SnackbarContext & { open: boolean }>({
-    open: false,
-    message: '',
-    type: SnackbarType.INFO,
-  });
+export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({
+  children,
+}) => {
+  const [snackbar, setSnackbar] = useState<SnackbarContext & { open: boolean }>(
+    {
+      open: false,
+      message: "",
+      type: SnackbarType.INFO,
+    }
+  );
 
   const showSnackbar = (params: SnackbarContext) => {
     setSnackbar({
@@ -47,9 +58,9 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) 
     <SnackbarContext.Provider value={{ showSnackbar }}>
       {children}
       <Snackbar
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         sx={{
-          '&.MuiSnackbar-root': {
+          "&.MuiSnackbar-root": {
             bottom: STYLE.PADDING_GAP_LAYOUT,
             right: STYLE.PADDING_GAP_LAYOUT,
           },
@@ -74,7 +85,8 @@ export const SnackbarProvider: React.FC<SnackbarProviderProps> = ({ children }) 
 export const useSnackbar = () => {
   const context = useContext(SnackbarContext);
 
-  if (!context) throw new Error('useSnackbar must be used within a SnackbarProvider');
+  if (!context)
+    throw new Error("useSnackbar must be used within a SnackbarProvider");
 
   return context;
 };
