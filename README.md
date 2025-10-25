@@ -36,14 +36,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
-import { SevagoSSOApp, store, persistor } from 'sevago-sso-fe';
+import { SystemMonitorScreen, store, persistor } from 'sevago-sso-fe';
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <SevagoSSOApp />
+          <SystemMonitorScreen />
         </BrowserRouter>
       </PersistGate>
     </Provider>
@@ -133,10 +133,17 @@ await notificationApi.subscribeTopic({ token });
 ## API Reference
 
 ### Components
-- `SevagoSSOApp` - Main application component
-- `AuthLayout` - Authentication layout wrapper
-- `DashboardLayout` - Dashboard layout wrapper
-- `DefaultLayout` - Default layout wrapper
+- `AppGrid` -
+- `AvatarElement`
+- `AvatarUserInfo`
+- `AvatarUserComponent`
+- `BellComponent`
+- `EmptyComponent`
+- `LoadingComponent`
+- `LogoComponent`
+- `MotionBox`
+- `TimeAgoContentComponent`
+- `TimeAgoComponent`
 
 ### Hooks
 - `useSnackbar()` - Snackbar notifications
@@ -154,15 +161,16 @@ await notificationApi.subscribeTopic({ token });
 ### Redux Store
 - `store` - Redux store instance
 - `persistor` - Redux persist instance
-- `RootState` - TypeScript state type
-- `AppDispatch` - TypeScript dispatch type
+- `remainingWeightSlice ` - Redux remainingWeightSlice
+- `account` - login/logout/resetPassword/refreshToken/subscribeTopic/unsubscribeTopic/changeNotificationCount/changeSidebarCount/updateAccount/getAccount/updatePositionOrgUnit/updateCurrentAccess
+- `system` - changeMode(GlobalSystemState)
 
 ### Utilities
 - `renderRoutes` - Route rendering utility
 - `routeConstants` - Route constants
 - `STYLE` - Style constants
 - `MODE` - Theme modes
-- `timeUtils` - Time utility functions
+- `timeUtils` - Time utility functions (getTimeAgo, getDateTime, getDate, checkNowYear,getMonthRangeForYear, getDayOffsetPx, isSameDateTime, getTimeDate, isDateString)
 
 ## Configuration
 
@@ -229,13 +237,4 @@ To contribute to this library:
 3. Run development server: `npm run dev`
 4. Build library: `npm run build:lib`
 5. Test the build: `npm run preview`
-
 ## Changelog
-
-### v1.0.0
-- Initial release
-- Complete SSO authentication system
-- Material-UI components
-- Redux state management
-- Firebase notifications
-- TypeScript support
