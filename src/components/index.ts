@@ -8,6 +8,7 @@ export * from "./loading";
 export * from "./logo";
 export * from "./motion";
 export * from "./time-ago";
+export * from "./sidebar";
 
 // Export elements
 export * from "./elements";

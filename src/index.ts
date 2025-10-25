@@ -18,3 +18,4 @@ export * from "./components"; // Export common components
 
 // Keep pages alive for library bundling (avoid tree-shaking)
 import "./pages";
+import "./hooks";
