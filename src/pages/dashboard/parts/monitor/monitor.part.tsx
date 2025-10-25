@@ -1,13 +1,13 @@
 import { Stack } from "@mui/system";
 import { type ReactNode } from "react";
-import { STYLE } from "../../../common/constant";
+import { STYLE } from "../../../../common/constant";
 import {
   StackRowAlignCenter,
   StackRowJustBetween,
-} from "../../../components/styles/stack.style";
-import { LogoComponent } from "../../../components/logo/logo.component";
-import { BellComponent } from "../../../components/bell/bell.component";
-import { AvatarUserComponent } from "../../../components/avatar-user/avatar-user.component";
+} from "../../../../components/styles/stack.style";
+import { LogoComponent } from "../../../../components/logo/logo.component";
+import { BellComponent } from "../../../../components/bell/bell.component";
+import { AvatarUserComponent } from "../../../../components/avatar-user/avatar-user.component";
 
 export const MonitorPart: React.FC<any> = ({
   children,

@@ -1,2 +1,2 @@
 // Export dashboard parts
-export { MonitorPart } from "./monitor.part";
+export * from "./monitor";
