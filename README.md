@@ -133,7 +133,7 @@ await notificationApi.subscribeTopic({ token });
 ## API Reference
 
 ### Components
-- `AppGrid` -
+- `AppGrid`
 - `AvatarElement`
 - `AvatarUserInfo`
 - `AvatarUserComponent`
