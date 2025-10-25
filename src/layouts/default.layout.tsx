@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import React, { type ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { STYLE } from "../common/constant";
 
 export interface DefaultLayoutProps {
