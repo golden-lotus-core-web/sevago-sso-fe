@@ -10,12 +10,7 @@ export * from "./motion";
 export * from "./time-ago";
 
 // Export elements
-export * from "./elements/icon";
-export * from "./elements/image";
-export * from "./elements/radio";
-export * from "./elements/text-field";
-export * from "./elements/tooltip";
-export * from "./elements/typography";
+export * from "./elements";
 
 // Export styles
 export * from "./styles";
