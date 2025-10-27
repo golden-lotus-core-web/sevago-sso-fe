@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Routes } from "react-router-dom";
 import { messaging } from "./common/config/firebase.config";
-import { initSockets } from "./common/config/socket.config";
 import { MODE, STYLE } from "./common/constant";
 import { OPACITY } from "./common/constant/opacity.constant";
 import { getLimitLineCss } from "./common/utils/other/get-limit-line-css.utils";
@@ -17,6 +16,7 @@ import type { GlobalReduxState } from "./redux/store.interface";
 import { store, useAppDispatch } from "./redux/store.redux";
 import { renderRoutes } from "./router/render.route";
 import { routes } from "./router/route.routes";
+import { initSockets } from "./common";
 
 initSockets(store);
 

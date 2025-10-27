@@ -1,9 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
-import {
-  BORDER_RADIUS_ELEMENT_WRAPPER,
-  getAppColor,
-  STYLE,
-} from "../../../common";
+
+import { STYLE, getAppColor } from "../../../common";
+import { BORDER_RADIUS_ELEMENT_WRAPPER } from "../../../common/constant/style.constant";
 import {
   AppsSidebar,
   AvatarUserComponent,

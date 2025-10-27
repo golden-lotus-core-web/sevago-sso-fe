@@ -1,15 +1,15 @@
-import { UserType } from '../../apis/user/user.enum';
+import { UserType } from "../../apis/user/user.enum";
 
 export enum AppCategory {
-  ALL = 'all',
-  HRM = 'hrm',
-  WORKFLOW = 'workflow',
-  PLATFORM_INFO = 'platform-info',
+  ALL = "all",
+  HRM = "hrm",
+  WORKFLOW = "workflow",
+  PLATFORM_INFO = "platform-info",
 }
 
 export enum AppType {
-  SUBMENU = 'submenu',
-  EXPAND_MENU = 'expand-menu',
+  SUBMENU = "submenu",
+  EXPAND_MENU = "expand-menu",
 }
 
 export interface AppModule {
