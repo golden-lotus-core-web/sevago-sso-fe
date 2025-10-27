@@ -7,7 +7,7 @@ import { GlobalReduxState } from "../redux/store.interface";
 import { PAGE } from "../router/route.constant";
 
 // Lấy danh sách apps được lọc theo category và user type
-export const useApps = (tab?: AppCategory) => {
+export const useApps = (tab: AppCategory = AppCategory.ALL) => {
   const userType = useSelector(
     (state: GlobalReduxState) => state.account.user?.type
   );
