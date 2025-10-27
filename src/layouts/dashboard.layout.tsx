@@ -8,8 +8,8 @@ import { useUpdateCurrentAccess } from "../hooks/use-update-current-access.hook"
 import MonitorPart from "../pages/dashboard/parts/monitor/monitor.part";
 import { DASHBOARD_SCREEN } from "../router/route.constant";
 import { useSidebar } from "../hooks";
-import { SidebarPart } from "../pages/dashboard/parts/sidebar/sidebar-part";
 import { SidebarLeftPart } from "../pages/dashboard/sidebar/sidebar-left.part";
+import { SidebarPart } from "../pages";
 
 export interface DashboardLayoutProps {
   children?: ReactNode;
