@@ -1,12 +1,7 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  type ReactNode,
-} from "react";
-import Snackbar from "@mui/material/Snackbar";
-import { STYLE } from "../common/constant";
 import { Alert } from "@mui/material";
+import Snackbar from "@mui/material/Snackbar";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import { STYLE } from "../common";
 
 export enum SnackbarType {
   INFO = "info",

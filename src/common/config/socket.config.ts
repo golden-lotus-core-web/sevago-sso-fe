@@ -1,7 +1,7 @@
 import { Manager } from "socket.io-client";
 import type { Socket } from "socket.io-client";
-import type { Store } from "@reduxjs/toolkit";
 import { UserType } from "../../apis/user/user.enum";
+import type { Store } from "@reduxjs/toolkit";
 
 export enum SocketNamespace {
   SYSTEM = "system",
