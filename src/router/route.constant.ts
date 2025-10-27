@@ -1,5 +1,5 @@
 import { UserType } from "../apis/user/user.enum";
-import type { RouteConstant } from "../common/interfaces/route.interface";
+import { RouteConstant } from "../common/interfaces/route.interface";
 import { RouteType } from "./route.enum";
 
 export const DASHBOARD_BASE = "/dashboard";
@@ -26,7 +26,23 @@ export const PAGE: Record<string, RouteConstant> = {
   // Private
   DASHBOARD: {
     path: "/dashboard/",
-    type: RouteType.PROTECTED,
+    type: RouteType.PUBLIC,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+
+  BOOKING: {
+    path: "/booking",
+    type: RouteType.PUBLIC,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  WORKFLOW_ENGINE: {
+    path: "/workflow/",
+    type: RouteType.PUBLIC,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  WORKFLOW_TRACKING: {
+    path: "/tracking/",
+    type: RouteType.PUBLIC,
     allowUserTypes: ALLOW_USER_TYPES,
   },
 };
@@ -170,6 +186,11 @@ export const DASHBOARD_SCREEN = {
     type: RouteType.PROTECTED,
     allowUserTypes: ALLOW_USER_TYPES,
   },
+  TASK_OF_ME: {
+    path: "task-of-me",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
 
   // org
   ORG_UNIT_TREE: {
@@ -195,6 +216,17 @@ export const DASHBOARD_SCREEN = {
   },
   POSITION_RESTORE: {
     path: "position-restore",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+
+  USER_TITLE: {
+    path: "user-title",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  USER_UP_PERMISSIONS: {
+    path: "user-up-permissions",
     type: RouteType.PROTECTED,
     allowUserTypes: ALLOW_USER_TYPES,
   },
@@ -282,12 +314,48 @@ export const DASHBOARD_SCREEN = {
 };
 
 export const BOOKING_SCREEN = {
+  MAIN: {
+    path: "",
+  },
+  MY_MEETINGS: {
+    path: "my-meetings",
+  },
   MEETING_SETTING: {
     path: "meeting-setting",
   },
 };
 
 export const WORKFLOW_ENGINE_SCREEN = {
+  // proposal group
+  PROPOSAL_GROUP: {
+    path: "proposal-group",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  PROPOSAL_GROUP_DETAIL: {
+    path: "proposal-detail-group/:id",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  // proposal history
+  PROPOSAL_HISTORY: {
+    path: "proposal-history",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  // proposal template
+  PROPOSAL_TEMPLATE: {
+    path: "proposal-template",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  // proposal create group
+  PROPOSAL_CREATE_GROUP: {
+    path: "proposal-create-group",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  // proposal recruitment
   //job
   PROPOSAL_JOB_RECRUITMENT: {
     path: "request-job",
@@ -339,11 +407,22 @@ export const WORKFLOW_ENGINE_SCREEN = {
 };
 
 export const WORKFLOW_TRACKING_SCREEN = {
+  MANAGER_PROCESS: {
+    path: "manager-process",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
+  MANAGER_PROCESS_SETTING: {
+    path: "manager-process-setting/:id",
+    type: RouteType.PROTECTED,
+    allowUserTypes: ALLOW_USER_TYPES,
+  },
   MY_TASK: {
     path: "my-task",
     type: RouteType.PROTECTED,
     allowUserTypes: ALLOW_USER_TYPES,
   },
+
   MY_WORK: {
     path: "my-work",
     type: RouteType.PROTECTED,
