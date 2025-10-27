@@ -1,23 +1,93 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../redux/store.redux";
-import { AppCategory } from "../../../../common/enums/app-category.enum";
-import { useActiveSidebar, useApps } from "../../../../hooks/use-apps.hook";
-import { MotionBox } from "../../../../components/motion/motion-box.component";
+import React, { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 import { PADDING_GAP_TAB } from "../../../../common/constant/style.constant";
-import { AppGrid } from "../../../../components/app-grid/app-grid.component";
+import { AppCategory } from "../../../../common/enums/app-category.enum";
+import { AppGrid } from "../../../../components";
+import { MotionBox } from "../../../../components/motion/motion-box.component";
+import { useActiveSidebar, useApps } from "../../../../hooks/use-apps.hook";
 import { ACTION_ACCOUNT } from "../../../../redux";
+import { GlobalReduxState } from "../../../../redux/store.interface";
+import { useAppDispatch } from "../../../../redux/store.redux";
 
 export const SystemMonitorScreen: React.FC = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [tab, setTab] = useState<AppCategory>(AppCategory.ALL);
 
+  const user = useSelector((state: GlobalReduxState) => state.account?.user);
+
   const listApp = useApps(tab);
   const currentApp = useActiveSidebar();
+  const checkUserNotOrg = useMemo(
+    () =>
+      !user?.userOrgUnitPositions?.length ||
+      user.userOrgUnitPositions.some((pos) => !pos.orgUnit || !pos.position),
+    [user]
+  );
+
+  if (checkUserNotOrg) {
+    return (
+      <MotionBox
+        preset="fadeInUp"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+          top: 150,
+          minHeight: "400px",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            padding: 4,
+            borderRadius: 2,
+            backgroundColor: theme.palette.background.paper,
+            boxShadow: theme.shadows[4],
+            maxWidth: 500,
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: theme.palette.error.main,
+              marginBottom: 2,
+              fontWeight: 600,
+            }}
+          >
+            Thông báo
+          </Typography>
+          <Typography
+            sx={{
+              color: theme.palette.text.secondary,
+              lineHeight: 1.6,
+              marginBottom: 3,
+            }}
+          >
+            Bạn chưa có người quản lý trực tiếp. Vui lòng liên hệ quản trị viên
+            để được hỗ trợ.
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              color: theme.palette.text.disabled,
+              fontStyle: "italic",
+            }}
+          >
+            Hệ thống sẽ tự động cập nhật khi bạn được phân quyền.
+          </Typography>
+        </Box>
+      </MotionBox>
+    );
+  }
 
   return (
     <MotionBox
@@ -103,7 +173,6 @@ export const SystemMonitorScreen: React.FC = () => {
               await dispatch(
                 ACTION_ACCOUNT.updateCurrentAccess(app.key)
               ).unwrap();
-              // navigate(app.path || '');
             }}
           />
         </MotionBox>
