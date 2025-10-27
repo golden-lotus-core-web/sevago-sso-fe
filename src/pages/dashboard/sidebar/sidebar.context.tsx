@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { AppModule } from "../../../../../common/enums/app-category.enum";
+import { AppModule } from "../../../common/enums/app-category.enum";
 
 interface SidebarContextType {
   isCollapsed: boolean;
