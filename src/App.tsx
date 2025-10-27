@@ -4,6 +4,7 @@ import { getToken } from "firebase/messaging";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Routes } from "react-router-dom";
+import { initSockets } from "./common";
 import { messaging } from "./common/config/firebase.config";
 import { MODE, STYLE } from "./common/constant";
 import { OPACITY } from "./common/constant/opacity.constant";
@@ -16,7 +17,6 @@ import type { GlobalReduxState } from "./redux/store.interface";
 import { store, useAppDispatch } from "./redux/store.redux";
 import { renderRoutes } from "./router/render.route";
 import { routes } from "./router/route.routes";
-import { initSockets } from "./common";
 
 initSockets(store);
 
