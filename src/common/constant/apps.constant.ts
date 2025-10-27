@@ -1,17 +1,12 @@
 import { UserType } from "../../apis/user/user.enum";
 import {
-  DASHBOARD_HR_SIDEBAR,
-  DASHBOARD_HRM_SIDEBAR,
-  DASHBOARD_TREE_SYSTEM_SIDEBAR,
-} from "../../pages";
-import {
   ALLOW_USER_TYPES,
   DASHBOARD_SCREEN,
   PAGE,
   WORKFLOW_ENGINE_SCREEN,
   WORKFLOW_TRACKING_SCREEN,
 } from "../../router/route.constant";
-import { AppCategory, AppModule, AppType } from "../enums/app-category.enum";
+import { AppCategory, AppModule } from "../enums/app-category.enum";
 
 // Định nghĩa tất cả các module/apps của hệ thống
 export const SYSTEM_MODULES: AppModule[] = [
@@ -29,7 +24,6 @@ export const SYSTEM_MODULES: AppModule[] = [
       UserType.HR,
       UserType.ROOT,
     ],
-    children: DASHBOARD_HR_SIDEBAR,
   },
   {
     key: "sevago-hrm",
@@ -39,7 +33,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: PAGE.DASHBOARD.path + DASHBOARD_SCREEN.USER.path,
     category: AppCategory.HRM,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: DASHBOARD_HRM_SIDEBAR,
   },
   {
     key: "sevago-payroll",
@@ -49,17 +42,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: DASHBOARD_SCREEN.PAYROLL.path,
     category: AppCategory.HRM,
     allowUserTypes: [UserType.ADMIN, UserType.HR, UserType.ROOT],
-    children: [
-      {
-        key: "sevago-payroll-user",
-        title: "Tính lương",
-        caption: "Payroll",
-        icon: "graph_3",
-        path: DASHBOARD_SCREEN.PAYROLL.path,
-        category: AppCategory.HRM,
-        allowUserTypes: DASHBOARD_SCREEN.PAYROLL.allowUserTypes,
-      },
-    ],
   },
   {
     key: "sevago-chart",
@@ -69,7 +51,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: DASHBOARD_SCREEN.ORG_STRUCTURE.path,
     category: AppCategory.HRM,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: DASHBOARD_TREE_SYSTEM_SIDEBAR,
   },
   {
     key: "sevago-checkin",
@@ -79,17 +60,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: DASHBOARD_SCREEN.CHECK_IN.path,
     category: AppCategory.HRM,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: [
-      {
-        key: "sevago-check-in",
-        title: "Check-in",
-        caption: "Check-in",
-        icon: "graph_3",
-        path: DASHBOARD_SCREEN.CHECK_IN.path,
-        category: AppCategory.HRM,
-        allowUserTypes: DASHBOARD_SCREEN.CHECK_IN.allowUserTypes,
-      },
-    ],
   },
   {
     key: "sevago-project",
@@ -99,57 +69,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: PAGE.DASHBOARD.path + DASHBOARD_SCREEN.PROJECT_TASK.path,
     category: AppCategory.WORKFLOW,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: [
-      {
-        key: "project-list",
-        title: "Danh sách dự án",
-        caption: "Danh sách dự án",
-        icon: "folder_copy",
-        path: PAGE.DASHBOARD.path + DASHBOARD_SCREEN.PROJECT_TASK.path,
-        category: AppCategory.WORKFLOW,
-        allowUserTypes: DASHBOARD_SCREEN.PROJECT_TASK.allowUserTypes,
-      },
-      {
-        key: "project-chart",
-        title: "Biểu đồ",
-        caption: "Biểu đồ",
-        icon: "timeline",
-        path: DASHBOARD_SCREEN.PROJECT_TASK_PROCESS.path,
-        category: AppCategory.WORKFLOW,
-        allowUserTypes: DASHBOARD_SCREEN.PROJECT_TASK_PROCESS.allowUserTypes,
-        type: AppType.SUBMENU,
-        children: [
-          {
-            key: "project-process",
-            title: "Biểu đồ tiến độ",
-            caption: "Biểu đồ tiến độ",
-            icon: "timeline",
-            path: DASHBOARD_SCREEN.PROJECT_TASK_PROCESS.path,
-            category: AppCategory.WORKFLOW,
-            allowUserTypes:
-              DASHBOARD_SCREEN.PROJECT_TASK_PROCESS.allowUserTypes,
-          },
-          {
-            key: "project-dashboard",
-            title: "Tổng quan dự án",
-            caption: "Tổng quan dự án",
-            icon: "bar_chart_4_bars",
-            path: DASHBOARD_SCREEN.PROJECT_DASHBOARD.path,
-            category: AppCategory.WORKFLOW,
-            allowUserTypes: DASHBOARD_SCREEN.PROJECT_DASHBOARD.allowUserTypes,
-          },
-        ],
-      },
-      {
-        key: "task-to-me",
-        title: "Công việc của tôi",
-        caption: "Công việc của tôi",
-        icon: "assignment_ind",
-        path: PAGE.DASHBOARD.path + DASHBOARD_SCREEN.TASK_OF_ME.path,
-        category: AppCategory.WORKFLOW,
-        allowUserTypes: DASHBOARD_SCREEN.TASK_OF_ME.allowUserTypes,
-      },
-    ],
   },
   {
     key: "sevago-request",
@@ -198,17 +117,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: DASHBOARD_SCREEN.TRAINING.path,
     category: AppCategory.PLATFORM_INFO,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: [
-      {
-        key: "sevago-training-user",
-        title: "Đào tạo",
-        caption: "Training",
-        icon: "graph_3",
-        path: DASHBOARD_SCREEN.TRAINING.path,
-        category: AppCategory.HRM,
-        allowUserTypes: DASHBOARD_SCREEN.TRAINING.allowUserTypes,
-      },
-    ],
   },
   {
     key: "sevago-form",
@@ -227,17 +135,6 @@ export const SYSTEM_MODULES: AppModule[] = [
     path: DASHBOARD_SCREEN.INSIDE.path,
     category: AppCategory.PLATFORM_INFO,
     allowUserTypes: ALLOW_USER_TYPES,
-    children: [
-      {
-        key: "sevago-inside-user",
-        title: "Truyền thông",
-        caption: "Inside",
-        icon: "graph_3",
-        path: DASHBOARD_SCREEN.INSIDE.path,
-        category: AppCategory.HRM,
-        allowUserTypes: DASHBOARD_SCREEN.INSIDE.allowUserTypes,
-      },
-    ],
   },
   {
     key: "sevago-booking",
