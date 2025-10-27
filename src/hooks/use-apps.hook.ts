@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { SYSTEM_MODULES } from "../common/constant/apps.constant";
 import { AppCategory } from "../common/enums/app-category.enum";
-import type { GlobalReduxState } from "../redux/store.interface";
+import { GlobalReduxState } from "../redux/store.interface";
 import { PAGE } from "../router/route.constant";
 
 // Lấy danh sách apps được lọc theo category và user type
-export const useApps = (tab: AppCategory = AppCategory.ALL) => {
+export const useApps = (tab: AppCategory) => {
   const userType = useSelector(
     (state: GlobalReduxState) => state.account.user?.type
   );

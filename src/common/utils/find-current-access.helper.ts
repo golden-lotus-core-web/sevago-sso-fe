@@ -1,11 +1,23 @@
+import { updateCurrentAccess } from "../../redux/account/account.action";
+import { store } from "../../redux/store.redux";
+import { SYSTEM_MODULES } from "../constant/apps.constant";
+import { AppModule } from "../enums/app-category.enum";
 
-import { SYSTEM_MODULES } from '../constant/apps.constant';
-import type { AppModule } from '../enums/app-category.enum';
+export const updateCurrentAccessByPath = (pathname: string) => {
+  const currentAccess = findCurrentAccessByPath(pathname);
+  if (currentAccess) {
+    store.dispatch(updateCurrentAccess(currentAccess));
+  }
+};
 
-
-export const findCurrentAccessByPath = (pathname: string): string | undefined => {
+export const findCurrentAccessByPath = (
+  pathname: string
+): string | undefined => {
   // Helper để check path trong children và trả về key của module chứa path
-  const checkInChildren = (module: AppModule, children?: AppModule[]): string | undefined => {
+  const checkInChildren = (
+    module: AppModule,
+    children?: AppModule[]
+  ): string | undefined => {
     if (!children) return undefined;
 
     for (const child of children) {
@@ -41,3 +53,6 @@ export const findCurrentAccessByPath = (pathname: string): string | undefined =>
   return undefined;
 };
 
+// Ví dụ sử dụng:
+// const currentAccess = findCurrentAccessByPath('/dashboard/job-dashboard');
+// console.log(currentAccess); // -> 'sevago-e-hiring'

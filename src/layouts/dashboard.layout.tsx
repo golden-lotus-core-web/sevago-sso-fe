@@ -3,13 +3,13 @@ import React, { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { STYLE } from "../common/constant";
 import { StackRow } from "../components/styles/stack.style";
+import { useSidebar } from "../hooks";
 import { useIsSystemMonitor } from "../hooks/use-apps.hook";
 import { useUpdateCurrentAccess } from "../hooks/use-update-current-access.hook";
-import MonitorPart from "../pages/dashboard/parts/monitor/monitor.part";
-import { DASHBOARD_SCREEN } from "../router/route.constant";
-import { useSidebar } from "../hooks";
-import { SidebarLeftPart } from "../pages/dashboard/sidebar/sidebar-left.part";
 import { SidebarPart } from "../pages";
+import MonitorPart from "../pages/dashboard/parts/monitor/monitor.part";
+import { SidebarLeftPart } from "../pages/dashboard/sidebar/sidebar-left.part";
+import { DASHBOARD_SCREEN } from "../router/route.constant";
 
 export interface DashboardLayoutProps {
   children?: ReactNode;
