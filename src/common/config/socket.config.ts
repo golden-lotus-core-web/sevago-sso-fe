@@ -62,7 +62,6 @@ export const socketConfig = (
 ): Socket => {
   if (sockets[namespace]) return sockets[namespace]!;
 
-  console.log("namespace", namespace);
   if (!manager) throw new Error("Please initial socket at app!");
 
   const socket = manager.socket(`/${namespace}`, {
