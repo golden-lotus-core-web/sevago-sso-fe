@@ -7,10 +7,11 @@ import { GlobalReduxState } from "../redux/store.interface";
 import { PAGE } from "../router/route.constant";
 
 // Lấy danh sách apps được lọc theo category và user type
-export const useApps = (tab: AppCategory) => {
+export const useApps = (tab?: AppCategory) => {
   const userType = useSelector(
     (state: GlobalReduxState) => state.account.user?.type
   );
+  console.log("userType", userType);
 
   const listApp = useMemo(() => {
     let filteredApps = SYSTEM_MODULES.filter((app) => {
@@ -23,7 +24,7 @@ export const useApps = (tab: AppCategory) => {
 
     return filteredApps;
   }, [tab, userType]);
-
+  console.log("listApp", listApp);
   return listApp;
 };
 

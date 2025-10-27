@@ -35,6 +35,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
   const { palette } = useTheme();
   if (!isOpen) return null;
+  console.log("allApps", allApps);
 
   return (
     <>
