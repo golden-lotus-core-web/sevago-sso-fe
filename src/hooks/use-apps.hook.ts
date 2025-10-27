@@ -11,7 +11,6 @@ export const useApps = (tab: AppCategory = AppCategory.ALL) => {
   const userType = useSelector(
     (state: GlobalReduxState) => state.account.user?.type
   );
-  console.log("userType", userType);
 
   const listApp = useMemo(() => {
     let filteredApps = SYSTEM_MODULES.filter((app) => {
@@ -24,7 +23,6 @@ export const useApps = (tab: AppCategory = AppCategory.ALL) => {
 
     return filteredApps;
   }, [tab, userType]);
-  console.log("listApp", listApp);
   return listApp;
 };
 
