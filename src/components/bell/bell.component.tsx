@@ -1,32 +1,44 @@
-import { Badge, List, ListItem, Stack, Typography, useTheme } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import type { Notification } from '../../apis/notification/notification.entities';
-import { NotificationStatus, UpdateNotificationAction } from '../../apis/notification/notification.enum';
-import { UserMovementSearchType } from '../../apis/user/user.enum';
-import { STYLE } from '../../common/constant';
-import { getLimitLineCss } from '../../common/utils/other/get-limit-line-css.utils';
-import { getErrorMessage } from '../../common/utils/string.utils';
-import { SnackbarType, useSnackbar } from '../../hooks/use-snackbar.hook';
-import { ACTION_ACCOUNT } from '../../redux';
-import type { GlobalReduxState } from '../../redux/store.interface';
-import { useAppDispatch } from '../../redux/store.redux';
-import { DASHBOARD_SCREEN, PAGE } from '../../router/route.constant';
-import { IconElement } from '../elements/icon/icon.element';
-import { ImageContentTimeComponent } from '../elements/image/image-name-time.component';
-import { TooltipOnClickElement } from '../elements/tooltip/tooltip-on-click.element';
-import { EmptyComponent } from '../empty/empty.component';
-import { LoadingComponent } from '../loading/loading.component';
-import { StackRow, StackRowAlignCenter } from '../styles/stack.style';
-import { notificationApi } from '../../apis';
-import { useIsSystemMonitor } from '../../hooks/use-apps.hook';
+import {
+  Badge,
+  List,
+  ListItem,
+  Stack,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { notificationApi } from "../../apis";
+import type { Notification } from "../../apis/notification/notification.entities";
+import {
+  NotificationStatus,
+  UpdateNotificationAction,
+} from "../../apis/notification/notification.enum";
+import { UserMovementSearchType } from "../../apis/user/user.enum";
+import { STYLE } from "../../common/constant";
+import { getLimitLineCss } from "../../common/utils/other/get-limit-line-css.utils";
+import { getErrorMessage } from "../../common/utils/string.utils";
+import { useIsSystemMonitor } from "../../hooks/use-apps.hook";
+import { SnackbarType, useSnackbar } from "../../hooks/use-snackbar.hook";
+import { ACTION_ACCOUNT } from "../../redux";
+import type { GlobalReduxState } from "../../redux/store.interface";
+import { useAppDispatch } from "../../redux/store.redux";
+import { PAGE } from "../../router/route.constant";
+import { IconElement } from "../elements/icon/icon.element";
+import { ImageContentTimeComponent } from "../elements/image/image-name-time.component";
+import { TooltipOnClickElement } from "../elements/tooltip/tooltip-on-click.element";
+import { EmptyComponent } from "../empty/empty.component";
+import { LoadingComponent } from "../loading/loading.component";
+import { StackRow, StackRowAlignCenter } from "../styles/stack.style";
 
-export interface BellComponentProps { }
+export interface BellComponentProps {}
 
-export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
+export const BellComponent: React.FC<BellComponentProps> = ({}) => {
   const isSystemMonitor = useIsSystemMonitor();
-  const { notificationCount } = useSelector((state: GlobalReduxState) => state.account);
+  const { notificationCount } = useSelector(
+    (state: GlobalReduxState) => state.account
+  );
   const account = useSelector((state: GlobalReduxState) => state.account);
 
   const dispatch = useAppDispatch();
@@ -52,7 +64,10 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
       setList(res.list);
       dispatch(ACTION_ACCOUNT.changeNotificationCount(res.total));
     } catch (error) {
-      showSnackbar({ message: getErrorMessage(error), type: SnackbarType.ERROR });
+      showSnackbar({
+        message: getErrorMessage(error),
+        type: SnackbarType.ERROR,
+      });
     } finally {
       setLoading(false);
     }
@@ -75,11 +90,16 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
 
       navigate(notification.path || PAGE.DASHBOARD.path, {
         state: {
-          searchType: isMyProposal ? UserMovementSearchType.MY_PROPOSAL : UserMovementSearchType.NEED_APPROVE,
+          searchType: isMyProposal
+            ? UserMovementSearchType.MY_PROPOSAL
+            : UserMovementSearchType.NEED_APPROVE,
         },
       });
     } catch (error) {
-      showSnackbar({ message: getErrorMessage(error), type: SnackbarType.ERROR });
+      showSnackbar({
+        message: getErrorMessage(error),
+        type: SnackbarType.ERROR,
+      });
     }
   };
 
@@ -91,23 +111,23 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
       content={
         <List
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             padding: 0,
             maxHeight: 500,
-            overflowY: 'auto',
+            overflowY: "auto",
             flex: 1,
-            width: '300px',
+            width: "300px",
           }}
         >
           <ListItem
             sx={{
               padding: STYLE.PADDING_GAP_ITEM,
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              position: 'sticky',
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+              position: "sticky",
               top: 0,
               backgroundColor: palette.background.paper,
               zIndex: 1,
@@ -117,17 +137,21 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
 
             <StackRow>
               <IconElement
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: "pointer" }}
                 icon="mark_email_read"
                 onClick={async (e) => {
                   e.stopPropagation();
                   try {
                     await notificationApi.updateNotification({
-                      updateNotificationAction: UpdateNotificationAction.VIEW_ALL,
+                      updateNotificationAction:
+                        UpdateNotificationAction.VIEW_ALL,
                     });
                     dispatch(ACTION_ACCOUNT.changeNotificationCount(0));
                   } catch (error) {
-                    showSnackbar({ message: getErrorMessage(error), type: SnackbarType.ERROR });
+                    showSnackbar({
+                      message: getErrorMessage(error),
+                      type: SnackbarType.ERROR,
+                    });
                   }
                 }}
               />
@@ -158,12 +182,12 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
                 sx={{
                   borderRadius: STYLE.BORDER_RADIUS_ELEMENT,
                   padding: STYLE.PADDING_GAP_ITEM,
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  cursor: 'pointer',
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  cursor: "pointer",
                   transition: STYLE.TRANSITION_TIME,
-                  '&:hover': {
+                  "&:hover": {
                     backgroundColor: palette.action.hover,
                     color: palette.primary.main,
                   },
@@ -171,7 +195,7 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
               >
                 <Stack gap={1}>
                   <ImageContentTimeComponent
-                    url={notification.createdBy?.url || ''}
+                    url={notification.createdBy?.url || ""}
                     content={notification.title}
                     time={notification.createdAt}
                   />
@@ -193,15 +217,21 @@ export const BellComponent: React.FC<BellComponentProps> = ({ }) => {
         }}
         badgeContent={notificationCount}
         color="error"
-        sx={{ cursor: 'pointer' }}
+        sx={{ cursor: "pointer" }}
       >
         <IconElement
           icon="notifications"
           onClick={() => setOpen(!open)}
           size="large"
           sx={{
-            color: isSystemMonitor ? palette.background.default : palette.primary.main,
-            '&:hover': { color: isSystemMonitor ? palette.background.default : palette.primary.main },
+            color: isSystemMonitor
+              ? palette.background.default
+              : palette.primary.main,
+            "&:hover": {
+              color: isSystemMonitor
+                ? palette.background.default
+                : palette.primary.main,
+            },
           }}
         />
       </Badge>
