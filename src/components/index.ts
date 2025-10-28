@@ -2,7 +2,6 @@
 export * from "./app-grid";
 export * from "./avatar";
 export * from "./avatar-user";
-export * from "./bell";
 export * from "./empty";
 export * from "./loading";
 export * from "./logo";
