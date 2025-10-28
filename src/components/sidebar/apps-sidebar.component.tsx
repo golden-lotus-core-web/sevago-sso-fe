@@ -19,11 +19,13 @@ import { useSidebar } from "../../hooks/user-sidebar";
 interface AppsSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  position?: "left" | "right";
 }
 
 export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   isOpen,
   onClose,
+  position = "left",
 }) => {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -57,7 +59,8 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
         sx={{
           position: "fixed",
           top: 0,
-          left: 0,
+          left: position === "left" ? 0 : "auto",
+          right: position === "right" ? 0 : "auto",
           height: "100vh",
           backgroundColor: theme.palette.common.white,
           zIndex: 100,

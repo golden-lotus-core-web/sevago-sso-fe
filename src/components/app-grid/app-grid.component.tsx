@@ -2,7 +2,6 @@ import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import IconLeft from "../../assets/icon/icon-left";
 import IconRight from "../../assets/icon/icon-right";
 
@@ -94,26 +93,46 @@ export const AppGrid: React.FC<AppGridProps> = ({
         {visibleApps.map((app, index) => {
           const isSelected = selectedAppId === app.key;
           return (
-            <Link
+            <a
               key={app.key}
-              to={findLink(app) || "#"}
+              href={findLink(app) || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 textDecoration: "none",
                 color: "inherit",
                 width: "100%",
+                display: "block",
+              }}
+              onClick={(e) => {
+                const url = findLink(app);
+                e.preventDefault();
+                onClickItem?.(app);
+                // open url in new tab if valid
+                if (url && url !== "#") {
+                  try {
+                    window.open(url, "_blank", "noopener");
+                  } catch (err) {
+                    // fallback to setting location
+                    const newWindow = window.open("about:blank");
+                    if (newWindow) newWindow.location.href = url;
+                  }
+                }
               }}
             >
               <MotionBox
                 preset="staggerItem"
                 index={index}
                 hover
-                onClick={() => onClickItem?.(app)}
                 sx={{
                   cursor: "pointer",
                   display: "flex",
                   flex: 1,
                   alignItems: "center",
                   flexDirection: "column",
+                }}
+                onClick={() => {
+                  /* keep empty — handled by anchor onClick to ensure new tab opens after handler */
                 }}
               >
                 <Box
@@ -131,7 +150,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
                       : iconShadow,
                   }}
                 >
-                  {app.icon.startsWith("/") && (
+                  {typeof app.icon === "string" && app.icon && (
                     <ImageElement
                       sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
                       url={app.icon}
@@ -153,7 +172,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
                   {app.caption}
                 </Typography>
               </MotionBox>
-            </Link>
+            </a>
           );
         })}
       </Box>
