@@ -50,7 +50,6 @@
   "dependencies": {
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",
-    "firebase": "^12.3.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.23.22",
     "socket.io-client": "^4.8.1",

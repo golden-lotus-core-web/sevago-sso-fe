@@ -1,5 +1,5 @@
-import type { User } from '../user/user.entities';
-import { LogoutType, ResetPasswordType, ForgotPasswordType } from './auth.enum';
+import type { User } from "../user/user.entities";
+import { LogoutType, ResetPasswordType, ForgotPasswordType } from "./auth.enum";
 
 export interface ForgotPasswordDto {
   phone?: string;
@@ -37,10 +37,6 @@ export interface ResetPasswordDto {
   type: ResetPasswordType;
 }
 
-export interface SubscribeUnsubscribeTopicDto {
-  fcmToken: string;
-}
-
 export interface VerifyOtpDto {
   phone: string;
   otp: string;
@@ -51,10 +47,6 @@ export interface ResponseAuth {
   accessToken: string;
   refreshToken: string;
   sidebarCountObj: Record<string, number>;
-}
-
-export interface ResponseFcm {
-  fcmToken: string;
 }
 
 export interface TokenObject {

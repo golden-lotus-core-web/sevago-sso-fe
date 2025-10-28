@@ -5,9 +5,6 @@ import {
   logout,
   resetPassword,
   refreshToken,
-  subscribeTopic,
-  unsubscribeTopic,
-  changeNotificationCount,
   changeSidebarCount,
   updateAccount,
   getAccount,
@@ -22,8 +19,6 @@ export const initialStateAccount: GlobalAccountState = {
   user: null,
   accessToken: "",
   refreshToken: "",
-  fcmToken: "",
-  notificationCount: 0,
   userUnitPositionId: "",
   sidebarCountObj: {},
   current_access: "recruitment",
@@ -54,7 +49,6 @@ export const slice = createSlice({
       state.user = initialStateAccount.user;
       state.accessToken = initialStateAccount.accessToken;
       state.refreshToken = initialStateAccount.refreshToken;
-      state.fcmToken = initialStateAccount.fcmToken;
       state.userUnitPositionId = initialStateAccount.userUnitPositionId;
       state.sidebarCountObj = initialStateAccount.sidebarCountObj;
     });
@@ -63,7 +57,6 @@ export const slice = createSlice({
       state.user = initialStateAccount.user;
       state.accessToken = initialStateAccount.accessToken;
       state.refreshToken = initialStateAccount.refreshToken;
-      state.fcmToken = initialStateAccount.fcmToken;
       state.userUnitPositionId = initialStateAccount.userUnitPositionId;
       state.sidebarCountObj = initialStateAccount.sidebarCountObj;
     });
@@ -90,30 +83,8 @@ export const slice = createSlice({
       state.user = initialStateAccount.user;
       state.accessToken = initialStateAccount.accessToken;
       state.refreshToken = initialStateAccount.refreshToken;
-      state.fcmToken = initialStateAccount.fcmToken;
       state.userUnitPositionId = initialStateAccount.userUnitPositionId;
       state.sidebarCountObj = initialStateAccount.sidebarCountObj;
-    });
-
-    // Subscribe Topic
-    builder.addCase(subscribeTopic.fulfilled, (state, action) => {
-      state.fcmToken = action.payload.fcmToken;
-    });
-    builder.addCase(subscribeTopic.rejected, (state) => {
-      state.fcmToken = initialStateAccount.fcmToken;
-    });
-
-    // Unsubscribe Topic
-    builder.addCase(unsubscribeTopic.fulfilled, (state) => {
-      state.fcmToken = initialStateAccount.fcmToken;
-    });
-    builder.addCase(unsubscribeTopic.rejected, (state) => {
-      state.fcmToken = initialStateAccount.fcmToken;
-    });
-
-    // Change notification Count
-    builder.addCase(changeNotificationCount.fulfilled, (state, action) => {
-      state.notificationCount = action.payload;
     });
 
     // Change sidebar count
