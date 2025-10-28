@@ -29,6 +29,8 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   position = "left",
   blacklist,
 }) => {
+  if (!isOpen) return null;
+
   const theme = useTheme();
   const navigate = useNavigate();
   const allApps = useApps();
@@ -36,9 +38,6 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
   const currentApp = useActiveSidebar();
   const { setActiveExpandMenu } = useSidebar();
-
-  const { palette } = useTheme();
-  if (!isOpen) return null;
 
   const displayApps = React.useMemo(() => {
     if (!blacklist || blacklist.length === 0) return allApps;
@@ -62,7 +61,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: palette.action.selected,
+          backgroundColor: theme.palette.action.selected,
           zIndex: 100,
         }}
       />
