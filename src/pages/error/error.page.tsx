@@ -60,9 +60,6 @@ export const ErrorPage: React.FC<ErrorPageProps> = ({}) => {
                   refreshToken: account.refreshToken,
                 })
               ).unwrap(),
-              dispatch(
-                ACTION_ACCOUNT.unsubscribeTopic({ fcmToken: account.fcmToken })
-              ).unwrap(),
             ]);
 
             navigate(PAGE.AUTH.path);
