@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import IconLeft from "../../assets/icon/icon-left";
 import IconRight from "../../assets/icon/icon-right";
 
+import { AppInfo } from "../../common/constant/apps.data";
 import {
   BORDER_COLOR_CARD,
   BORDER_RADIUS_ELEMENT_WRAPPER,
@@ -13,7 +14,6 @@ import {
   PADDING_GAP_ITEM_SMALL,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { AppInfo } from "../../common/constant/apps.data";
 import { GlobalReduxState } from "../../redux/store.interface";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
@@ -29,9 +29,7 @@ export interface AppGridProps {
   iconShadow?: string;
   gap?: number | string;
   titleVariant?: "subtitle1" | "body1" | "caption";
-  captionVariant?: "caption" | "body2";
   titleColor?: string;
-  captionColor?: string;
   selectedAppId?: string;
   showPagination?: boolean;
 }
@@ -46,9 +44,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   iconShadow = `0 ${PADDING_GAP_ITEM_SMALL} ${PADDING_GAP_LAYOUT} ${BORDER_COLOR_CARD}`,
   gap = PADDING_GAP_ITEM,
   titleVariant = "subtitle1",
-  captionVariant = "caption",
   titleColor,
-  captionColor,
   selectedAppId,
   showPagination = true,
 }) => {
@@ -153,12 +149,12 @@ export const AppGrid: React.FC<AppGridProps> = ({
                 >
                   {app.content}
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant={captionVariant}
                   sx={{ color: captionColor ?? theme.palette.common.white }}
                 >
                   {app.content}
-                </Typography>
+                </Typography> */}
               </MotionBox>
             </a>
           );
