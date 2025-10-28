@@ -29,7 +29,9 @@ export interface AppGridProps {
   iconShadow?: string;
   gap?: number | string;
   titleVariant?: "subtitle1" | "body1" | "caption";
+  captionVariant?: "caption" | "body2";
   titleColor?: string;
+  captionColor?: string;
   selectedAppId?: string;
   showPagination?: boolean;
 }
