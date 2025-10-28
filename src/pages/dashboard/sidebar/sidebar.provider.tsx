@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { AppModule, STYLE } from "../../../common";
+import { STYLE } from "../../../common";
+import { AppInfo } from "../../../common/constant/apps.data";
 import { GlobalReduxState } from "../../../redux";
 import { SidebarContext } from "./sidebar.context";
 
@@ -8,7 +9,7 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [activeExpandMenu, setActiveExpandMenu] = useState<AppModule[] | null>(
+  const [activeExpandMenu, setActiveExpandMenu] = useState<AppInfo[] | null>(
     null
   );
   const { current_access } = useSelector(

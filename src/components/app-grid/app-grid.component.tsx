@@ -13,16 +13,15 @@ import {
   PADDING_GAP_ITEM_SMALL,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { AppModule } from "../../common/enums/app-category.enum";
-import { getAppColor } from "../../common/utils/other/app.utils";
+import { AppInfo } from "../../common/constant/apps.data";
 import { GlobalReduxState } from "../../redux/store.interface";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
 import { MotionBox } from "../motion/motion-box.component";
 
 export interface AppGridProps {
-  apps: AppModule[];
-  onClickItem?: (app: AppModule) => void;
+  apps: AppInfo[];
+  onClickItem?: (app: AppInfo) => void;
   columns?: number;
   rows?: number;
   iconSize?: number;
@@ -69,18 +68,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
-  const findLink = (app: AppModule) => {
-    if (!app.children?.length) {
-      return app.path;
-    }
-    for (const i of app.children || []) {
-      if (user?.type && i.allowUserTypes.includes(user?.type)) {
-        if (i.path) {
-          return `${i.path}`;
-        }
-      }
-    }
-  };
+  const findLink = (app: AppInfo) => app.path;
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -91,10 +79,10 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
-          const isSelected = selectedAppId === app.key;
+          const isSelected = selectedAppId === app.path;
           return (
             <a
-              key={app.key}
+              key={app.path}
               href={findLink(app) || "#"}
               target="_blank"
               rel="noopener noreferrer"
@@ -144,7 +132,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    background: getAppColor(app.category),
+                    background: app.color,
                     boxShadow: isSelected
                       ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
                       : iconShadow,
@@ -163,13 +151,13 @@ export const AppGrid: React.FC<AppGridProps> = ({
                   variant={titleVariant}
                   sx={{ color: titleColor ?? theme.palette.common.white }}
                 >
-                  {app.title}
+                  {app.content}
                 </Typography>
                 <Typography
                   variant={captionVariant}
                   sx={{ color: captionColor ?? theme.palette.common.white }}
                 >
-                  {app.caption}
+                  {app.content}
                 </Typography>
               </MotionBox>
             </a>
