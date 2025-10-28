@@ -5,3 +5,4 @@ export * from "./opacity.constant";
 export * from "./reg-exp.constant";
 export * from "./typography.constant";
 export * as STYLE from "./style.constant";
+export * from "./icons.constant";
