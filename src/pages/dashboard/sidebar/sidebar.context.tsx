@@ -1,11 +1,11 @@
 import { createContext } from "react";
-import { AppModule } from "../../../common/enums/app-category.enum";
+import { AppInfo } from "../../../common/constant/apps.data";
 
 interface SidebarContextType {
   isCollapsed: boolean;
   setIsCollapsed: (collapsed: boolean) => void;
-  activeExpandMenu: AppModule[] | null;
-  setActiveExpandMenu: (menu: AppModule[] | null) => void;
+  activeExpandMenu: AppInfo[] | null;
+  setActiveExpandMenu: (menu: AppInfo[] | null) => void;
   sidebarWidth: string;
 }
 

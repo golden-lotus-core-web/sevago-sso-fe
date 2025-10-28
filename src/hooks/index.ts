@@ -2,7 +2,6 @@
 export * from "./use-apps.hook";
 export {
   useActiveSidebar,
-  useAllApps,
   useApps,
   useIsSystemMonitor,
   useSidebarState,

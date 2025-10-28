@@ -2,19 +2,19 @@ import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { AppGroup } from "../../common/constant/apps.data";
 import {
   PADDING_GAP_ITEM,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { AppCategory } from "../../common/enums/app-category.enum";
 import { useActiveSidebar, useApps } from "../../hooks/use-apps.hook";
+import { useSidebar } from "../../hooks/user-sidebar";
 import { ACTION_ACCOUNT } from "../../redux";
 import { useAppDispatch } from "../../redux/store.redux";
 import { PAGE } from "../../router/route.constant";
 import { AppGrid } from "../app-grid/app-grid.component";
 import { IconElement } from "../elements/icon/icon.element";
 import { MotionBox } from "../motion/motion-box.component";
-import { useSidebar } from "../../hooks/user-sidebar";
 
 interface AppsSidebarProps {
   isOpen: boolean;
@@ -114,7 +114,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           <Typography variant="subtitle2">Workflow Engine</Typography>
           <AppGrid
             apps={allApps.filter(
-              (app) => app.category === AppCategory.WORKFLOW
+              (app) => app.group === AppGroup.WORKFLOW_ENGINE
             )}
             columns={4}
             iconSize={60}
@@ -124,10 +124,10 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
             captionVariant="caption"
             titleColor={theme.palette.grey[800]}
             captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.key}
+            selectedAppId={currentApp?.path}
             onClickItem={async (app) => {
               await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.key)
+                ACTION_ACCOUNT.updateCurrentAccess(app.path)
               ).unwrap();
               setActiveExpandMenu(null);
               onClose();
@@ -145,7 +145,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
         >
           <Typography variant="subtitle2">HRM</Typography>
           <AppGrid
-            apps={allApps.filter((app) => app.category === AppCategory.HRM)}
+            apps={allApps.filter((app) => app.group === AppGroup.HRM)}
             columns={4}
             iconSize={60}
             iconRadius={5.5}
@@ -154,10 +154,10 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
             captionVariant="caption"
             titleColor={theme.palette.grey[800]}
             captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.key}
+            selectedAppId={currentApp?.path}
             onClickItem={async (app) => {
               await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.key)
+                ACTION_ACCOUNT.updateCurrentAccess(app.path)
               ).unwrap();
               setActiveExpandMenu(null);
               onClose();
@@ -176,7 +176,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           <Typography variant="subtitle2">Platform Info</Typography>
           <AppGrid
             apps={allApps.filter(
-              (app) => app.category === AppCategory.PLATFORM_INFO
+              (app) => app.group === AppGroup.PLATFORM_AND_INFO
             )}
             columns={4}
             iconSize={60}
@@ -186,10 +186,10 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
             captionVariant="caption"
             titleColor={theme.palette.grey[800]}
             captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.key}
+            selectedAppId={currentApp?.path}
             onClickItem={async (app) => {
               await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.key)
+                ACTION_ACCOUNT.updateCurrentAccess(app.path)
               ).unwrap();
               setActiveExpandMenu(null);
               onClose();
