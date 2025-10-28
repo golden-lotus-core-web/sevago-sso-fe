@@ -61,8 +61,8 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: theme.palette.action.selected,
-          zIndex: 9999,
+          backgroundColor: theme.palette.common.white,
+          zIndex: 100,
         }}
       />
 
