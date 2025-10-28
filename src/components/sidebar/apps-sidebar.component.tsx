@@ -20,12 +20,14 @@ interface AppsSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   position?: "left" | "right";
+  blacklist?: string[]; // list of paths to show; if empty or no match -> show all
 }
 
 export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   isOpen,
   onClose,
   position = "left",
+  blacklist,
 }) => {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -37,6 +39,18 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
   const { palette } = useTheme();
   if (!isOpen) return null;
+
+  const displayApps = React.useMemo(() => {
+    if (!blacklist || blacklist.length === 0) return allApps;
+    const matched = allApps.filter((a) =>
+      a.path ? blacklist.includes(a.path) : false
+    );
+    return matched.length > 0 ? matched : allApps;
+  }, [allApps, blacklist]);
+
+  const groups: AppGroup[] = React.useMemo(() => {
+    return Array.from(new Set(displayApps.map((v) => v.group)));
+  }, [displayApps]);
 
   return (
     <>
@@ -103,99 +117,39 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           </IconButton>
         </Box>
 
-        {/* Workflow Engine Section */}
-        <Box
-          sx={{
-            gap: PADDING_GAP_ITEM,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="subtitle2">Workflow Engine</Typography>
-          <AppGrid
-            apps={allApps.filter(
-              (app) => app.group === AppGroup.WORKFLOW_ENGINE
-            )}
-            columns={4}
-            iconSize={60}
-            iconRadius={5.5}
-            gap={PADDING_GAP_ITEM}
-            titleVariant="body1"
-            captionVariant="caption"
-            titleColor={theme.palette.grey[800]}
-            captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.path}
-            onClickItem={async (app) => {
-              await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.path)
-              ).unwrap();
-              setActiveExpandMenu(null);
-              onClose();
+        {groups.map((group) => (
+          <Box
+            key={group}
+            sx={{
+              gap: PADDING_GAP_ITEM,
+              display: "flex",
+              flexDirection: "column",
             }}
-          />
-        </Box>
-
-        {/* HRM Section */}
-        <Box
-          sx={{
-            gap: PADDING_GAP_ITEM,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="subtitle2">HRM</Typography>
-          <AppGrid
-            apps={allApps.filter((app) => app.group === AppGroup.HRM)}
-            columns={4}
-            iconSize={60}
-            iconRadius={5.5}
-            gap={PADDING_GAP_ITEM}
-            titleVariant="body1"
-            captionVariant="caption"
-            titleColor={theme.palette.grey[800]}
-            captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.path}
-            onClickItem={async (app) => {
-              await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.path)
-              ).unwrap();
-              setActiveExpandMenu(null);
-              onClose();
-            }}
-          />
-        </Box>
-
-        {/* Platform Info Section */}
-        <Box
-          sx={{
-            gap: PADDING_GAP_ITEM,
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <Typography variant="subtitle2">Platform Info</Typography>
-          <AppGrid
-            apps={allApps.filter(
-              (app) => app.group === AppGroup.PLATFORM_AND_INFO
-            )}
-            columns={4}
-            iconSize={60}
-            iconRadius={5.5}
-            gap={PADDING_GAP_ITEM}
-            titleVariant="body1"
-            captionVariant="caption"
-            titleColor={theme.palette.grey[800]}
-            captionColor={theme.palette.grey[600]}
-            selectedAppId={currentApp?.path}
-            onClickItem={async (app) => {
-              await dispatch(
-                ACTION_ACCOUNT.updateCurrentAccess(app.path)
-              ).unwrap();
-              setActiveExpandMenu(null);
-              onClose();
-            }}
-          />
-        </Box>
+          >
+            <Typography variant="subtitle2">
+              {group === AppGroup.PLATFORM_AND_INFO ? "Platform & Info" : group}
+            </Typography>
+            <AppGrid
+              apps={displayApps.filter((app) => app.group === group)}
+              columns={4}
+              iconSize={60}
+              iconRadius={5.5}
+              gap={PADDING_GAP_ITEM}
+              titleVariant="body1"
+              captionVariant="caption"
+              titleColor={theme.palette.grey[800]}
+              captionColor={theme.palette.grey[600]}
+              selectedAppId={currentApp?.path}
+              onClickItem={async (app) => {
+                await dispatch(
+                  ACTION_ACCOUNT.updateCurrentAccess(app.path)
+                ).unwrap();
+                setActiveExpandMenu(null);
+                onClose();
+              }}
+            />
+          </Box>
+        ))}
       </MotionBox>
     </>
   );
