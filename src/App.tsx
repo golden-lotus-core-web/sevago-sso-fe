@@ -1,11 +1,9 @@
 import { ThemeProvider, createTheme, type Theme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { getToken } from "firebase/messaging";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Routes } from "react-router-dom";
 import { initSockets } from "./common";
-import { messaging } from "./common/config/firebase.config";
 import { MODE, STYLE } from "./common/constant";
 import { OPACITY } from "./common/constant/opacity.constant";
 import { getLimitLineCss } from "./common/utils/other/get-limit-line-css.utils";
@@ -124,65 +122,6 @@ export default function App() {
         });
       }
     })();
-  }, []);
-
-  // FCM
-  useEffect(() => {
-    (async () => {
-      try {
-        if (!("serviceWorker" in navigator)) return;
-
-        const registration = await navigator.serviceWorker.register(
-          "/firebase-messaging-sw.js"
-        );
-
-        await navigator.serviceWorker.ready;
-
-        const permission = await Notification.requestPermission();
-
-        if (permission === "granted" && account.isLogin && !account.fcmToken) {
-          const fcmToken = await getToken(messaging, {
-            vapidKey: process.env.REACT_APP_FIREBASE_VAPID_KEY,
-            serviceWorkerRegistration: registration,
-          });
-
-          if (fcmToken)
-            await dispatch(
-              ACTION_ACCOUNT.subscribeTopic({ fcmToken })
-            ).unwrap();
-        }
-      } catch (error) {
-        showSnackbar({
-          message: getErrorMessage(error),
-          type: SnackbarType.ERROR,
-        });
-      }
-    })();
-  }, [account.isLogin]);
-
-  useEffect(() => {
-    const handler = async (event: MessageEvent) => {
-      if (!event.data) return;
-
-      const { title, message } = event.data;
-
-      const currentCount = store.getState().account.notificationCount;
-
-      await dispatch(
-        ACTION_ACCOUNT.changeNotificationCount(currentCount + 1)
-      ).unwrap();
-
-      showSnackbar({
-        message: `${title}: ${message}`,
-        type: SnackbarType.INFO,
-      });
-    };
-
-    navigator.serviceWorker.addEventListener("message", handler);
-
-    return () => {
-      navigator.serviceWorker.removeEventListener("message", handler);
-    };
   }, []);
 
   return (

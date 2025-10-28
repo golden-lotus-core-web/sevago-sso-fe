@@ -9,8 +9,7 @@ export interface GlobalAccountState {
   user: User | null;
   accessToken: string;
   refreshToken: string;
-  fcmToken: string;
-  notificationCount: number;
+
   userUnitPositionId: string;
   sidebarCountObj: Record<string, number>;
   current_access?: CURRENT_ACCESS | undefined;
