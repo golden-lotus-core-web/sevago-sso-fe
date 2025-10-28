@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React, { useMemo, useState } from "react";
-import { AppGroup } from "../../../../common/constant/apps.data";
+import { APP_OBJ, AppGroup } from "../../../../common/constant/apps.data";
 import { PADDING_GAP_TAB } from "../../../../common/constant/style.constant";
 import { AppGrid } from "../../../../components";
 import { MotionBox } from "../../../../components/motion/motion-box.component";
@@ -60,31 +60,31 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
         >
           {(
             [
-              { key: AppGroup.ALL, label: "Tất Cả" },
-              { key: AppGroup.HRM, label: "HRM" },
-              { key: AppGroup.WORKFLOW_ENGINE, label: "Workflow Engine" },
-              { key: AppGroup.PLATFORM_AND_INFO, label: "Platform & Info" },
-            ] as { key: AppGroup; label: string }[]
-          ).map((t) => (
+              AppGroup.ALL,
+              ...Array.from(
+                new Set(Object.values(APP_OBJ).map((v) => v.group))
+              ),
+            ] as AppGroup[]
+          ).map((g) => (
             <MotionBox
-              key={t.key}
+              key={g}
               sx={{ position: "relative" }}
               preset="tabUnderline"
             >
               <Typography
-                onClick={() => setTab(t.key)}
+                onClick={() => setTab(g)}
                 sx={{
                   cursor: "pointer",
                   color:
-                    tab === t.key
+                    tab === g
                       ? theme.palette.common.white
                       : theme.palette.grey[300],
                 }}
               >
-                {t.label}
+                {g === AppGroup.ALL ? "Tất Cả" : g}
               </Typography>
 
-              {tab === t.key && (
+              {tab === g && (
                 <MotionBox
                   preset="tabUnderline"
                   sx={{

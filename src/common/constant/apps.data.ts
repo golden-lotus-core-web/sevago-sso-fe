@@ -55,39 +55,54 @@ export const APP_GROUP_COLOR = {
   [AppGroup.OTHER]: "#EB6262",
 };
 
+import {
+  sevagoChartIcon,
+  sevagoCheckinIcon,
+  sevagoEHiringIcon,
+  sevagoFormIcon,
+  sevagoHrmIcon,
+  sevagoIcon,
+  sevagoInsideIcon,
+  sevagoMessageIcon,
+  sevagoPayrollIcon,
+  sevagoProjectIcon,
+  sevagoRequestIcon,
+  sevagoTrainingIcon,
+} from "./icons.constant";
+
 export const APP_OBJ: Record<string, AppInfo> = {
   // GREEN
   [App.E_HIRING]: {
     path: "e-hiring",
-    icon: "settings",
+    icon: sevagoEHiringIcon,
     content: "Sevago - Tuyển dụng",
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
   [App.HR]: {
     path: "hr",
-    icon: "settings",
+    icon: sevagoHrmIcon,
     content: "Sevago - Nhân sự",
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
   [App.PAYROLL]: {
     path: "payroll",
-    icon: "settings",
+    icon: sevagoPayrollIcon,
     content: "Sevago - Lương",
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
   [App.ORG]: {
     path: "org",
-    icon: "settings",
+    icon: sevagoChartIcon,
     content: "Sevago - Tổ chức",
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
   [App.CHECKIN]: {
     path: "checkin",
-    icon: "settings",
+    icon: sevagoCheckinIcon,
     content: "Sevago - Chấm công",
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
@@ -96,35 +111,35 @@ export const APP_OBJ: Record<string, AppInfo> = {
   // YELLOW
   [App.CHAT]: {
     path: "chat", // Chat
-    icon: "settings",
+    icon: sevagoMessageIcon,
     content: "Sevago - Chat",
     group: AppGroup.PLATFORM_AND_INFO,
     color: APP_GROUP_COLOR[AppGroup.PLATFORM_AND_INFO],
   },
   [App.TRAINING]: {
     path: "training", // Đào tạo
-    icon: "settings",
+    icon: sevagoTrainingIcon,
     content: "Sevago - Đào tạo",
     group: AppGroup.PLATFORM_AND_INFO,
     color: APP_GROUP_COLOR[AppGroup.PLATFORM_AND_INFO],
   },
   [App.FORM]: {
     path: "form", // Mẫu
-    icon: "settings",
+    icon: sevagoFormIcon,
     content: "Sevago - Biểu mẫu",
     group: AppGroup.PLATFORM_AND_INFO,
     color: APP_GROUP_COLOR[AppGroup.PLATFORM_AND_INFO],
   },
   [App.INSIDE]: {
     path: "inside", // Truyền Thông và CSNV
-    icon: "settings",
+    icon: sevagoInsideIcon,
     content: "Sevago - Inside",
     group: AppGroup.PLATFORM_AND_INFO,
     color: APP_GROUP_COLOR[AppGroup.PLATFORM_AND_INFO],
   },
   [App.BOOKING]: {
     path: "booking",
-    icon: "settings",
+    icon: sevagoInsideIcon,
     content: "Sevago - Booking",
     group: AppGroup.PLATFORM_AND_INFO,
     color: APP_GROUP_COLOR[AppGroup.PLATFORM_AND_INFO],
@@ -133,28 +148,28 @@ export const APP_OBJ: Record<string, AppInfo> = {
   // BLUE
   [App.TRACKING]: {
     path: "tracking", //
-    icon: "settings", //
+    icon: sevagoIcon, //
     content: "Sevago - Tracking", //
     group: AppGroup.WORKFLOW_ENGINE, //
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.REQUEST]: {
     path: "request",
-    icon: "settings",
+    icon: sevagoRequestIcon,
     content: "Sevago - Đề xuất",
     group: AppGroup.WORKFLOW_ENGINE,
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.PROJECT]: {
     path: "project",
-    icon: "settings",
+    icon: sevagoProjectIcon,
     content: "Sevago - Dự án",
     group: AppGroup.WORKFLOW_ENGINE,
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.PROCESS]: {
     path: "process", // Quy trình
-    icon: "settings",
+    icon: sevagoIcon,
     content: "Sevago - Quy trình",
     group: AppGroup.WORKFLOW_ENGINE,
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
@@ -163,14 +178,14 @@ export const APP_OBJ: Record<string, AppInfo> = {
   // RED
   [App.FORMULA_PRICE]: {
     path: "formula-price",
-    icon: "settings",
+    icon: sevagoIcon,
     content: "Sevago - Tính giá",
     group: AppGroup.B2B,
     color: APP_GROUP_COLOR[AppGroup.B2B],
   },
   [App.E_CATALOGUE]: {
     path: "e-catalogue", // E-Catalogue
-    icon: "settings",
+    icon: sevagoIcon,
     content: "Sevago - E-Catalogue",
     group: AppGroup.B2B,
     color: APP_GROUP_COLOR[AppGroup.B2B],
@@ -179,7 +194,7 @@ export const APP_OBJ: Record<string, AppInfo> = {
   // PINK
   [App.LANDING_PAGE]: {
     path: "landing-page", // Landing page
-    icon: "settings",
+    icon: sevagoIcon,
     content: "Sevago - Landing page",
     group: AppGroup.OTHER,
     color: APP_GROUP_COLOR[AppGroup.OTHER],
