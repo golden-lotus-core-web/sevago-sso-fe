@@ -59,7 +59,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: theme.palette.common.white,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           zIndex: 100,
         }}
       />
@@ -108,7 +108,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               icon="home"
               onClick={() => {
                 onClose();
-                navigate(PAGE.DASHBOARD.path);
+                navigate(PAGE.MONITOR.path);
               }}
             />
           </IconButton>
@@ -139,7 +139,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               selectedAppId={currentApp?.path}
               onClickItem={async (app) => {
                 await dispatch(
-                  ACTION_ACCOUNT.updateCurrentAccess(app.path)
+                  ACTION_ACCOUNT.resetCurrentAccessToBase(app.path)
                 ).unwrap();
                 onClose();
               }}

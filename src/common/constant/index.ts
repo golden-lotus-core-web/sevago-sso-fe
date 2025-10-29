@@ -1,5 +1,4 @@
 // Export constants
-export * from "./apps.constant";
 export * from "./mode.constant";
 export * from "./opacity.constant";
 export * from "./reg-exp.constant";

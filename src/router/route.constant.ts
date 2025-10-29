@@ -24,10 +24,10 @@ export const PAGE: Record<string, RouteConstant> = {
   },
 
   // Private
-  DASHBOARD: {
-    path: "/dashboard/",
-    type: RouteType.PUBLIC,
-    allowUserTypes: ALLOW_USER_TYPES,
+  MONITOR: {
+    path: "/monitor",
+    type: RouteType.PROTECTED,
+    allowUserTypes: [],
   },
 
   BOOKING: {
