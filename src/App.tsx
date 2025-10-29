@@ -1,18 +1,14 @@
 import { ThemeProvider, createTheme, type Theme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Routes } from "react-router-dom";
 import { initSockets } from "./common";
 import { MODE, STYLE } from "./common/constant";
 import { OPACITY } from "./common/constant/opacity.constant";
 import { getLimitLineCss } from "./common/utils/other/get-limit-line-css.utils";
-import { getErrorMessage } from "./common/utils/string.utils";
 import { useVersionCheck } from "./hooks";
-import { SnackbarType, useSnackbar } from "./hooks/use-snackbar.hook";
-import { ACTION_ACCOUNT } from "./redux";
 import type { GlobalReduxState } from "./redux/store.interface";
-import { store, useAppDispatch } from "./redux/store.redux";
+import { store } from "./redux/store.redux";
 import { renderRoutes } from "./router/render.route";
 import { routes } from "./router/route.routes";
 
@@ -21,10 +17,8 @@ initSockets(store);
 export default function App() {
   useVersionCheck({ interval: 5 * 60 * 1000 });
 
-  const dispatch = useAppDispatch();
   const account = useSelector((state: GlobalReduxState) => state.account);
   const system = useSelector((state: GlobalReduxState) => state.system);
-  const { showSnackbar } = useSnackbar();
 
   const theme = createTheme({
     ...MODE[system.mode],
@@ -108,21 +102,6 @@ export default function App() {
       },
     },
   } as unknown as Theme);
-
-  // ACCOUNT
-  useEffect(() => {
-    (async () => {
-      try {
-        account.user &&
-          (await dispatch(ACTION_ACCOUNT.getAccount(account.user.id)).unwrap());
-      } catch (error) {
-        showSnackbar({
-          message: getErrorMessage(error),
-          type: SnackbarType.ERROR,
-        });
-      }
-    })();
-  }, []);
 
   return (
     <ThemeProvider theme={theme}>

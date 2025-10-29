@@ -1,7 +1,6 @@
 // Export all components
 export * from "./app-grid";
 export * from "./avatar";
-export * from "./avatar-user";
 export * from "./empty";
 export * from "./loading";
 export * from "./logo";
