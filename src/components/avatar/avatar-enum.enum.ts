@@ -3,7 +3,7 @@ const SIZE_MEDIUM = 26;
 const SIZE_SMALL = 18;
 const SIZE_EXTRA_SMALL = 20;
 
-export type SizeProps = 'extra_small' | 'small' | 'medium' | 'large';
+export type SizeProps = "extra_small" | "small" | "medium" | "large";
 
 export const MAP_SIZE: Record<string, { width: number; height: number }> = {
   large: { width: SIZE_LARGE, height: SIZE_LARGE },
@@ -13,7 +13,7 @@ export const MAP_SIZE: Record<string, { width: number; height: number }> = {
 };
 
 export enum StatusAvatar {
-  PENDING = 'Đang chờ',
-  APPROVED = 'Đã phê duyệt',
-  REJECTED = 'Đã từ chối',
+  PENDING = "Đang chờ",
+  APPROVED = "Đã phê duyệt",
+  REJECTED = "Đã từ chối",
 }

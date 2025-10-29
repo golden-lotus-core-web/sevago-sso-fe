@@ -101,3 +101,12 @@ export const updateCurrentAccess = createAsyncThunk(
     return current_access;
   }
 );
+
+export const resetCurrentAccessToBase = createAsyncThunk(
+  "RESET_CURRENT_ACCESS_TO_BASE",
+  (current_access: string) => {
+    // Extract base path from full path (e.g., 'recruitment/application' -> 'recruitment')
+    const basePath = current_access.split("/")[0];
+    return basePath;
+  }
+);

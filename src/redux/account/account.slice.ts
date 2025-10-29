@@ -1,18 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { CURRENT_ACCESS, GlobalAccountState } from "./account.interface";
+import { ACTION_ACCOUNT } from ".";
 import {
+  changeSidebarCount,
+  getAccount,
   login,
   logout,
-  resetPassword,
   refreshToken,
-  changeSidebarCount,
+  resetPassword,
   updateAccount,
-  getAccount,
-  updatePositionOrgUnit,
   updateCurrentAccess,
+  updatePositionOrgUnit,
 } from "./account.action";
-import { changeMode } from "../system";
-import { Mode } from "../../common";
+import type { CURRENT_ACCESS, GlobalAccountState } from "./account.interface";
 
 export const initialStateAccount: GlobalAccountState = {
   isLogin: false,
@@ -117,6 +116,13 @@ export const slice = createSlice({
     builder.addCase(updateCurrentAccess.fulfilled, (state, action) => {
       state.current_access = action.payload as CURRENT_ACCESS;
     });
+
+    builder.addCase(
+      ACTION_ACCOUNT.resetCurrentAccessToBase.fulfilled,
+      (state, action) => {
+        state.current_access = action.payload as CURRENT_ACCESS;
+      }
+    );
   },
 });
 

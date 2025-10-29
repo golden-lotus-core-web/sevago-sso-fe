@@ -1,6 +1,6 @@
 import { IconAppsSidebar } from "../../common";
 import { useSidebarState } from "../../hooks";
-import { MAP_SIZE } from "../avatar";
+import { MAP_SIZE } from "../avatar/avatar-enum.enum";
 import { ImageElement } from "../elements";
 import { ImageSizeType } from "../elements/image";
 import { AppsSidebar } from "./apps-sidebar.component";
