@@ -105,8 +105,16 @@ export const updateCurrentAccess = createAsyncThunk(
 export const resetCurrentAccessToBase = createAsyncThunk(
   "RESET_CURRENT_ACCESS_TO_BASE",
   (current_access: string) => {
-    // Extract base path from full path (e.g., 'recruitment/application' -> 'recruitment')
     const basePath = current_access.split("/")[0];
+
+    // Lấy origin để đảm bảo luôn tuyệt đối, tránh lặp base path
+    const { origin, pathname } = window.location;
+    const currentBase = pathname.split("/")[1];
+
+    // Nếu đã đúng base rồi thì bỏ qua
+    if (currentBase === basePath) return basePath;
+
+    window.history.pushState({}, "", `${origin}/${basePath}`);
     return basePath;
   }
 );
