@@ -8,7 +8,6 @@ import {
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
 import { useActiveSidebar, useApps } from "../../hooks/use-apps.hook";
-import { useSidebar } from "../../hooks/user-sidebar";
 import { ACTION_ACCOUNT } from "../../redux";
 import { useAppDispatch } from "../../redux/store.redux";
 import { PAGE } from "../../router/route.constant";
@@ -37,7 +36,6 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   const dispatch = useAppDispatch();
 
   const currentApp = useActiveSidebar();
-  const { setActiveExpandMenu } = useSidebar();
 
   const displayApps = React.useMemo(() => {
     if (!blacklist || blacklist.length === 0) return allApps;
@@ -143,7 +141,6 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
                 await dispatch(
                   ACTION_ACCOUNT.updateCurrentAccess(app.path)
                 ).unwrap();
-                setActiveExpandMenu(null);
                 onClose();
               }}
             />
