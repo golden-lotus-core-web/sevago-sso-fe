@@ -3,15 +3,15 @@
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
-    "declaration": true,                 // sinh file .d.ts
-    "declarationDir": "dist",            // xuất ra dist/
-    "emitDeclarationOnly": false,        // build code + type
-    "outDir": "dist",                    // file .js và .d.ts cùng nằm trong dist
+    "declaration": true,                 
+    "declarationDir": "dist",            
+    "emitDeclarationOnly": false,        
+    "outDir": "dist",                    
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
     "isolatedModules": true,
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node",
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

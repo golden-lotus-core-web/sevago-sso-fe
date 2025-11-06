@@ -1,67 +1,74 @@
-import { LinearProgress, linearProgressClasses, Stack, styled, TableCell, tableCellClasses } from '@mui/material';
-import { STYLE } from '../../common/constant';
+import {
+  LinearProgress,
+  linearProgressClasses,
+  Stack,
+  styled,
+  TableCell,
+  tableCellClasses,
+} from "@mui/material";
+import { STYLE } from "../../common";
 
 export const StackRow = styled(Stack)(() => ({
-  flexDirection: 'row',
+  flexDirection: "row",
 }));
 
 export const StackWrap = styled(Stack)(() => ({
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  flexDirection: "row",
+  flexWrap: "wrap",
 }));
 
 export const StackRowAlignCenter = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'center',
+  flexDirection: "row",
+  alignItems: "center",
 }));
 
 export const StackRowAlignEnd = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'flex-end',
+  flexDirection: "row",
+  alignItems: "flex-end",
 }));
 
 export const StackRowJustCenter = styled(Stack)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'center',
+  flexDirection: "row",
+  justifyContent: "center",
 }));
 
 export const StackRowJustAround = styled(Stack)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'space-around',
+  flexDirection: "row",
+  justifyContent: "space-around",
 }));
 
 export const StackRowAlignJustCenter = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 export const StackRowAlignCenterJustEnd = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'flex-end',
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "flex-end",
 }));
 
 export const StackRowJustEnd = styled(Stack)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
+  flexDirection: "row",
+  justifyContent: "flex-end",
 }));
 
 export const StackRowJustBetween = styled(Stack)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
+  flexDirection: "row",
+  justifyContent: "space-between",
 }));
 
 export const StackRowAlignCenterJustBetween = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-between",
 }));
 
 export const StackRowAlignStartJustBetween = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  justifyContent: 'space-between',
+  flexDirection: "row",
+  alignItems: "flex-start",
+  justifyContent: "space-between",
 }));
 
 export const StackBgDefaultBorRadLayCol = styled(Stack)(({ theme }) => ({
@@ -77,18 +84,18 @@ export const StackBgPaperBorRadLayCol = styled(Stack)(({ theme }) => ({
 }));
 
 export const StackLabel = styled(Stack)(() => ({
-  flexDirection: 'row',
-  alignItems: 'center',
+  flexDirection: "row",
+  alignItems: "center",
   marginRight: STYLE.PADDING_GAP_ITEM_SMALL,
   gap: STYLE.PADDING_GAP_ITEM_SMALL,
 }));
 
 export const SmallIcon = styled(Stack)(({ theme }) => ({
   border: `1px solid ${theme.palette.common.white}`,
-  borderRadius: '50%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  borderRadius: "50%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   background: theme.palette.background.paper,
   width: 16,
   height: 16,
@@ -99,24 +106,24 @@ export const StackTabs = styled(Stack)(({ theme }) => ({
   // padding: '6px',
   backgroundColor: theme.palette.background.paper,
   boxShadow: theme.shadows[1],
-  width: 'fit-content',
-  gap: 'unset',
+  width: "fit-content",
+  gap: "unset",
 }));
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#008A77',
+    backgroundColor: "#008A77",
     color: theme.palette.common.white,
     fontWeight: 600,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
-  '&:first-of-type': {
-    borderBottomLeftRadius: '0 !important',
+  "&:first-of-type": {
+    borderBottomLeftRadius: "0 !important",
   },
-  '&:last-child': {
-    borderBottomRightRadius: '0 !important',
+  "&:last-child": {
+    borderBottomRightRadius: "0 !important",
   },
 }));
 
@@ -125,7 +132,7 @@ export const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: theme.palette.grey[200],
-    ...theme.applyStyles('dark', {
+    ...theme.applyStyles("dark", {
       backgroundColor: theme.palette.grey[800],
     }),
   },

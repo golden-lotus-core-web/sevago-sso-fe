@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import { STYLE } from "../../common/constant";
+import { STYLE } from "../../common";
 
 export const TypographyFilter = styled(Typography)(({ theme }) => ({
   height: STYLE.HEIGHT_ELEMENT_OTHER,

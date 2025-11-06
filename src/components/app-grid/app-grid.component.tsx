@@ -1,10 +1,8 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
-import { useSelector } from "react-redux";
 import IconLeft from "../../assets/icon/icon-left";
 import IconRight from "../../assets/icon/icon-right";
-
 import { AppInfo } from "../../common/constant/apps.data";
 import {
   BORDER_COLOR_CARD,
@@ -14,14 +12,13 @@ import {
   PADDING_GAP_ITEM_SMALL,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { GlobalReduxState } from "../../redux/store.interface";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
 import { MotionBox } from "../motion/motion-box.component";
+import { Environment } from "../../common";
 
 export interface AppGridProps {
   apps: AppInfo[];
-  onClickItem?: (app: AppInfo) => void;
   columns?: number;
   rows?: number;
   iconSize?: number;
@@ -32,14 +29,12 @@ export interface AppGridProps {
   captionVariant?: "caption" | "body2";
   titleColor?: string;
   captionColor?: string;
-  selectedAppId?: string;
   showPagination?: boolean;
-  getAppUrl?: (app: AppInfo) => string | null;
+  env: Environment;
 }
 
 export const AppGrid: React.FC<AppGridProps> = ({
   apps,
-  onClickItem,
   columns = 5,
   rows = 3,
   iconSize = 80,
@@ -48,17 +43,14 @@ export const AppGrid: React.FC<AppGridProps> = ({
   gap = PADDING_GAP_ITEM,
   titleVariant = "subtitle1",
   titleColor,
-  selectedAppId,
   showPagination = true,
-  getAppUrl,
+  env,
 }) => {
   const theme = useTheme();
 
-  // Pagination calculations
   const pageSize = Math.max(1, columns * Math.max(1, rows));
   const totalPages = Math.max(1, Math.ceil(apps.length / pageSize));
   const [page, setPage] = React.useState(0);
-  const { user } = useSelector((state: GlobalReduxState) => state.account);
 
   React.useEffect(() => {
     setPage((prev) => (prev >= totalPages ? totalPages - 1 : prev));
@@ -68,7 +60,6 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
-  const findLink = (app: AppInfo) => (getAppUrl ? getAppUrl(app) : app.path);
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -79,11 +70,10 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
-          const isSelected = selectedAppId === app.path;
           return (
             <a
-              key={app.path}
-              href={findLink(app) || "#"}
+              key={app.content}
+              href={app.path[env]}
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -91,21 +81,6 @@ export const AppGrid: React.FC<AppGridProps> = ({
                 color: "inherit",
                 width: "100%",
                 display: "block",
-              }}
-              onClick={(e) => {
-                const url = findLink(app);
-                e.preventDefault();
-                onClickItem?.(app);
-                // open url in new tab if valid
-                if (url && url !== "#") {
-                  try {
-                    window.open(url, "_blank", "noopener");
-                  } catch (err) {
-                    // fallback to setting location
-                    const newWindow = window.open("about:blank");
-                    if (newWindow) newWindow.location.href = url;
-                  }
-                }
               }}
             >
               <MotionBox
@@ -119,9 +94,6 @@ export const AppGrid: React.FC<AppGridProps> = ({
                   alignItems: "center",
                   flexDirection: "column",
                 }}
-                onClick={() => {
-                  /* keep empty — handled by anchor onClick to ensure new tab opens after handler */
-                }}
               >
                 <Box
                   sx={{
@@ -133,9 +105,10 @@ export const AppGrid: React.FC<AppGridProps> = ({
                     alignItems: "center",
                     justifyContent: "center",
                     background: app.color,
-                    boxShadow: isSelected
-                      ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
-                      : iconShadow,
+                    boxShadow:
+                      app.path[env] === window.location.origin
+                        ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
+                        : iconShadow,
                   }}
                 >
                   {typeof app.icon === "string" && app.icon && (
@@ -153,12 +126,6 @@ export const AppGrid: React.FC<AppGridProps> = ({
                 >
                   {app.content}
                 </Typography>
-                {/* <Typography
-                  variant={captionVariant}
-                  sx={{ color: captionColor ?? theme.palette.common.white }}
-                >
-                  {app.content}
-                </Typography> */}
               </MotionBox>
             </a>
           );

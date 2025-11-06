@@ -36,18 +36,19 @@
   },
   "homepage": "https://github.com/dev1-gmail2025/sevago-sso-fe",
   "peerDependencies": {
-    "react": ">=17",
-    "react-dom": ">=17",
     "@emotion/react": ">=11",
     "@emotion/styled": ">=11",
     "@mui/material": ">=5",
     "@mui/system": ">=5",
     "@reduxjs/toolkit": "^2.9.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.9.4",
+    "react-router-dom": "^7.9.5",
     "redux-persist": "^6.0.0"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^1.12.2",
     "dayjs": "^1.11.18",
     "formik": "^2.4.6",
@@ -58,8 +59,8 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/node": "^24.7.0",
-    "@types/react": "^19.1.16",
-    "@types/react-dom": "^19.1.9",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
