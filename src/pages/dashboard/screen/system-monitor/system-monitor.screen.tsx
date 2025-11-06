@@ -3,6 +3,10 @@ import { useTheme } from "@mui/material/styles";
 import React, { useMemo, useState } from "react";
 import { APP_OBJ, AppGroup } from "../../../../common/constant/apps.data";
 import { PADDING_GAP_TAB } from "../../../../common/constant/style.constant";
+import {
+  Environment,
+  getAppUrl,
+} from "../../../../common/utils/other/app.utils";
 import { AppGrid } from "../../../../components";
 import { MotionBox } from "../../../../components/motion/motion-box.component";
 import { useActiveSidebar, useApps } from "../../../../hooks/use-apps.hook";
@@ -11,10 +15,12 @@ import { useAppDispatch } from "../../../../redux/store.redux";
 
 export interface SystemMonitorScreenProps {
   blacklist?: string[]; // list of paths to show; if empty or no match -> show all
+  env: Environment;
 }
 
 export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
   blacklist,
+  env,
 }) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
@@ -110,6 +116,7 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
             iconRadius={7}
             gap={PADDING_GAP_TAB}
             selectedAppId={currentApp?.path}
+            getAppUrl={(app) => getAppUrl(app, env) || app.path}
             onClickItem={async (app) => {
               await dispatch(
                 ACTION_ACCOUNT.updateCurrentAccess(app.path)

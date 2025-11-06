@@ -34,6 +34,7 @@ export interface AppGridProps {
   captionColor?: string;
   selectedAppId?: string;
   showPagination?: boolean;
+  getAppUrl?: (app: AppInfo) => string | null;
 }
 
 export const AppGrid: React.FC<AppGridProps> = ({
@@ -49,6 +50,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   titleColor,
   selectedAppId,
   showPagination = true,
+  getAppUrl,
 }) => {
   const theme = useTheme();
 
@@ -66,7 +68,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
-  const findLink = (app: AppInfo) => app.path;
+  const findLink = (app: AppInfo) => (getAppUrl ? getAppUrl(app) : app.path);
   return (
     <Box sx={{ position: "relative" }}>
       <Box
