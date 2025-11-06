@@ -1,7 +1,7 @@
-import { Stack, type SxProps, type Theme, Typography } from '@mui/material';
-import React from 'react';
-import { getLimitLineCss } from '../../../common/utils/other/get-limit-line-css.utils';
-import { TYPOGRAPHY_STYLES } from '../../../common/constant/typography.constant';
+import { Stack, type SxProps, type Theme, Typography } from "@mui/material";
+import React from "react";
+import { getLimitLineCss } from "../../../common/utils/other/get-limit-line-css.utils";
+import { TYPOGRAPHY_STYLES } from "../../../common/constant/typography.constant";
 
 export interface TypographyContentCaptionProps {
   sx?: SxProps<Theme>;
@@ -11,13 +11,9 @@ export interface TypographyContentCaptionProps {
   sxCaption?: SxProps;
 }
 
-export const TypographyContentCaption: React.FC<TypographyContentCaptionProps> = ({
-  content,
-  caption,
-  sx = {},
-  sxContent,
-  sxCaption,
-}) => {
+export const TypographyContentCaption: React.FC<
+  TypographyContentCaptionProps
+> = ({ content, caption, sx = {}, sxContent, sxCaption }) => {
   return (
     <Stack gap={0} sx={{ ...sx }}>
       <Typography
@@ -26,7 +22,7 @@ export const TypographyContentCaption: React.FC<TypographyContentCaptionProps> =
           ...sxContent,
         }}
       >
-        {content || '#'}
+        {content || "#"}
       </Typography>
       {caption && (
         <Typography
@@ -36,7 +32,7 @@ export const TypographyContentCaption: React.FC<TypographyContentCaptionProps> =
             ...sxCaption,
           }}
         >
-          {caption || '#'}
+          {caption || "#"}
         </Typography>
       )}
     </Stack>

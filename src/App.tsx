@@ -1,27 +1,11 @@
 import { ThemeProvider, createTheme, type Theme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useSelector } from "react-redux";
-import { Routes } from "react-router-dom";
-import { initSockets } from "./common";
 import { MODE, STYLE } from "./common/constant";
 import { OPACITY } from "./common/constant/opacity.constant";
 import { getLimitLineCss } from "./common/utils/other/get-limit-line-css.utils";
-import { useVersionCheck } from "./hooks";
-import type { GlobalReduxState } from "./redux/store.interface";
-import { store } from "./redux/store.redux";
-import { renderRoutes } from "./router/render.route";
-import { routes } from "./router/route.routes";
-
-initSockets(store);
 
 export default function App() {
-  useVersionCheck({ interval: 5 * 60 * 1000 });
-
-  const account = useSelector((state: GlobalReduxState) => state.account);
-  const system = useSelector((state: GlobalReduxState) => state.system);
-
   const theme = createTheme({
-    ...MODE[system.mode],
     ...MODE.OTHER,
     components: {
       MuiStack: {
@@ -37,7 +21,7 @@ export default function App() {
         styleOverrides: {
           root: {
             "&.Mui-disabled": {
-              borderColor: MODE[system.mode].palette.divider,
+              borderColor: MODE["light"].palette.divider,
             },
             fontWeight: 400,
             lineHeight: "unset",
@@ -48,9 +32,9 @@ export default function App() {
       MuiTooltip: {
         styleOverrides: {
           tooltip: {
-            backgroundColor: MODE[system.mode].palette.background.paper,
-            color: MODE[system.mode].palette.text.primary,
-            boxShadow: MODE[system.mode].shadows[1],
+            backgroundColor: MODE["light"].palette.background.paper,
+            color: MODE["light"].palette.text.primary,
+            boxShadow: MODE["light"].shadows[1],
             padding: STYLE.PADDING_GAP_ITEM,
             margin: `5px !important`,
             borderRadius: STYLE.BORDER_RADIUS_ELEMENT_WRAPPER,
@@ -67,7 +51,7 @@ export default function App() {
         styleOverrides: {
           root: {
             "& fieldset": {
-              borderColor: MODE[system.mode].palette.divider,
+              borderColor: MODE["light"].palette.divider,
               borderRadius: STYLE.BORDER_RADIUS_ELEMENT,
             },
             "& .MuiFormHelperText-root": {
@@ -79,7 +63,7 @@ export default function App() {
       MuiDivider: {
         styleOverrides: {
           root: {
-            borderColor: `${MODE[system.mode].palette.divider}${OPACITY[30]}`,
+            borderColor: `${MODE["light"].palette.divider}${OPACITY[30]}`,
           },
         },
       },
@@ -106,7 +90,6 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Routes>{renderRoutes(routes, account)}</Routes>
     </ThemeProvider>
   );
 }

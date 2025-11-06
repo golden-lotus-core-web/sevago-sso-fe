@@ -1,16 +1,17 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { AppGroup } from "../../common/constant/apps.data";
+import { Environment } from "../../common";
+import {
+  APP_OBJ,
+  AppGroup,
+  AppInfo,
+  SSO,
+} from "../../common/constant/apps.data";
 import {
   PADDING_GAP_ITEM,
   PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
-import { useActiveSidebar, useApps } from "../../hooks/use-apps.hook";
-import { ACTION_ACCOUNT } from "../../redux";
-import { useAppDispatch } from "../../redux/store.redux";
-import { PAGE } from "../../router/route.constant";
 import { AppGrid } from "../app-grid/app-grid.component";
 import { IconElement } from "../elements/icon/icon.element";
 import { MotionBox } from "../motion/motion-box.component";
@@ -20,34 +21,28 @@ interface AppsSidebarProps {
   onClose: () => void;
   position?: "left" | "right";
   blacklist?: string[]; // list of paths to show; if empty or no match -> show all
+  env: Environment;
 }
 
 export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   isOpen,
   onClose,
   position = "left",
-  blacklist,
+  blacklist = [],
+  env,
 }) => {
   if (!isOpen) return null;
 
   const theme = useTheme();
-  const navigate = useNavigate();
-  const allApps = useApps();
-  const dispatch = useAppDispatch();
 
-  const currentApp = useActiveSidebar();
+  const appsGroupObj = Object.values(APP_OBJ).reduce((r, e) => {
+    if (blacklist.includes(e.path[env])) return r;
 
-  const displayApps = React.useMemo(() => {
-    if (!blacklist || blacklist.length === 0) return allApps;
-    const matched = allApps.filter((a) =>
-      a.path ? blacklist.includes(a.path) : false
-    );
-    return matched.length > 0 ? matched : allApps;
-  }, [allApps, blacklist]);
+    if (r[e.group]) r[e.group].push(e);
+    else r[e.group] = [e];
 
-  const groups: AppGroup[] = React.useMemo(() => {
-    return Array.from(new Set(displayApps.map((v) => v.group)));
-  }, [displayApps]);
+    return r;
+  }, {} as Record<AppGroup, AppInfo[]>);
 
   return (
     <>
@@ -106,15 +101,12 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           >
             <IconElement
               icon="home"
-              onClick={() => {
-                onClose();
-                navigate(PAGE.MONITOR.path);
-              }}
+              onClick={() => (window.location.href = SSO[env])}
             />
           </IconButton>
         </Box>
 
-        {groups.map((group) => (
+        {Object.keys(appsGroupObj).map((group) => (
           <Box
             key={group}
             sx={{
@@ -127,8 +119,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               {group === AppGroup.PLATFORM_AND_INFO ? "Platform & Info" : group}
             </Typography>
             <AppGrid
-              apps={displayApps.filter((app) => app.group === group)}
-              columns={4}
+              apps={appsGroupObj[group as AppGroup]}
               iconSize={60}
               iconRadius={5.5}
               gap={PADDING_GAP_ITEM}
@@ -136,17 +127,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               captionVariant="caption"
               titleColor={theme.palette.grey[800]}
               captionColor={theme.palette.grey[600]}
-              selectedAppId={currentApp?.path}
-              onClickItem={async (app) => {
-                // Prevent clicking on the current app
-                if (app.path === currentApp?.path) {
-                  return;
-                }
-                await dispatch(
-                  ACTION_ACCOUNT.resetCurrentAccessToBase(app.path)
-                ).unwrap();
-                onClose();
-              }}
+              env={Environment.DEVELOPMENT}
             />
           </Box>
         ))}

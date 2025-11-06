@@ -1,7 +1,6 @@
+import { useState } from "react";
 import { IconAppsSidebar } from "../../common";
-import { Environment, getSsoUrl } from "../../common/utils/other/app.utils";
-import { useSidebarState } from "../../hooks";
-import { MAP_SIZE } from "../avatar/avatar-enum.enum";
+import { Environment } from "../../common/utils/other/app.utils";
 import { ImageElement } from "../elements";
 import { ImageSizeType } from "../elements/image";
 import { AppsSidebar } from "./apps-sidebar.component";
@@ -15,30 +14,22 @@ export interface SystemMonitorSidebarPartProps {
 export const SystemMonitorSidebarPart: React.FC<
   SystemMonitorSidebarPartProps
 > = ({ position, blacklist, env }) => {
-  const { isSidebarOpen, openSidebar, closeSidebar } = useSidebarState();
-
-  const handleIconClick = () => {
-    const ssoUrl = getSsoUrl(env);
-    if (ssoUrl) {
-      window.location.href = ssoUrl;
-    } else {
-      openSidebar();
-    }
-  };
+  const [open, setOpen] = useState(false);
 
   return (
     <>
       <ImageElement
         url={IconAppsSidebar}
-        onClick={handleIconClick}
+        onClick={() => setOpen(true)}
         sizeType={ImageSizeType.SQUARE}
-        sx={{ width: MAP_SIZE.medium.width, height: MAP_SIZE.medium.height }}
       />
+
       <AppsSidebar
-        isOpen={isSidebarOpen}
-        onClose={closeSidebar}
+        isOpen={open}
+        onClose={() => setOpen(false)}
         position={position}
         blacklist={blacklist}
+        env={env}
       />
     </>
   );
