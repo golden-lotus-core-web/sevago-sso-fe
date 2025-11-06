@@ -138,6 +138,10 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               captionColor={theme.palette.grey[600]}
               selectedAppId={currentApp?.path}
               onClickItem={async (app) => {
+                // Prevent clicking on the current app
+                if (app.path === currentApp?.path) {
+                  return;
+                }
                 await dispatch(
                   ACTION_ACCOUNT.resetCurrentAccessToBase(app.path)
                 ).unwrap();
