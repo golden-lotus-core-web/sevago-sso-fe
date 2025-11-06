@@ -127,7 +127,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               captionVariant="caption"
               titleColor={theme.palette.grey[800]}
               captionColor={theme.palette.grey[600]}
-              env={Environment.DEVELOPMENT}
+              env={Environment.DEVELOP}
             />
           </Box>
         ))}
