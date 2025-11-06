@@ -11,7 +11,7 @@ export enum AppGroup {
 
 export interface AppInfo {
   path: {
-    development: string;
+    develop: string;
     staging: string;
     production: string;
   };
@@ -46,7 +46,7 @@ import {
 } from "./icons.constant";
 
 export const SSO = {
-  development: "https://dev.account.sevago.local",
+  develop: "https://dev.account.sevago.local",
   staging: "https://sta.account.sevago.local",
   production: "https://account.sevago.com.vn",
 };
@@ -55,7 +55,7 @@ export const APP_OBJ = {
   // GREEN
   E_HIRING: {
     path: {
-      development: "https://dev.admin.office.sevago.local/e-hiring",
+      develop: "https://dev.admin.office.sevago.local/e-hiring",
       staging: "https://sta.admin.office.sevago.local/e-hiring",
       production: "https://admin.office.sevago.local/e-hiring",
     },
@@ -66,7 +66,7 @@ export const APP_OBJ = {
   },
   HR: {
     path: {
-      development: "https://dev.admin.office.sevago.local/hr",
+      develop: "https://dev.admin.office.sevago.local/hr",
       staging: "https://sta.admin.office.sevago.local/hr",
       production: "https://admin.office.sevago.local/hr",
     },
@@ -77,7 +77,7 @@ export const APP_OBJ = {
   },
   PAYROLL: {
     path: {
-      development: "https://dev.admin.office.sevago.local/payroll",
+      develop: "https://dev.admin.office.sevago.local/payroll",
       staging: "https://sta.admin.office.sevago.local/payroll",
       production: "https://admin.office.sevago.local/payroll",
     },
@@ -88,7 +88,7 @@ export const APP_OBJ = {
   },
   ORG: {
     path: {
-      development: "https://dev.admin.office.sevago.local/org",
+      develop: "https://dev.admin.office.sevago.local/org",
       staging: "https://sta.admin.office.sevago.local/org",
       production: "https://admin.office.sevago.local/org",
     },
@@ -99,7 +99,7 @@ export const APP_OBJ = {
   },
   CHECKIN: {
     path: {
-      development: "https://dev.admin.office.sevago.local/checkin",
+      develop: "https://dev.admin.office.sevago.local/checkin",
       staging: "https://sta.admin.office.sevago.local/checkin",
       production: "https://admin.office.sevago.local/checkin",
     },
@@ -112,7 +112,7 @@ export const APP_OBJ = {
   // YELLOW
   CHAT: {
     path: {
-      development: "https://dev.admin.office.sevago.local/chat",
+      develop: "https://dev.admin.office.sevago.local/chat",
       staging: "https://sta.admin.office.sevago.local/chat",
       production: "https://admin.office.sevago.local/chat",
     }, // Chat
@@ -123,7 +123,7 @@ export const APP_OBJ = {
   },
   TRAINING: {
     path: {
-      development: "https://dev.admin.office.sevago.local/training",
+      develop: "https://dev.admin.office.sevago.local/training",
       staging: "https://sta.admin.office.sevago.local/training",
       production: "https://admin.office.sevago.local/training",
     }, // Đào tạo
@@ -134,7 +134,7 @@ export const APP_OBJ = {
   },
   FORM: {
     path: {
-      development: "https://dev.admin.office.sevago.local/form",
+      develop: "https://dev.admin.office.sevago.local/form",
       staging: "https://sta.admin.office.sevago.local/form",
       production: "https://admin.office.sevago.local/form",
     }, // Mẫu
@@ -145,7 +145,7 @@ export const APP_OBJ = {
   },
   INSIDE: {
     path: {
-      development: "https://dev.admin.office.sevago.local/inside",
+      develop: "https://dev.admin.office.sevago.local/inside",
       staging: "https://sta.admin.office.sevago.local/inside",
       production: "https://admin.office.sevago.local/inside",
     }, // Truyền Thông và CSNV
@@ -156,7 +156,7 @@ export const APP_OBJ = {
   },
   BOOKING: {
     path: {
-      development: "https://dev.admin.office.sevago.local/booking",
+      develop: "https://dev.admin.office.sevago.local/booking",
       staging: "https://sta.admin.office.sevago.local/booking",
       production: "https://admin.office.sevago.local/booking",
     },
@@ -169,7 +169,7 @@ export const APP_OBJ = {
   // BLUE
   PROJECT: {
     path: {
-      development: "https://dev.admin.office.sevago.local/project",
+      develop: "https://dev.admin.office.sevago.local/project",
       staging: "https://sta.admin.office.sevago.local/project",
       production: "https://admin.office.sevago.local/project",
     },
@@ -180,7 +180,7 @@ export const APP_OBJ = {
   },
   REQUEST: {
     path: {
-      development: "https://dev.admin.office.sevago.local/request",
+      develop: "https://dev.admin.office.sevago.local/request",
       staging: "https://sta.admin.office.sevago.local/request",
       production: "https://admin.office.sevago.local/request",
     },
@@ -191,7 +191,7 @@ export const APP_OBJ = {
   },
   TRACKING: {
     path: {
-      development: "https://dev.admin.office.sevago.local/process",
+      develop: "https://dev.admin.office.sevago.local/process",
       staging: "https://sta.admin.office.sevago.local/process",
       production: "https://admin.office.sevago.local/process",
     }, //
@@ -202,7 +202,7 @@ export const APP_OBJ = {
   },
   PROCESS: {
     path: {
-      development: "https://dev.admin.office.sevago.local/workflow",
+      develop: "https://dev.admin.office.sevago.local/workflow",
       staging: "https://sta.admin.office.sevago.local/workflow",
       production: "https://admin.office.sevago.local/workflow",
     }, // Quy trình
@@ -215,7 +215,7 @@ export const APP_OBJ = {
   // RED
   FORMULA_PRICE: {
     path: {
-      development: "https://dev.formula-price.sevago.local",
+      develop: "https://dev.formula-price.sevago.local",
       staging: "https://sta.formula-price.sevago.local",
       production: "https://formula-price.sevago.local",
     },
@@ -226,7 +226,7 @@ export const APP_OBJ = {
   },
   E_CATALOGUE: {
     path: {
-      development: "https://dev.admin.e-catalogue.sevago.local",
+      develop: "https://dev.admin.e-catalogue.sevago.local",
       staging: "https://sta.admin.e-catalogue.sevago.local",
       production: "https://admin.e-catalogue.sevago.local",
     }, // E-Catalogue
@@ -239,7 +239,7 @@ export const APP_OBJ = {
   // PINK
   LANDING_PAGE: {
     path: {
-      development: "https://dev.admin.landing-page.sevago.local",
+      develop: "https://dev.admin.landing-page.sevago.local",
       staging: "https://sta.admin.landing-page.sevago.local",
       production: "https://admin.landing-page.sevago.com.vn",
     }, // Landing page
