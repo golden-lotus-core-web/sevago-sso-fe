@@ -200,3 +200,97 @@ export const APP_OBJ: Record<string, AppInfo> = {
     color: APP_GROUP_COLOR[AppGroup.OTHER],
   },
 };
+
+// Helper function để generate URL từ APP_OBJ path cho office apps
+const generateOfficeAppUrl = (
+  path: string,
+  baseUrl: {
+    development: string;
+    staging: string;
+    production: string;
+  }
+) => ({
+  development: `${baseUrl.development}/${path}`,
+  staging: `${baseUrl.staging}/${path}`,
+  production: `${baseUrl.production}/${path}`,
+});
+
+const OFFICE_BASE_URL = {
+  development: "https://dev.admin.office.sevago.local",
+  staging: "https://sta.admin.office.sevago.local",
+  production: "https://admin.office.sevago.local",
+};
+
+// Map từ App enum value sang APPS_ENV key - tự động generate từ tất cả App enum
+const getAppEnvKey = (appKey: App): string | null => {
+  // App enum có value là tiếng Việt (ví dụ: App.E_HIRING = "Tuyển dụng")
+  // Cần tìm key trong enum (ví dụ: "E_HIRING") từ value
+  const enumKey = Object.keys(App).find(
+    (key) => App[key as keyof typeof App] === appKey
+  ) as string | undefined;
+  return enumKey || null;
+};
+
+// Danh sách các app sử dụng office base URL
+const generateOfficeAppsEnv = () => {
+  const officeApps: Record<
+    string,
+    ReturnType<typeof generateOfficeAppUrl>
+  > = {};
+
+  const officeAppKeys: App[] = [
+    App.E_HIRING,
+    App.HR,
+    App.PAYROLL,
+    App.ORG,
+    App.CHECKIN,
+    App.CHAT,
+    App.TRAINING,
+    App.FORM,
+    App.INSIDE,
+    App.BOOKING,
+    App.TRACKING,
+    App.REQUEST,
+    App.PROJECT,
+    App.PROCESS,
+  ];
+
+  officeAppKeys.forEach((appKey) => {
+    const appInfo = APP_OBJ[appKey];
+    const envKey = getAppEnvKey(appKey);
+    if (appInfo && envKey) {
+      officeApps[envKey] = generateOfficeAppUrl(appInfo.path, OFFICE_BASE_URL);
+    }
+  });
+
+  return officeApps;
+};
+
+export const APPS_ENV = {
+  //  url khi ấn đẩy về home sso
+  SSO: {
+    development: "https://dev.account.sevago.local",
+    staging: "https://sta.account.sevago.local",
+    production: "https://account.sevago.com.vn",
+  },
+
+  // Các url dành cho office - tự động generate từ APP_OBJ
+  ...generateOfficeAppsEnv(),
+
+  // Các url ở các app khác
+  FORMULA_PRICE: {
+    development: "https://dev.formula-price.sevago.local",
+    staging: "https://sta.formula-price.sevago.local",
+    production: "https://formula-price.sevago.local",
+  },
+  E_CATALOGUE: {
+    development: "https://dev.admin.e-catalogue.sevago.local",
+    staging: "https://sta.admin.e-catalogue.sevago.local",
+    production: "https://admin.e-catalogue.sevago.local",
+  },
+  LANDING_PAGE: {
+    development: "https://dev.admin.landing-page.sevago.local",
+    staging: "https://sta.admin.landing-page.sevago.local",
+    production: "https://admin.landing-page.sevago.com.vn",
+  },
+};
