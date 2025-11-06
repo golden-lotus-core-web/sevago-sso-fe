@@ -146,11 +146,11 @@ export const APP_OBJ: Record<string, AppInfo> = {
   },
 
   // BLUE
-  [App.TRACKING]: {
-    path: "tracking", //
-    icon: sevagoIcon, //
-    content: "Sevago - Tracking", //
-    group: AppGroup.WORKFLOW_ENGINE, //
+  [App.PROJECT]: {
+    path: "project",
+    icon: sevagoProjectIcon,
+    content: "Sevago - Dự án",
+    group: AppGroup.WORKFLOW_ENGINE,
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.REQUEST]: {
@@ -160,11 +160,11 @@ export const APP_OBJ: Record<string, AppInfo> = {
     group: AppGroup.WORKFLOW_ENGINE,
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
-  [App.PROJECT]: {
-    path: "project",
-    icon: sevagoProjectIcon,
-    content: "Sevago - Dự án",
-    group: AppGroup.WORKFLOW_ENGINE,
+  [App.TRACKING]: {
+    path: "workflow", //
+    icon: sevagoIcon, //
+    content: "Sevago - Tiến trình", //
+    group: AppGroup.WORKFLOW_ENGINE, //
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.PROCESS]: {
