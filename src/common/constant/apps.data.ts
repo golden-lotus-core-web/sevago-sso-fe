@@ -161,14 +161,14 @@ export const APP_OBJ: Record<string, AppInfo> = {
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.TRACKING]: {
-    path: "workflow", //
+    path: "process", //
     icon: sevagoIcon, //
     content: "Sevago - Tiến trình", //
     group: AppGroup.WORKFLOW_ENGINE, //
     color: APP_GROUP_COLOR[AppGroup.WORKFLOW_ENGINE],
   },
   [App.PROCESS]: {
-    path: "process", // Quy trình
+    path: "workflow", // Quy trình
     icon: sevagoIcon,
     content: "Sevago - Quy trình",
     group: AppGroup.WORKFLOW_ENGINE,
