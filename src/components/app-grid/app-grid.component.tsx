@@ -70,10 +70,17 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
+          const appUrl = app.path[env];
+          const absoluteUrl = appUrl.startsWith("https://")
+            ? appUrl
+            : `${window.location.origin}${
+                appUrl.startsWith("/") ? appUrl : `/${appUrl}`
+              }`;
+
           return (
             <a
               key={app.content}
-              href={app.path[env]}
+              href={absoluteUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{
