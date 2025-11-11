@@ -85,9 +85,12 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
         <MotionBox key={tab} preset="tabContent">
           <AppGrid
             apps={
-              Object.values(APP_OBJ).filter(
-                (e) => !blacklist?.includes(e.path[env])
-              ) as AppInfo[]
+              Object.values(APP_OBJ).filter((e) => {
+                const isBlacklisted = !!blacklist?.includes(e.path[env]);
+                const isInSelectedGroup =
+                  tab === AppGroup.ALL ? true : e.group === tab;
+                return !isBlacklisted && isInSelectedGroup;
+              }) as AppInfo[]
             }
             iconSize={80}
             iconRadius={7}
