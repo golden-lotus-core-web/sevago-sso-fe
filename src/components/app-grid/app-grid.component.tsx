@@ -60,6 +60,13 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
+  const getPath = (url: string) => {
+    if (url.startsWith("http")) {
+      return new URL(url).pathname;
+    }
+    return url.startsWith("/") ? url : `/${url}`;
+  };
+
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -70,14 +77,27 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
-          const appUrl = app.path?.[env];
+          const appUrl =
+            [
+              env,
+              Environment.PRODUCTION,
+              Environment.STAGING,
+              Environment.DEVELOP,
+            ]
+              .map((e) => app.path?.[e])
+              .find((url) => url) || "";
+
+          const isEnvValid = Object.values(Environment).includes(
+            env as Environment
+          );
+
           const absoluteUrl =
-            typeof appUrl === "string"
-              ? appUrl.startsWith("https://")
+            appUrl && typeof appUrl === "string"
+              ? !isEnvValid
+                ? `${window.location.origin}${getPath(appUrl)}`
+                : appUrl.startsWith("http")
                 ? appUrl
-                : `${window.location.origin}${
-                    appUrl.startsWith("/") ? appUrl : `/${appUrl}`
-                  }`
+                : `${window.location.origin}${getPath(appUrl)}`
               : "#";
 
           return (
@@ -116,7 +136,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
                     justifyContent: "center",
                     background: app.color,
                     boxShadow:
-                      app.path[env] === window.location.origin
+                      appUrl === window.location.origin
                         ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
                         : iconShadow,
                   }}
