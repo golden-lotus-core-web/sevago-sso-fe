@@ -70,12 +70,15 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
-          const appUrl = app.path[env];
-          const absoluteUrl = appUrl.startsWith("https://")
-            ? appUrl
-            : `${window.location.origin}${
-                appUrl.startsWith("/") ? appUrl : `/${appUrl}`
-              }`;
+          const appUrl = app.path?.[env];
+          const absoluteUrl =
+            typeof appUrl === "string"
+              ? appUrl.startsWith("https://")
+                ? appUrl
+                : `${window.location.origin}${
+                    appUrl.startsWith("/") ? appUrl : `/${appUrl}`
+                  }`
+              : "#";
 
           return (
             <a
