@@ -79,42 +79,193 @@ import App from 'sevago-sso-fe';
 #### System Monitor Screen
 
 ```tsx
-import { SystemMonitorScreen } from 'sevago-sso-fe';
+import { SystemMonitorScreen, Environment, getCurrentEnvironment } from 'sevago-sso-fe';
 
-<SystemMonitorScreen />
+const env = getCurrentEnvironment();
+
+<SystemMonitorScreen 
+  env={env}
+  blacklist={[]} // Optional: list of paths to exclude
+/>
 ```
 
 #### App Grid
 
 ```tsx
-import { AppGrid } from 'sevago-sso-fe';
+import { AppGrid, Environment, getCurrentEnvironment } from 'sevago-sso-fe';
 
-<AppGrid apps={apps} onAppClick={handleAppClick} loading={loading} />
+// AppGrid automatically handles URL routing:
+// - If env is valid (develop/staging/production): uses configured URLs
+// - If env is not valid (e.g., localhost): uses localhost with path
+
+const env = getCurrentEnvironment(); // or Environment.DEVELOP, etc.
+
+<AppGrid 
+  apps={apps} 
+  env={env}
+  columns={5}
+  rows={3}
+  iconSize={80}
+  showPagination={true}
+/>
 ```
 
 #### Sidebar Components
 
 ```tsx
-import { AppsSidebar, SystemMonitorSidebarPart } from 'sevago-sso-fe';
+import { AppsSidebar, SystemMonitorSidebarPart, Environment, getCurrentEnvironment } from 'sevago-sso-fe';
 
-<AppsSidebar />
+const env = getCurrentEnvironment();
+
+<AppsSidebar 
+  isOpen={true}
+  onClose={() => {}}
+  env={env}
+  blacklist={[]} // Optional
+/>
 <SystemMonitorSidebarPart />
 ```
 
 #### UI Elements
 
+##### Avatar Elements
+```tsx
+import { 
+  AvatarElement,
+  AvatarOnlineStatusElement,
+  AvatarUserInfo
+} from 'sevago-sso-fe';
+
+<AvatarElement src="/avatar.jpg" alt="User" />
+<AvatarOnlineStatusElement src="/avatar.jpg" isOnline={true} />
+<AvatarUserInfo name="John Doe" avatar="/avatar.jpg" />
+```
+
+##### Button Elements
+```tsx
+import { 
+  ButtonElement,
+  ButtonIconElement,
+  ButtonIconCircleElement,
+  ButtonIconSquareElement,
+  ButtonIconContentOpacityElement,
+  ButtonImageElement,
+  ButtonUploadFileElement
+} from 'sevago-sso-fe';
+
+<ButtonElement onClick={handleClick}>Click me</ButtonElement>
+<ButtonIconElement icon="home" onClick={handleClick} />
+<ButtonIconCircleElement icon="user" onClick={handleClick} />
+<ButtonUploadFileElement onUpload={handleUpload} />
+```
+
+##### Icon Elements
+```tsx
+import { 
+  IconElement,
+  IconContentElement,
+  IconContentBadgeCountElement,
+  IconContentBadgeCountSubsElement,
+  IconButtonElement,
+  IconContentSubsElement,
+  IconContentOpacityElement
+} from 'sevago-sso-fe';
+
+<IconElement icon="home" />
+<IconContentElement icon="user" content="Profile" />
+<IconContentBadgeCountElement icon="notifications" count={5} />
+```
+
+##### Image Elements
 ```tsx
 import { 
   ImageElement,
+  ImageContentCaptionComponent,
+  ImageContentTimeComponent,
+  ImageSizeType
+} from 'sevago-sso-fe';
+
+<ImageElement url="/image.jpg" sizeType={ImageSizeType.SQUARE} />
+<ImageContentCaptionComponent image="/image.jpg" caption="Caption text" />
+<ImageContentTimeComponent image="/image.jpg" time={new Date()} />
+```
+
+##### Link Elements
+```tsx
+import { 
+  LinkElement,
+  LinkInternalElement
+} from 'sevago-sso-fe';
+
+<LinkElement href="/path" target="_blank">External Link</LinkElement>
+<LinkInternalElement to="/internal">Internal Link</LinkInternalElement>
+```
+
+##### Form Elements
+```tsx
+import { 
   RadioElement,
+  CheckboxElement
+} from 'sevago-sso-fe';
+
+<RadioElement value="option1" checked={true} onChange={handleChange} />
+<CheckboxElement checked={false} onChange={handleChange} />
+```
+
+##### Typography Elements
+```tsx
+import { 
   TypographyContentCaption,
+  TypographyOneLine
+} from 'sevago-sso-fe';
+
+<TypographyContentCaption>Caption text</TypographyContentCaption>
+<TypographyOneLine>Long text that will be truncated...</TypographyOneLine>
+```
+
+##### Tabs Elements
+```tsx
+import { 
+  TabsComponent,
+  TabsSubsComponent,
+  TabsBadgeCountComponent,
+  TabsBadgeCountSubsComponent,
+  TAB_STYLES,
+  TAB_BACKGROUND_STYLES
+} from 'sevago-sso-fe';
+
+<TabsComponent tabs={tabs} value={value} onChange={handleChange} />
+<TabsBadgeCountComponent tabs={tabs} badgeCounts={[5, 3, 2]} />
+```
+
+##### Time Ago Elements
+```tsx
+import { 
+  TimeAgoComponent,
+  TimeAgoContentComponent
+} from 'sevago-sso-fe';
+
+<TimeAgoComponent date={new Date()} />
+<TimeAgoContentComponent date={new Date()} content="Posted" />
+```
+
+##### Other Elements
+```tsx
+import { 
+  DialogElement,
+  DialogConfirmActionElement,
+  DashedDividerElement,
   MotionBox
 } from 'sevago-sso-fe';
 
-<ImageElement src="/path/to/image.jpg" alt="Image" />
-<RadioElement value="option1" checked={true} onChange={handleChange} />
-<TypographyContentCaption>Caption text</TypographyContentCaption>
-<MotionBox animate={{ opacity: 1 }}>Animated content</MotionBox>
+<DialogElement open={open} onClose={handleClose}>Content</DialogElement>
+<DialogConfirmActionElement 
+  open={open} 
+  onConfirm={handleConfirm} 
+  onCancel={handleCancel}
+/>
+<DashedDividerElement />
+<MotionBox preset="fadeInUp" hover>Animated content</MotionBox>
 ```
 
 ### Constants
@@ -171,20 +322,28 @@ import { stringUtils } from 'sevago-sso-fe';
 #### App Utils
 
 ```tsx
-import { appUtils } from 'sevago-sso-fe';
+import { Environment, getCurrentEnvironment } from 'sevago-sso-fe';
 
-// Use app utility functions
+// Get current environment based on hostname
+const env = getCurrentEnvironment(); 
+// Returns: Environment.DEVELOP | Environment.STAGING | Environment.PRODUCTION
+
+// Environment enum values
+const develop = Environment.DEVELOP; // "develop"
+const staging = Environment.STAGING; // "staging"
+const production = Environment.PRODUCTION; // "production"
 ```
 
 ### Enums
 
 ```tsx
-import { AppCategory, Mode, OrderType } from 'sevago-sso-fe';
+import { AppCategory, Mode, OrderType, Environment } from 'sevago-sso-fe';
 
 // Use enums
 const category = AppCategory.ALL;
 const mode = Mode.LIGHT;
 const order = OrderType.ASC;
+const env = Environment.DEVELOP;
 ```
 
 ---
@@ -196,14 +355,60 @@ const order = OrderType.ASC;
 | Component | Description | Props |
 |-----------|-------------|-------|
 | `App` | Main application component with theme provider | None |
-| `SystemMonitorScreen` | System monitoring dashboard screen | - |
-| `AppGrid` | Application grid component | `apps`, `onAppClick`, `loading` |
-| `AppsSidebar` | Applications sidebar component | - |
+| `SystemMonitorScreen` | System monitoring dashboard screen | `env: Environment`, `blacklist?: string[]` |
+| `AppGrid` | Application grid component with smart URL routing | `apps: AppInfo[]`, `env: Environment`, `columns?: number`, `rows?: number`, `iconSize?: number`, `iconRadius?: number`, `gap?: number \| string`, `showPagination?: boolean`, `titleVariant?`, `titleColor?`, `captionColor?` |
+| `AppsSidebar` | Applications sidebar component | `isOpen: boolean`, `onClose: () => void`, `env: Environment`, `position?: "left" \| "right"`, `blacklist?: string[]` |
 | `SystemMonitorSidebarPart` | System monitor sidebar part | - |
-| `ImageElement` | Image element | `src`, `alt`, `width`, `height` |
-| `RadioElement` | Radio button element | `value`, `checked`, `onChange` |
-| `TypographyContentCaption` | Typography caption component | `children`, `variant`, `color` |
-| `MotionBox` | Framer Motion animated box | `animate`, `transition`, `children` |
+| **Avatar Elements** | | |
+| `AvatarElement` | Basic avatar element | `src`, `alt`, `sx?` |
+| `AvatarOnlineStatusElement` | Avatar with online status indicator | `src`, `isOnline`, `sx?` |
+| `AvatarUserInfo` | Avatar with user information | `name`, `avatar`, `sx?` |
+| **Button Elements** | | |
+| `ButtonElement` | Standard button | `onClick`, `children`, `variant?`, `sx?` |
+| `ButtonIconElement` | Button with icon | `icon`, `onClick`, `sx?` |
+| `ButtonIconCircleElement` | Circular icon button | `icon`, `onClick`, `sx?` |
+| `ButtonIconSquareElement` | Square icon button | `icon`, `onClick`, `sx?` |
+| `ButtonIconContentOpacityElement` | Button with icon and opacity content | `icon`, `content`, `onClick`, `sx?` |
+| `ButtonImageElement` | Button with image | `image`, `onClick`, `sx?` |
+| `ButtonUploadFileElement` | File upload button | `onUpload`, `accept?`, `sx?` |
+| **Icon Elements** | | |
+| `IconElement` | Basic icon | `icon`, `sx?` |
+| `IconContentElement` | Icon with content | `icon`, `content`, `sx?` |
+| `IconContentBadgeCountElement` | Icon with badge count | `icon`, `count`, `sx?` |
+| `IconContentBadgeCountSubsElement` | Icon with badge count and subtitle | `icon`, `count`, `subtitle`, `sx?` |
+| `IconButtonElement` | Icon button | `icon`, `onClick`, `sx?` |
+| `IconContentSubsElement` | Icon with content and subtitle | `icon`, `content`, `subtitle`, `sx?` |
+| `IconContentOpacityElement` | Icon with opacity content | `icon`, `content`, `opacity?`, `sx?` |
+| **Image Elements** | | |
+| `ImageElement` | Image element | `url: string`, `sizeType?: ImageSizeType`, `sx?` |
+| `ImageContentCaptionComponent` | Image with caption | `image`, `caption`, `sx?` |
+| `ImageContentTimeComponent` | Image with time | `image`, `time`, `sx?` |
+| **Link Elements** | | |
+| `LinkElement` | External link | `href`, `target?`, `children`, `sx?` |
+| `LinkInternalElement` | Internal router link | `to`, `children`, `sx?` |
+| **Form Elements** | | |
+| `RadioElement` | Radio button | `value`, `checked`, `onChange`, `sx?` |
+| `CheckboxElement` | Checkbox | `checked`, `onChange`, `label?`, `sx?` |
+| **Typography Elements** | | |
+| `TypographyContentCaption` | Typography with caption | `children`, `variant?`, `color?`, `sx?` |
+| `TypographyOneLine` | Single line typography (truncated) | `children`, `variant?`, `sx?` |
+| **Tabs Elements** | | |
+| `TabsComponent` | Basic tabs | `tabs`, `value`, `onChange`, `sx?` |
+| `TabsSubsComponent` | Tabs with subtitles | `tabs`, `value`, `onChange`, `sx?` |
+| `TabsBadgeCountComponent` | Tabs with badge counts | `tabs`, `badgeCounts`, `value`, `onChange`, `sx?` |
+| `TabsBadgeCountSubsComponent` | Tabs with badge counts and subtitles | `tabs`, `badgeCounts`, `value`, `onChange`, `sx?` |
+| **Time Elements** | | |
+| `TimeAgoComponent` | Time ago display | `date`, `sx?` |
+| `TimeAgoContentComponent` | Time ago with content | `date`, `content?`, `sx?` |
+| **Other Elements** | | |
+| `DialogElement` | Dialog/modal | `open`, `onClose`, `children`, `sx?` |
+| `DialogConfirmActionElement` | Confirmation dialog | `open`, `onConfirm`, `onCancel`, `title?`, `content?`, `sx?` |
+| `DashedDividerElement` | Dashed divider line | `sx?` |
+| `MotionBox` | Framer Motion animated box | `preset?`, `animate?`, `transition?`, `children`, `hover?`, `index?`, `sx?` |
+
+**Note:** `AppGrid` automatically handles URL routing:
+- If `env` is a valid Environment enum value (develop/staging/production): uses configured URLs from `app.path[env]`
+- If `env` is not valid (e.g., localhost development): extracts path and uses `window.location.origin` with the path
 
 ### Constants
 
@@ -227,14 +432,21 @@ const order = OrderType.ASC;
   - `isDateString(str)`
 
 - **`stringUtils`** - String utility functions
-- **`appUtils`** - Application utility functions
 - **`getLimitLineCss`** - CSS utility for limiting lines
+- **`Environment`** - Environment enum (DEVELOP, STAGING, PRODUCTION)
+- **`getCurrentEnvironment()`** - Detects current environment based on hostname
+  - Returns `Environment.DEVELOP` if hostname includes "dev."
+  - Returns `Environment.STAGING` if hostname includes "sta."
+  - Returns `Environment.PRODUCTION` otherwise
 
 ### Enums
 
 - **`AppCategory`** - Application category enum
 - **`Mode`** - Theme mode enum
 - **`OrderType`** - Order type enum
+- **`Environment`** - Environment enum (DEVELOP, STAGING, PRODUCTION)
+- **`AppGroup`** - Application group enum (ALL, HRM, WORKFLOW_ENGINE, PLATFORM_AND_INFO, B2B, OTHER, CLIENT)
+- **`ImageSizeType`** - Image size type enum
 
 ---
 
@@ -244,8 +456,25 @@ Full TypeScript support with comprehensive type definitions:
 
 ```tsx
 import type { 
-  // Add your types here based on actual exports
+  AppInfo,
+  AppGridProps,
+  SystemMonitorScreenProps,
+  AppsSidebarProps,
+  Environment
 } from 'sevago-sso-fe';
+
+// AppInfo interface
+interface AppInfo {
+  path: {
+    develop: string;
+    staging: string;
+    production: string;
+  };
+  content: string;
+  color: string;
+  icon: string;
+  group: AppGroup;
+}
 ```
 
 ---
