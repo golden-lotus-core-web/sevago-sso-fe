@@ -1,8 +1,5 @@
-// Export utils
 export * from "./other";
+export * from "./delay.utils";
 export * from "./string.utils";
 export * from "./time.utils";
-
-// Export as timeUtils object
-import * as timeUtilsMethods from "./time.utils";
-export const timeUtils = timeUtilsMethods;
+export * from "./validator.utils";

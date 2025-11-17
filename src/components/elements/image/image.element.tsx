@@ -1,9 +1,8 @@
 import { Box, type BoxProps, Skeleton, useTheme } from "@mui/material";
 import React, { type ReactNode, useState } from "react";
-import { StackRow } from "../../styles/stack.style";
+import { SizeProps, STYLE, MAP_SIZE } from "../../../common";
+import { StackRow } from "../../styles";
 import { ImageSizeType } from "./image.enum";
-import { MAP_SIZE, SizeProps } from "../../../common/constant/apps.data";
-import { STYLE } from "../../../common";
 
 export interface ImageElementProps extends BoxProps {
   url: string;
