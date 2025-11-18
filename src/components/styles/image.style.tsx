@@ -1,4 +1,5 @@
-import { Box, styled } from '@mui/material';
+import { Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { STYLE } from '../../common/constant';
 import { ImageElement } from '../elements/image/image.element';
 
