@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, Typography, IconButton } from '@mui/material';
-import { IconElement } from '../elements/icon/icon.element';
-import { TYPOGRAPHY_STYLES } from '../../common/constant/typography.constant';
+import { TYPOGRAPHY_STYLES } from '../../common';
+import { IconElement } from '../elements';
 
 interface BreadcrumbsProps {
   content: string;
