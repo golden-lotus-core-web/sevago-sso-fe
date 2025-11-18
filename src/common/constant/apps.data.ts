@@ -57,7 +57,7 @@ export const APP_OBJ = {
   // GREEN
   E_HIRING: {
     path: {
-      local: 'http://localhost:6004/e-hiring',
+      local: 'http://localhost:6003/e-hiring',
       develop: 'https://dev.admin.office.sevago.local/e-hiring',
       staging: 'https://sta.admin.office.sevago.local/e-hiring',
       production: 'https://admin.office.sevago.com.vn/e-hiring',
@@ -69,7 +69,7 @@ export const APP_OBJ = {
   },
   HR: {
     path: {
-      local: 'http://localhost:6004/hr',
+      local: 'http://localhost:6003/hr',
       develop: 'https://dev.admin.office.sevago.local/hr',
       staging: 'https://sta.admin.office.sevago.local/hr',
       production: 'https://admin.office.sevago.com.vn/hr',
@@ -81,7 +81,7 @@ export const APP_OBJ = {
   },
   PAYROLL: {
     path: {
-      local: 'http://localhost:6004/payroll',
+      local: 'http://localhost:6003/payroll',
       develop: 'https://dev.admin.office.sevago.local/payroll',
       staging: 'https://sta.admin.office.sevago.local/payroll',
       production: 'https://admin.office.sevago.com.vn/payroll',
@@ -93,7 +93,7 @@ export const APP_OBJ = {
   },
   ORG: {
     path: {
-      local: 'http://localhost:6004/org',
+      local: 'http://localhost:6003/org',
       develop: 'https://dev.admin.office.sevago.local/org',
       staging: 'https://sta.admin.office.sevago.local/org',
       production: 'https://admin.office.sevago.com.vn/org',
@@ -105,7 +105,7 @@ export const APP_OBJ = {
   },
   CHECKIN: {
     path: {
-      local: 'http://localhost:6004/checkin',
+      local: 'http://localhost:6003/checkin',
       develop: 'https://dev.admin.office.sevago.local/checkin',
       staging: 'https://sta.admin.office.sevago.local/checkin',
       production: 'https://admin.office.sevago.com.vn/checkin',
@@ -119,7 +119,7 @@ export const APP_OBJ = {
   // YELLOW
   CHAT: {
     path: {
-      local: 'http://localhost:6004/chat',
+      local: 'http://localhost:6003/chat',
       develop: 'https://dev.admin.office.sevago.local/chat',
       staging: 'https://sta.admin.office.sevago.local/chat',
       production: 'https://admin.office.sevago.com.vn/chat',
@@ -131,7 +131,7 @@ export const APP_OBJ = {
   },
   TRAINING: {
     path: {
-      local: 'http://localhost:6004/training',
+      local: 'http://localhost:6003/training',
       develop: 'https://dev.admin.office.sevago.local/training',
       staging: 'https://sta.admin.office.sevago.local/training',
       production: 'https://admin.office.sevago.com.vn/training',
@@ -143,7 +143,7 @@ export const APP_OBJ = {
   },
   FORM: {
     path: {
-      local: 'http://localhost:6004/form',
+      local: 'http://localhost:6003/form',
       develop: 'https://dev.admin.office.sevago.local/form',
       staging: 'https://sta.admin.office.sevago.local/form',
       production: 'https://admin.office.sevago.com.vn/form',
@@ -155,7 +155,7 @@ export const APP_OBJ = {
   },
   INSIDE: {
     path: {
-      local: 'http://localhost:6004/inside',
+      local: 'http://localhost:6003/inside',
       develop: 'https://dev.admin.office.sevago.local/inside',
       staging: 'https://sta.admin.office.sevago.local/inside',
       production: 'https://admin.office.sevago.com.vn/inside',
@@ -167,7 +167,7 @@ export const APP_OBJ = {
   },
   BOOKING: {
     path: {
-      local: 'http://localhost:6004/booking',
+      local: 'http://localhost:6003/booking',
       develop: 'https://dev.admin.office.sevago.local/booking',
       staging: 'https://sta.admin.office.sevago.local/booking',
       production: 'https://admin.office.sevago.com.vn/booking',
@@ -181,7 +181,7 @@ export const APP_OBJ = {
   // BLUE
   PROJECT: {
     path: {
-      local: 'http://localhost:6004/project',
+      local: 'http://localhost:6003/project',
       develop: 'https://dev.admin.office.sevago.local/project',
       staging: 'https://sta.admin.office.sevago.local/project',
       production: 'https://admin.office.sevago.com.vn/project',
@@ -193,7 +193,7 @@ export const APP_OBJ = {
   },
   REQUEST: {
     path: {
-      local: 'http://localhost:6004/request',
+      local: 'http://localhost:6003/request',
       develop: 'https://dev.admin.office.sevago.local/request',
       staging: 'https://sta.admin.office.sevago.local/request',
       production: 'https://admin.office.sevago.com.vn/request',
@@ -205,7 +205,7 @@ export const APP_OBJ = {
   },
   TRACKING: {
     path: {
-      local: 'http://localhost:6004/process',
+      local: 'http://localhost:6003/process',
       develop: 'https://dev.admin.office.sevago.local/process',
       staging: 'https://sta.admin.office.sevago.local/process',
       production: 'https://admin.office.sevago.com.vn/process',
@@ -217,7 +217,7 @@ export const APP_OBJ = {
   },
   PROCESS: {
     path: {
-      local: 'http://localhost:6004/workflow',
+      local: 'http://localhost:6003/workflow',
       develop: 'https://dev.admin.office.sevago.local/workflow',
       staging: 'https://sta.admin.office.sevago.local/workflow',
       production: 'https://admin.office.sevago.com.vn/workflow',
@@ -243,7 +243,7 @@ export const APP_OBJ = {
   },
   E_CATALOGUE: {
     path: {
-      local: 'http://localhost:6002',
+      local: 'http://localhost:6001',
       develop: 'https://dev.admin.e-catalogue.sevago.local',
       staging: 'https://sta.admin.e-catalogue.sevago.local',
       production: 'https://admin.e-catalogue.sevago.com.vn',
