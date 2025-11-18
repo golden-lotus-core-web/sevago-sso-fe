@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconAppsSidebar } from "../../common";
+import { AppInfo, IconAppsSidebar } from "../../common";
 import { Environment } from "../../common/utils/other/app.utils";
 import { ImageElement } from "../elements";
 import { ImageSizeType } from "../elements/image";
@@ -9,11 +9,12 @@ export interface SystemMonitorSidebarPartProps {
   position?: "left" | "right";
   blacklist?: string[]; // list of paths to show; if empty or no match -> show all
   env: Environment;
+  onClickApp: (appInfo: AppInfo) => void;
 }
 
 export const SystemMonitorSidebarPart: React.FC<
   SystemMonitorSidebarPartProps
-> = ({ position, blacklist, env }) => {
+> = ({ position, blacklist, env, onClickApp }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -30,6 +31,7 @@ export const SystemMonitorSidebarPart: React.FC<
         position={position}
         blacklist={blacklist}
         env={env}
+        onClickApp={onClickApp}
       />
     </>
   );

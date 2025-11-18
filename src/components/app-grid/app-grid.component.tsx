@@ -5,17 +5,15 @@ import IconLeft from "../../assets/icon/icon-left";
 import IconRight from "../../assets/icon/icon-right";
 import { AppInfo } from "../../common/constant/apps.data";
 import {
-  BORDER_COLOR_CARD,
   BORDER_RADIUS_ELEMENT_WRAPPER,
   PADDING_GAP_BUTTON,
   PADDING_GAP_ITEM,
   PADDING_GAP_ITEM_SMALL,
-  PADDING_GAP_LAYOUT,
 } from "../../common/constant/style.constant";
 import { ImageElement } from "../elements/image/image.element";
 import { ImageSizeType } from "../elements/image/image.enum";
 import { MotionBox } from "../motion/motion-box.component";
-import { Environment } from "../../common";
+import { StackRowAlignJustCenter } from "../styles";
 
 export interface AppGridProps {
   apps: AppInfo[];
@@ -23,14 +21,13 @@ export interface AppGridProps {
   rows?: number;
   iconSize?: number;
   iconRadius?: number;
-  iconShadow?: string;
   gap?: number | string;
   titleVariant?: "subtitle1" | "body1" | "caption";
   captionVariant?: "caption" | "body2";
   titleColor?: string;
   captionColor?: string;
   showPagination?: boolean;
-  env: Environment;
+  onClickApp: (appInfo: AppInfo) => void;
 }
 
 export const AppGrid: React.FC<AppGridProps> = ({
@@ -39,12 +36,11 @@ export const AppGrid: React.FC<AppGridProps> = ({
   rows = 3,
   iconSize = 80,
   iconRadius = 7,
-  iconShadow = `0 ${PADDING_GAP_ITEM_SMALL} ${PADDING_GAP_LAYOUT} ${BORDER_COLOR_CARD}`,
   gap = PADDING_GAP_ITEM,
   titleVariant = "subtitle1",
   titleColor,
   showPagination = true,
-  env,
+  onClickApp,
 }) => {
   const theme = useTheme();
 
@@ -60,13 +56,6 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
-  const getPath = (url: string) => {
-    if (url.startsWith("http")) {
-      return new URL(url).pathname;
-    }
-    return url.startsWith("/") ? url : `/${url}`;
-  };
-
   return (
     <Box sx={{ position: "relative" }}>
       <Box
@@ -77,87 +66,43 @@ export const AppGrid: React.FC<AppGridProps> = ({
         }}
       >
         {visibleApps.map((app, index) => {
-          const appUrl =
-            [
-              env,
-              Environment.PRODUCTION,
-              Environment.STAGING,
-              Environment.DEVELOP,
-            ]
-              .map((e) => app.path?.[e])
-              .find((url) => url) || "";
-
-          const isEnvValid = Object.values(Environment).includes(
-            env as Environment
-          );
-
-          const absoluteUrl =
-            appUrl && typeof appUrl === "string"
-              ? !isEnvValid
-                ? `${window.location.origin}${getPath(appUrl)}`
-                : appUrl.startsWith("http")
-                ? appUrl
-                : `${window.location.origin}${getPath(appUrl)}`
-              : "#";
-
           return (
-            <a
-              key={app.content}
-              href={absoluteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                width: "100%",
-                display: "block",
+            <MotionBox
+              preset="staggerItem"
+              index={index}
+              hover
+              sx={{
+                cursor: "pointer",
+                display: "flex",
+                flex: 1,
+                alignItems: "center",
+                flexDirection: "column",
               }}
+              onClick={() => onClickApp(app)}
             >
-              <MotionBox
-                preset="staggerItem"
-                index={index}
-                hover
+              <StackRowAlignJustCenter
                 sx={{
-                  cursor: "pointer",
-                  display: "flex",
-                  flex: 1,
-                  alignItems: "center",
-                  flexDirection: "column",
+                  width: iconSize,
+                  height: iconSize,
+                  borderRadius: iconRadius,
+                  mb: 1.5,
+                  background: app.color,
                 }}
               >
-                <Box
-                  sx={{
-                    width: iconSize,
-                    height: iconSize,
-                    borderRadius: iconRadius,
-                    mb: 1.5,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: app.color,
-                    boxShadow:
-                      appUrl === window.location.origin
-                        ? `0 0 0 1px ${theme.palette.primary.main}, ${iconShadow}`
-                        : iconShadow,
-                  }}
-                >
-                  {typeof app.icon === "string" && app.icon && (
-                    <ImageElement
-                      sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
-                      url={app.icon}
-                      sizeType={ImageSizeType.SQUARE}
-                    />
-                  )}
-                </Box>
+                <ImageElement
+                  sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
+                  url={app.icon}
+                  sizeType={ImageSizeType.SQUARE}
+                />
+              </StackRowAlignJustCenter>
 
-                <Typography
-                  variant={titleVariant}
-                  sx={{ color: titleColor ?? theme.palette.common.white }}
-                >
-                  {app.content}
-                </Typography>
-              </MotionBox>
-            </a>
+              <Typography
+                variant={titleVariant}
+                sx={{ color: titleColor ?? theme.palette.common.white }}
+              >
+                {app.content}
+              </Typography>
+            </MotionBox>
           );
         })}
       </Box>

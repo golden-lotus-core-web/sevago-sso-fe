@@ -11,6 +11,7 @@ export enum AppGroup {
 
 export interface AppInfo {
   path: {
+    local: string;
     develop: string;
     staging: string;
     production: string;
@@ -46,6 +47,7 @@ import {
 } from "./icons.constant";
 
 export const SSO = {
+  local: "http://localhost:6000",
   develop: "https://dev.account.sevago.local",
   staging: "https://sta.account.sevago.local",
   production: "https://account.sevago.com.vn",
@@ -55,9 +57,10 @@ export const APP_OBJ = {
   // GREEN
   E_HIRING: {
     path: {
+      local: "http://localhost:6004/e-hiring",
       develop: "https://dev.admin.office.sevago.local/e-hiring",
       staging: "https://sta.admin.office.sevago.local/e-hiring",
-      production: "https://admin.office.sevago.local/e-hiring",
+      production: "https://admin.office.sevago.com.vn/e-hiring",
     },
     icon: sevagoEHiringIcon,
     content: "Sevago - Tuyển dụng",
@@ -66,9 +69,10 @@ export const APP_OBJ = {
   },
   HR: {
     path: {
+      local: "http://localhost:6004/hr",
       develop: "https://dev.admin.office.sevago.local/hr",
       staging: "https://sta.admin.office.sevago.local/hr",
-      production: "https://admin.office.sevago.local/hr",
+      production: "https://admin.office.sevago.com.vn/hr",
     },
     icon: sevagoHrmIcon,
     content: "Sevago - Nhân sự",
@@ -77,9 +81,10 @@ export const APP_OBJ = {
   },
   PAYROLL: {
     path: {
+      local: "http://localhost:6004/payroll",
       develop: "https://dev.admin.office.sevago.local/payroll",
       staging: "https://sta.admin.office.sevago.local/payroll",
-      production: "https://admin.office.sevago.local/payroll",
+      production: "https://admin.office.sevago.com.vn/payroll",
     },
     icon: sevagoPayrollIcon,
     content: "Sevago - Lương",
@@ -88,9 +93,10 @@ export const APP_OBJ = {
   },
   ORG: {
     path: {
+      local: "http://localhost:6004/org",
       develop: "https://dev.admin.office.sevago.local/org",
       staging: "https://sta.admin.office.sevago.local/org",
-      production: "https://admin.office.sevago.local/org",
+      production: "https://admin.office.sevago.com.vn/org",
     },
     icon: sevagoChartIcon,
     content: "Sevago - Tổ chức",
@@ -99,9 +105,10 @@ export const APP_OBJ = {
   },
   CHECKIN: {
     path: {
+      local: "http://localhost:6004/checkin",
       develop: "https://dev.admin.office.sevago.local/checkin",
       staging: "https://sta.admin.office.sevago.local/checkin",
-      production: "https://admin.office.sevago.local/checkin",
+      production: "https://admin.office.sevago.com.vn/checkin",
     },
     icon: sevagoCheckinIcon,
     content: "Sevago - Chấm công",
@@ -112,9 +119,10 @@ export const APP_OBJ = {
   // YELLOW
   CHAT: {
     path: {
+      local: "http://localhost:6004/chat",
       develop: "https://dev.admin.office.sevago.local/chat",
       staging: "https://sta.admin.office.sevago.local/chat",
-      production: "https://admin.office.sevago.local/chat",
+      production: "https://admin.office.sevago.com.vn/chat",
     }, // Chat
     icon: sevagoMessageIcon,
     content: "Sevago - Chat",
@@ -123,9 +131,10 @@ export const APP_OBJ = {
   },
   TRAINING: {
     path: {
+      local: "http://localhost:6004/training",
       develop: "https://dev.admin.office.sevago.local/training",
       staging: "https://sta.admin.office.sevago.local/training",
-      production: "https://admin.office.sevago.local/training",
+      production: "https://admin.office.sevago.com.vn/training",
     }, // Đào tạo
     icon: sevagoTrainingIcon,
     content: "Sevago - Đào tạo",
@@ -134,9 +143,10 @@ export const APP_OBJ = {
   },
   FORM: {
     path: {
+      local: "http://localhost:6004/form",
       develop: "https://dev.admin.office.sevago.local/form",
       staging: "https://sta.admin.office.sevago.local/form",
-      production: "https://admin.office.sevago.local/form",
+      production: "https://admin.office.sevago.com.vn/form",
     }, // Mẫu
     icon: sevagoFormIcon,
     content: "Sevago - Biểu mẫu",
@@ -145,9 +155,10 @@ export const APP_OBJ = {
   },
   INSIDE: {
     path: {
+      local: "http://localhost:6004/inside",
       develop: "https://dev.admin.office.sevago.local/inside",
       staging: "https://sta.admin.office.sevago.local/inside",
-      production: "https://admin.office.sevago.local/inside",
+      production: "https://admin.office.sevago.com.vn/inside",
     }, // Truyền Thông và CSNV
     icon: sevagoInsideIcon,
     content: "Sevago - Inside",
@@ -156,9 +167,10 @@ export const APP_OBJ = {
   },
   BOOKING: {
     path: {
+      local: "http://localhost:6004/booking",
       develop: "https://dev.admin.office.sevago.local/booking",
       staging: "https://sta.admin.office.sevago.local/booking",
-      production: "https://admin.office.sevago.local/booking",
+      production: "https://admin.office.sevago.com.vn/booking",
     },
     icon: sevagoInsideIcon,
     content: "Sevago - Booking",
@@ -169,9 +181,10 @@ export const APP_OBJ = {
   // BLUE
   PROJECT: {
     path: {
+      local: "http://localhost:6004/project",
       develop: "https://dev.admin.office.sevago.local/project",
       staging: "https://sta.admin.office.sevago.local/project",
-      production: "https://admin.office.sevago.local/project",
+      production: "https://admin.office.sevago.com.vn/project",
     },
     icon: sevagoProjectIcon,
     content: "Sevago - Dự án",
@@ -180,9 +193,10 @@ export const APP_OBJ = {
   },
   REQUEST: {
     path: {
+      local: "http://localhost:6004/request",
       develop: "https://dev.admin.office.sevago.local/request",
       staging: "https://sta.admin.office.sevago.local/request",
-      production: "https://admin.office.sevago.local/request",
+      production: "https://admin.office.sevago.com.vn/request",
     },
     icon: sevagoRequestIcon,
     content: "Sevago - Đề xuất",
@@ -191,9 +205,10 @@ export const APP_OBJ = {
   },
   TRACKING: {
     path: {
+      local: "http://localhost:6004/process",
       develop: "https://dev.admin.office.sevago.local/process",
       staging: "https://sta.admin.office.sevago.local/process",
-      production: "https://admin.office.sevago.local/process",
+      production: "https://admin.office.sevago.com.vn/process",
     }, //
     icon: sevagoIcon, //
     content: "Sevago - Tiến trình", //
@@ -202,9 +217,10 @@ export const APP_OBJ = {
   },
   PROCESS: {
     path: {
+      local: "http://localhost:6004/workflow",
       develop: "https://dev.admin.office.sevago.local/workflow",
       staging: "https://sta.admin.office.sevago.local/workflow",
-      production: "https://admin.office.sevago.local/workflow",
+      production: "https://admin.office.sevago.com.vn/workflow",
     }, // Quy trình
     icon: sevagoIcon,
     content: "Sevago - Quy trình",
@@ -215,6 +231,7 @@ export const APP_OBJ = {
   // RED
   FORMULA_PRICE: {
     path: {
+      local: "http://localhost:6005",
       develop: "https://dev.formula-price.sevago.local",
       staging: "https://sta.formula-price.sevago.local",
       production: "https://formula-price.sevago.local",
@@ -226,9 +243,10 @@ export const APP_OBJ = {
   },
   E_CATALOGUE: {
     path: {
+      local: "http://localhost:6002",
       develop: "https://dev.admin.e-catalogue.sevago.local",
       staging: "https://sta.admin.e-catalogue.sevago.local",
-      production: "https://admin.e-catalogue.sevago.local",
+      production: "https://admin.e-catalogue.sevago.com.vn",
     }, // E-Catalogue
     icon: sevagoIcon,
     content: "Sevago - E-Catalogue",
@@ -239,6 +257,7 @@ export const APP_OBJ = {
   // PINK
   LANDING_PAGE: {
     path: {
+      local: "http://localhost:6006",
       develop: "https://dev.admin.landing-page.sevago.local",
       staging: "https://sta.admin.landing-page.sevago.local",
       production: "https://admin.landing-page.sevago.com.vn",

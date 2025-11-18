@@ -22,6 +22,7 @@ interface AppsSidebarProps {
   position?: "left" | "right";
   blacklist?: string[]; // list of paths to show; if empty or no match -> show all
   env: Environment;
+  onClickApp: (appInfo: AppInfo) => void;
 }
 
 export const AppsSidebar: React.FC<AppsSidebarProps> = ({
@@ -30,19 +31,23 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   position = "left",
   blacklist = [],
   env,
+  onClickApp,
 }) => {
   if (!isOpen) return null;
 
   const theme = useTheme();
 
-  const appsGroupObj = Object.values(APP_OBJ).reduce((r, e) => {
-    if (blacklist.includes(e.path[env])) return r;
+  const appsGroupObj = Object.values(APP_OBJ).reduce(
+    (r, e) => {
+      if (blacklist.includes(e.path[env])) return r;
 
-    if (r[e.group]) r[e.group].push(e);
-    else r[e.group] = [e];
+      if (r[e.group]) r[e.group].push(e);
+      else r[e.group] = [e];
 
-    return r;
-  }, {} as Record<AppGroup, AppInfo[]>);
+      return r;
+    },
+    {} as Record<AppGroup, AppInfo[]>
+  );
 
   return (
     <>
@@ -127,7 +132,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
               captionVariant="caption"
               titleColor={theme.palette.grey[800]}
               captionColor={theme.palette.grey[600]}
-              env={Environment.DEVELOP}
+              onClickApp={onClickApp}
             />
           </Box>
         ))}
