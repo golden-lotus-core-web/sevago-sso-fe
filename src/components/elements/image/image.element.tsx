@@ -1,7 +1,7 @@
 import { Box, type BoxProps, Skeleton, useTheme } from '@mui/material';
 import React, { type ReactNode, useState } from 'react';
 import { SizeProps, STYLE, MAP_SIZE } from '../../../common';
-import { StackRow } from '../../styles';
+import { StackRow } from '../../styles/stack.style';
 import { ImageSizeType } from './image.enum';
 
 export interface ImageElementProps extends BoxProps {
@@ -41,8 +41,8 @@ export const ImageElement: React.FC<ImageElementProps> = ({
     sizeType === ImageSizeType.CIRCLE
       ? '50%'
       : sizeType === ImageSizeType.SQUARE
-        ? STYLE.BORDER_RADIUS_ELEMENT_SMALL
-        : 0;
+      ? STYLE.BORDER_RADIUS_ELEMENT_SMALL
+      : 0;
 
   return (
     <ImageWrapper isWrap={isWrap}>
