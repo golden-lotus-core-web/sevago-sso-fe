@@ -8,10 +8,10 @@ import {
   Theme,
   Typography,
   useTheme,
-} from "@mui/material";
-import React from "react";
-import { STYLE, TYPOGRAPHY_STYLES } from "../../../common";
-import { StackRowAlignCenter } from "../../styles";
+} from '@mui/material';
+import React from 'react';
+import { STYLE, TYPOGRAPHY_STYLES } from '../../../common';
+import { StackRowAlignCenter } from '../../styles';
 
 export interface PaginationElementProps {
   total?: number;
@@ -45,34 +45,27 @@ export const PaginationElement: React.FC<PaginationElementProps> = ({
   };
 
   return (
-    <StackRowAlignCenter
-      gap={0.75}
-      sx={{ ml: "auto", p: STYLE.PADDING_GAP_BUTTON, ...sx }}
-    >
+    <StackRowAlignCenter gap={0.75} sx={{ ml: 'auto', p: STYLE.PADDING_GAP_BUTTON, ...sx }}>
       {openRowsPerPage && (
         <StackRowAlignCenter gap={0.5}>
-          <Typography
-            sx={{ ...TYPOGRAPHY_STYLES.textSm.regular, marginRight: "8px" }}
-          >
-            Hiển thị:
-          </Typography>
+          <Typography sx={{ ...TYPOGRAPHY_STYLES.textSm.regular, marginRight: '8px' }}>Hiển thị:</Typography>
           <FormControl size="small">
             <Select
               value={displayTake}
               onChange={handleChangeRowsPerPage}
               sx={{
-                "&.MuiInputBase-root": {
-                  borderRadius: "6px",
-                  height: "32px",
+                '&.MuiInputBase-root': {
+                  borderRadius: '6px',
+                  height: '32px',
                 },
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "1px solid var(--Neutral-300, #E4E6E6)",
+                '& .MuiOutlinedInput-notchedOutline': {
+                  border: '1px solid var(--Neutral-300, #E4E6E6)',
                 },
-                "&:hover .MuiOutlinedInput-notchedOutline": {
-                  border: "1px solid var(--Neutral-300, #E4E6E6)",
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  border: '1px solid var(--Neutral-300, #E4E6E6)',
                 },
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  border: "1px solid var(--Neutral-300, #E4E6E6)",
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  border: '1px solid var(--Neutral-300, #E4E6E6)',
                 },
               }}
             >
@@ -95,13 +88,13 @@ export const PaginationElement: React.FC<PaginationElementProps> = ({
         variant="outlined"
         shape="rounded"
         sx={{
-          "& .MuiPaginationItem-root.Mui-disabled": {
+          '& .MuiPaginationItem-root.Mui-disabled': {
             opacity: 0.5,
-            pointerEvents: "none",
+            pointerEvents: 'none',
           },
-          "& .MuiPaginationItem-root.Mui-selected": {
+          '& .MuiPaginationItem-root.Mui-selected': {
             background: palette.primary.main,
-            color: "white",
+            color: 'white',
           },
         }}
       />

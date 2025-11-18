@@ -1,14 +1,8 @@
-import {
-  Button,
-  ButtonProps,
-  SxProps,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import React from "react";
-import { STYLE } from "../../../common";
-import { LoadingComponent } from "../../loading";
-import { ImageElement } from "../image";
+import { Button, ButtonProps, SxProps, Typography, useTheme } from '@mui/material';
+import React from 'react';
+import { STYLE } from '../../../common';
+import { LoadingComponent } from '../../loading';
+import { ImageElement } from '../image';
 
 export interface ButtonImageElementProps extends ButtonProps {
   loading?: boolean;
@@ -59,27 +53,19 @@ export const ButtonImageElement: React.FC<ButtonImageElementProps> = ({
         )
       }
       sx={{
-        textTransform: "none",
+        textTransform: 'none',
         borderRadius: STYLE.BORDER_RADIUS_ELEMENT_SMALL,
-        minWidth: "unset",
-        "& > .MuiButton-endIcon": {
+        minWidth: 'unset',
+        '& > .MuiButton-endIcon': {
           margin: 0,
         },
         ...sx,
       }}
     >
       {loading ? (
-        <LoadingComponent
-          color={palette.primary.contrastText}
-          size="small"
-          sx={{ minHeight: "24.5px" }}
-        />
+        <LoadingComponent color={palette.primary.contrastText} size="small" sx={{ minHeight: '24.5px' }} />
       ) : (
-        <Typography
-          sx={{ transform: `translateY(0.5px)`, whiteSpace: "nowrap" }}
-        >
-          {content}
-        </Typography>
+        <Typography sx={{ transform: `translateY(0.5px)`, whiteSpace: 'nowrap' }}>{content}</Typography>
       )}
     </Button>
   );

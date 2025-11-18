@@ -200,7 +200,7 @@ input[data-autocompleted] {
   animation: zoom-from-right 0.2s ease-out forwards;
 }
 
-.tree-node-icon-menu:hover>.tree-node-menu {
+.tree-node-icon-menu:hover > .tree-node-menu {
   display: flex;
   /* transform: translateY(-100%) !important; */
 }
@@ -238,11 +238,10 @@ path.link {
   max-width: 300px;
 }
 
-
 .custom-node .react-flow__handle {
   width: 12px;
   height: 12px;
-  background: #3B82F6;
+  background: #3b82f6;
   border: 2px solid #fff;
 }
 
@@ -283,16 +282,11 @@ path.link {
   width: 100px;
 }
 
-
 .dndflow .dndnode:active {
   cursor: grabbing;
 }
 
-
-
-
 /* @import url('./xy-theme.css'); */
-
 
 /* .troly {
   padding-top: 0 !important;
@@ -392,9 +386,6 @@ path.link {
 .custom-node .react-flow__handle-right {
   right: -4px;
 } */
-
-
-
 
 /* .react-flow__node-zoom {
   font-size: 12px;

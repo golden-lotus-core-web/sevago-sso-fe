@@ -1,12 +1,6 @@
-import {
-  Checkbox,
-  CheckboxProps,
-  FormControlLabel,
-  SxProps,
-  Theme,
-} from "@mui/material";
-import React from "react";
-import { STYLE } from "../../../common";
+import { Checkbox, CheckboxProps, FormControlLabel, SxProps, Theme } from '@mui/material';
+import React from 'react';
+import { STYLE } from '../../../common';
 
 export interface CheckboxElementProps extends CheckboxProps {
   label?: string;
@@ -14,13 +8,7 @@ export interface CheckboxElementProps extends CheckboxProps {
   name?: string;
 }
 
-export const CheckboxElement: React.FC<CheckboxElementProps> = ({
-  label,
-  name,
-  size = "small",
-  sx,
-  ...rest
-}) => {
+export const CheckboxElement: React.FC<CheckboxElementProps> = ({ label, name, size = 'small', sx, ...rest }) => {
   return (
     <FormControlLabel
       sx={{ marginRight: 0 }}
@@ -34,8 +22,8 @@ export const CheckboxElement: React.FC<CheckboxElementProps> = ({
             paddingBottom: 0,
             paddingRight: STYLE.PADDING_GAP_ITEM,
             borderRadius: 10,
-            "&:hover": {
-              backgroundColor: "unset",
+            '&:hover': {
+              backgroundColor: 'unset',
             },
             ...sx,
           }}

@@ -1,1 +1,1 @@
-export { CheckboxElement } from "./check-box.element";
+export { CheckboxElement } from './check-box.element';

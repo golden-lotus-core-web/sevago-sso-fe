@@ -1,7 +1,7 @@
-import { Typography } from "@mui/material";
-import React from "react";
-import { SnackbarType, TYPOGRAPHY_STYLES } from "../../../common";
-import { DialogElement } from "./dialog.element";
+import { Typography } from '@mui/material';
+import React from 'react';
+import { SnackbarType, TYPOGRAPHY_STYLES } from '../../../common';
+import { DialogElement } from './dialog.element';
 
 interface DialogConfirmActionElementProps {
   open: boolean;
@@ -16,14 +16,12 @@ interface DialogConfirmActionElementProps {
   loading?: boolean;
 }
 
-export const DialogConfirmActionElement: React.FC<
-  DialogConfirmActionElementProps
-> = ({
+export const DialogConfirmActionElement: React.FC<DialogConfirmActionElementProps> = ({
   open,
   title,
   description,
-  closeText = "Hủy",
-  confirmText = "Xác nhận",
+  closeText = 'Hủy',
+  confirmText = 'Xác nhận',
   confirmColor = SnackbarType.INFO,
   closeColor = SnackbarType.INFO,
   onClose,
@@ -36,11 +34,7 @@ export const DialogConfirmActionElement: React.FC<
       open={open}
       onClose={onClose}
       label={title}
-      nodeContent={
-        <Typography sx={{ ...TYPOGRAPHY_STYLES.textSm.regular }}>
-          {description}
-        </Typography>
-      }
+      nodeContent={<Typography sx={{ ...TYPOGRAPHY_STYLES.textSm.regular }}>{description}</Typography>}
       buttonLeft={{
         content: closeText,
         color: closeColor,

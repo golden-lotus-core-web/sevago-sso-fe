@@ -1,17 +1,11 @@
-import { SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import { STYLE, TYPOGRAPHY_STYLES, getLimitLineCss } from "../../../common";
-import { StackWrap } from "../../styles";
+import { SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { STYLE, TYPOGRAPHY_STYLES, getLimitLineCss } from '../../../common';
+import { StackWrap } from '../../styles';
 
-export type TagType =
-  | "success"
-  | "warning"
-  | "info"
-  | "secondary"
-  | "primary"
-  | "error";
-export type TagSize = "large" | "medium" | "small";
-export type TagVariant = "contained" | "outlined" | "outlined-border";
+export type TagType = 'success' | 'warning' | 'info' | 'secondary' | 'primary' | 'error';
+export type TagSize = 'large' | 'medium' | 'small';
+export type TagVariant = 'contained' | 'outlined' | 'outlined-border';
 
 export const lightenColor = (hex: string, percent: number): string => {
   // Convert HEX to RGB
@@ -37,11 +31,11 @@ export const lightenColor = (hex: string, percent: number): string => {
 
 const TAG_SIZE = {
   large: {
-    padding: "6px 8px",
+    padding: '6px 8px',
     ...TYPOGRAPHY_STYLES.textXs.medium,
   },
   medium: {
-    padding: "4px 6px",
+    padding: '4px 6px',
     ...TYPOGRAPHY_STYLES.textXs.medium,
   },
   small: {
@@ -55,7 +49,7 @@ export interface TagElementProps {
   content: string;
   width?: number;
   sx?: SxProps<Theme>;
-  variation?: "body1" | "caption";
+  variation?: 'body1' | 'caption';
   variant?: TagVariant;
   size?: TagSize;
   color?: string;
@@ -66,9 +60,9 @@ export const TagElement: React.FC<TagElementProps> = ({
   type,
   content,
   width,
-  variation = "caption",
-  size = "medium",
-  variant = "contained",
+  variation = 'caption',
+  size = 'medium',
+  variant = 'contained',
   sx,
   color,
   iconProps,
@@ -76,13 +70,13 @@ export const TagElement: React.FC<TagElementProps> = ({
   const TAG_VARIANT = {
     contained: {
       backgroundColor: type,
-      color: color || "white",
+      color: color || 'white',
     },
     outlined: {
       backgroundColor: lightenColor(type, 0.8),
       color: type,
     },
-    "outlined-border": {
+    'outlined-border': {
       backgroundColor: lightenColor(type, 0.8),
       border: `1px solid ${type}`,
       color: type,
@@ -96,8 +90,8 @@ export const TagElement: React.FC<TagElementProps> = ({
           sx={{
             borderRadius: STYLE.BORDER_RADIUS_ELEMENT_SMALL,
             width,
-            textAlign: "center",
-            textWrap: "nowrap",
+            textAlign: 'center',
+            textWrap: 'nowrap',
             ...TAG_SIZE[size],
             ...TAG_VARIANT[variant],
             ...sx,
@@ -112,8 +106,8 @@ export const TagElement: React.FC<TagElementProps> = ({
           sx={{
             borderRadius: STYLE.BORDER_RADIUS_ELEMENT_SMALL,
             width,
-            textAlign: "center",
-            textWrap: "nowrap",
+            textAlign: 'center',
+            textWrap: 'nowrap',
             ...getLimitLineCss(1),
             ...TAG_SIZE[size],
             ...TAG_VARIANT[variant],

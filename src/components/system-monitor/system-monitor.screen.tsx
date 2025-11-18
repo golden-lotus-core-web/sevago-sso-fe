@@ -1,11 +1,11 @@
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import React, { useState } from "react";
-import { APP_OBJ, AppGroup, AppInfo } from "../../common/constant/apps.data";
-import { PADDING_GAP_TAB } from "../../common/constant/style.constant";
-import { Environment } from "../../common/utils/other/app.utils";
-import { AppGrid } from "../app-grid";
-import { MotionBox } from "../motion";
+import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { APP_OBJ, AppGroup, AppInfo } from '../../common/constant/apps.data';
+import { PADDING_GAP_TAB } from '../../common/constant/style.constant';
+import { Environment } from '../../common/utils/other/app.utils';
+import { AppGrid } from '../app-grid';
+import { MotionBox } from '../motion';
 
 export interface SystemMonitorScreenProps {
   blacklist?: string[];
@@ -13,11 +13,7 @@ export interface SystemMonitorScreenProps {
   onClickApp: (appInfo: AppInfo) => void;
 }
 
-export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
-  blacklist,
-  env,
-  onClickApp,
-}) => {
+export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({ blacklist, env, onClickApp }) => {
   const theme = useTheme();
   const [tab, setTab] = useState<AppGroup>(AppGroup.ALL);
 
@@ -25,10 +21,10 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
     <MotionBox
       preset="fadeInUp"
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        position: "relative",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        position: 'relative',
         top: 150,
       }}
     >
@@ -36,33 +32,26 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
         sx={{
           width: 865,
           gap: 6.25,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
         }}
       >
         <Box
           sx={{
-            display: "flex",
+            display: 'flex',
             gap: PADDING_GAP_TAB,
-            width: "100%",
-            justifyContent: "flex-start",
+            width: '100%',
+            justifyContent: 'flex-start',
           }}
         >
           {Object.values(AppGroup).map((g) => (
-            <MotionBox
-              key={g}
-              sx={{ position: "relative" }}
-              preset="tabUnderline"
-            >
+            <MotionBox key={g} sx={{ position: 'relative' }} preset="tabUnderline">
               <Typography
                 onClick={() => setTab(g)}
                 sx={{
-                  cursor: "pointer",
-                  color:
-                    tab === g
-                      ? theme.palette.common.white
-                      : theme.palette.grey[300],
+                  cursor: 'pointer',
+                  color: tab === g ? theme.palette.common.white : theme.palette.grey[300],
                 }}
               >
                 {g}
@@ -75,8 +64,7 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
             apps={
               Object.values(APP_OBJ).filter((e) => {
                 const isBlacklisted = !!blacklist?.includes(e.path[env]);
-                const isInSelectedGroup =
-                  tab === AppGroup.ALL ? true : e.group === tab;
+                const isInSelectedGroup = tab === AppGroup.ALL ? true : e.group === tab;
                 return !isBlacklisted && isInSelectedGroup;
               }) as AppInfo[]
             }

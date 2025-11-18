@@ -1,37 +1,37 @@
-declare module "*.svg" {
+declare module '*.svg' {
   const content: string;
   export default content;
 }
-declare module "*.css";
+declare module '*.css';
 
-declare module "*.jpg" {
+declare module '*.jpg' {
   const value: string;
   export default value;
 }
 
-declare module "*.xlsx" {
+declare module '*.xlsx' {
   const value: string;
   export default value;
 }
 
-declare module "*.xls" {
+declare module '*.xls' {
   const value: string;
   export default value;
 }
 
-declare module "*.png" {
+declare module '*.png' {
   const value: string;
   export default value;
 }
 
-declare module "*.svg" {
-  import React from "react";
+declare module '*.svg' {
+  import React from 'react';
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
   const src: string;
   export default src;
 }
 
-declare module "*.ttf" {
+declare module '*.ttf' {
   const value: string;
   export default value;
 }

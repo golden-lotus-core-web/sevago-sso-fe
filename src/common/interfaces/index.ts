@@ -1,1 +1,1 @@
-export * from "./image-with-preview.interface";
+export * from './image-with-preview.interface';

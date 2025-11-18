@@ -1,9 +1,9 @@
-import { SxProps } from "@mui/system";
-import React from "react";
-import { SizeProps, STYLE } from "../../../common";
-import { StackRow } from "../../styles";
-import { AvatarElement } from "../avatar";
-import { TypographyContentCaption } from "../typography";
+import { SxProps } from '@mui/system';
+import React from 'react';
+import { SizeProps, STYLE } from '../../../common';
+import { StackRow } from '../../styles';
+import { AvatarElement } from '../avatar';
+import { TypographyContentCaption } from '../typography';
 
 export interface ImageContentCaptionComponentProps {
   url?: string;
@@ -17,17 +17,15 @@ export interface ImageContentCaptionComponentProps {
   userTitleName?: string;
 }
 
-export const ImageContentCaptionComponent: React.FC<
-  ImageContentCaptionComponentProps
-> = ({
+export const ImageContentCaptionComponent: React.FC<ImageContentCaptionComponentProps> = ({
   url,
   content,
   caption,
-  sizeType = "medium",
+  sizeType = 'medium',
   sx,
   sxContent,
   sxCaption,
-  alt = "",
+  alt = '',
   userTitleName,
 }) => {
   return (

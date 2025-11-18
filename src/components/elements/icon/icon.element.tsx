@@ -1,16 +1,10 @@
-import {
-  Icon,
-  type IconProps,
-  type SxProps,
-  type Theme,
-  useTheme,
-} from "@mui/material";
-import React from "react";
-import { STYLE } from "../../../common";
+import { Icon, type IconProps, type SxProps, type Theme, useTheme } from '@mui/material';
+import React from 'react';
+import { STYLE } from '../../../common';
 
 export interface IconElementProps extends IconProps {
   icon?: any;
-  size?: "large" | "small" | "medium";
+  size?: 'large' | 'small' | 'medium';
   disabled?: boolean;
   fill?: 0 | 1;
   sx?: SxProps<Theme>;
@@ -19,7 +13,7 @@ export interface IconElementProps extends IconProps {
 
 export const IconElement: React.FC<IconElementProps> = ({
   icon,
-  size = "medium",
+  size = 'medium',
   color,
   disabled,
   onClick,
@@ -30,14 +24,14 @@ export const IconElement: React.FC<IconElementProps> = ({
 
   if (disabled) {
     onClick = undefined;
-    color = "disabled";
+    color = 'disabled';
   }
 
   if (onClick)
     sx = {
-      cursor: "pointer",
-      "&:hover": {
-        color: color ? "none" : palette.primary.main,
+      cursor: 'pointer',
+      '&:hover': {
+        color: color ? 'none' : palette.primary.main,
       },
       ...sx,
     };
@@ -47,12 +41,12 @@ export const IconElement: React.FC<IconElementProps> = ({
       onClick={onClick}
       color={color}
       sx={{
-        cursor: "inherit",
+        cursor: 'inherit',
         fontSize: STYLE.FONT_SIZE_ICON[size],
         fontVariationSettings: `'FILL' ${fill}, 'wght' 100, 'GRAD' 200, 'opsz' 24`,
         ...sx,
       }}
-      component={"span"}
+      component={'span'}
       className="material-symbols-rounded"
     >
       {icon}

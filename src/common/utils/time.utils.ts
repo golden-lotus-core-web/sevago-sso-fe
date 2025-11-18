@@ -1,28 +1,26 @@
-import dayjs from "dayjs";
-import "../../assets/other/vi";
+import dayjs from 'dayjs';
+import '../../assets/other/vi';
 
 export const getTimeAgo = (time: Date | string) => {
   // @ts-ignore
   const inputDate = dayjs.utc(time).tz();
-  const diffDays = dayjs().diff(inputDate, "day");
+  const diffDays = dayjs().diff(inputDate, 'day');
 
   if (diffDays > 7) {
-    return inputDate.format("DD/MM/YYYY");
+    return inputDate.format('DD/MM/YYYY');
   }
 
   return inputDate.fromNow();
 };
 
 export const getDateTime = (time?: Date | string, isGetDay?: boolean) => {
-  if (!time) return "";
-  return isGetDay
-    ? dayjs(time).format("DD/MM/YYYY hh:mm")
-    : dayjs(time).format("DD/MM/YYYY hh:mm A");
+  if (!time) return '';
+  return isGetDay ? dayjs(time).format('DD/MM/YYYY hh:mm') : dayjs(time).format('DD/MM/YYYY hh:mm A');
 };
 
 export const getDate = (time?: Date | string) => {
-  if (!time) return "";
-  return dayjs(time).format("DD/MM/YYYY");
+  if (!time) return '';
+  return dayjs(time).format('DD/MM/YYYY');
 };
 
 export const checkNowYear = (date?: Date, year?: number) => {
@@ -39,11 +37,7 @@ export const checkNowYear = (date?: Date, year?: number) => {
   return true;
 };
 
-export const getMonthRangeForYear = (
-  startDate: Date,
-  endDate: Date,
-  year: number
-) => {
+export const getMonthRangeForYear = (startDate: Date, endDate: Date, year: number) => {
   const start = dayjs(startDate);
   const end = dayjs(endDate);
 
@@ -57,23 +51,14 @@ export const getMonthRangeForYear = (
   return { start: startMonth, end: endMonth };
 };
 
-export function getDayOffsetPx(
-  date: dayjs.Dayjs,
-  monthWidths: number[],
-  dayWidth: number
-) {
+export function getDayOffsetPx(date: dayjs.Dayjs, monthWidths: number[], dayWidth: number) {
   const monthIdx = date.month();
   const dayOfMonth = date.date();
-  const widthBeforeMonth = monthWidths
-    .slice(0, monthIdx)
-    .reduce((a, b) => a + b, 0);
+  const widthBeforeMonth = monthWidths.slice(0, monthIdx).reduce((a, b) => a + b, 0);
   return widthBeforeMonth + (dayOfMonth - 1) * dayWidth;
 }
 
-export const isSameDateTime = (
-  createdAt: Date | string,
-  updatedAt: Date | string
-): boolean => {
+export const isSameDateTime = (createdAt: Date | string, updatedAt: Date | string): boolean => {
   const created = dayjs(createdAt);
   const updated = dayjs(updatedAt);
 
@@ -82,13 +67,13 @@ export const isSameDateTime = (
 };
 
 export const getTimeDate = (time?: Date | string) => {
-  if (!time) return "";
-  return dayjs(time).format("hh:mm DD/MM/YYYY");
+  if (!time) return '';
+  return dayjs(time).format('hh:mm DD/MM/YYYY');
 };
 
 // Hàm kiểm tra xem string có phải là date không
 export const isDateString = (value: any): boolean => {
-  if (typeof value !== "string") return false;
+  if (typeof value !== 'string') return false;
 
   // Kiểm tra các pattern date phổ biến
   const datePatterns = [

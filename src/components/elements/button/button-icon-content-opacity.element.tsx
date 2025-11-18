@@ -1,8 +1,8 @@
-import { Button, ButtonProps, Typography } from "@mui/material";
-import React from "react";
-import { STYLE } from "../../../common";
-import { LoadingComponent } from "../../loading";
-import { IconElement } from "../icon";
+import { Button, ButtonProps, Typography } from '@mui/material';
+import React from 'react';
+import { STYLE } from '../../../common';
+import { LoadingComponent } from '../../loading';
+import { IconElement } from '../icon';
 
 export interface ButtonIconContentOpacityElementProps extends ButtonProps {
   loading?: boolean;
@@ -11,14 +11,12 @@ export interface ButtonIconContentOpacityElementProps extends ButtonProps {
   isQuare?: boolean;
 }
 
-export const ButtonIconContentOpacityElement: React.FC<
-  ButtonIconContentOpacityElementProps
-> = ({
+export const ButtonIconContentOpacityElement: React.FC<ButtonIconContentOpacityElementProps> = ({
   loading,
   icon,
   content,
   isQuare = false,
-  variant = "outlined",
+  variant = 'outlined',
   ...rest
 }) => {
   return (
@@ -28,33 +26,33 @@ export const ButtonIconContentOpacityElement: React.FC<
       sx={{
         fontWeight: 500,
         fontSize: 15,
-        textTransform: "none",
+        textTransform: 'none',
         borderRadius: STYLE.BORDER_RADIUS_ELEMENT,
-        minWidth: "unset",
+        minWidth: 'unset',
         ...(isQuare
           ? {
               minWidth: STYLE.HEIGHT_DEFAULT_TEXT_FIELD_BUTTON,
               width: STYLE.HEIGHT_DEFAULT_TEXT_FIELD_BUTTON,
             }
           : {}),
-        position: "relative",
-        "& > .material-icons": {
+        position: 'relative',
+        '& > .material-icons': {
           opacity: 0,
-          position: "absolute",
-          cursor: "pointer",
+          position: 'absolute',
+          cursor: 'pointer',
           transition: `opacity 0.3s`,
         },
-        "& > .content": {
-          position: "absolute",
+        '& > .content': {
+          position: 'absolute',
           opacity: 1,
           transition: `opacity 0.3s`,
         },
-        "&:hover": {
-          "& > .material-icons": {
+        '&:hover': {
+          '& > .material-icons': {
             opacity: 1,
             transition: `opacity 0.3s`,
           },
-          "& > .content": {
+          '& > .content': {
             opacity: 0,
             transition: `opacity 0.3s`,
           },
@@ -62,11 +60,7 @@ export const ButtonIconContentOpacityElement: React.FC<
       }}
     >
       {loading ? (
-        <LoadingComponent
-          color="primary"
-          size="small"
-          sx={{ minHeight: "24.5px" }}
-        />
+        <LoadingComponent color="primary" size="small" sx={{ minHeight: '24.5px' }} />
       ) : (
         <React.Fragment>
           <IconElement className="icon" icon={icon} />

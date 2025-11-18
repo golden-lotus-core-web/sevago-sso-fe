@@ -1,13 +1,13 @@
-import { FormControl, RadioGroup, SxProps, Theme } from "@mui/material";
-import React, { ReactNode } from "react";
-import { InputLabel } from "@mui/material";
-import { STYLE } from "../../../common";
-import { StackLabel } from "../../styles";
-import { IconElement } from "../icon";
+import { FormControl, RadioGroup, SxProps, Theme } from '@mui/material';
+import React, { ReactNode } from 'react';
+import { InputLabel } from '@mui/material';
+import { STYLE } from '../../../common';
+import { StackLabel } from '../../styles';
+import { IconElement } from '../icon';
 
 export interface RadioGroupElementProps {
   name?: string;
-  direction?: "row" | "column";
+  direction?: 'row' | 'column';
   label?: string;
   iconLabel?: string;
   disabled?: boolean;
@@ -21,10 +21,10 @@ export interface RadioGroupElementProps {
 
 export const RadioGroupElement: React.FC<RadioGroupElementProps> = ({
   name,
-  direction = "row",
+  direction = 'row',
   label,
   disabled,
-  iconLabel = "event_list",
+  iconLabel = 'event_list',
   defaultValue,
   value,
   onChange,
@@ -33,31 +33,23 @@ export const RadioGroupElement: React.FC<RadioGroupElementProps> = ({
   sx = {},
 }) => {
   const change = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange &&
-      onChange({ target: { name, value: event.target.value || undefined } });
+    onChange && onChange({ target: { name, value: event.target.value || undefined } });
   };
 
   return (
-    <FormControl
-      disabled={disabled}
-      sx={{ gap: STYLE.PADDING_GAP_ITEM }}
-      onChange={change}
-    >
+    <FormControl disabled={disabled} sx={{ gap: STYLE.PADDING_GAP_ITEM }} onChange={change}>
       {label && (
         <InputLabel
           shrink
           required={required}
           sx={{
-            transform: "translate(0px , -9px) scale(0.75)",
+            transform: 'translate(0px , -9px) scale(0.75)',
             zIndex: 2,
-            display: "flex",
+            display: 'flex',
           }} // Số này lấy từ default theme
         >
           <StackLabel>
-            <IconElement
-              icon={iconLabel}
-              sx={{ fontSize: STYLE.TEXT_FIELD.FONT_SIZE_LABEL }}
-            />
+            <IconElement icon={iconLabel} sx={{ fontSize: STYLE.TEXT_FIELD.FONT_SIZE_LABEL }} />
             {label}
           </StackLabel>
         </InputLabel>
@@ -68,7 +60,7 @@ export const RadioGroupElement: React.FC<RadioGroupElementProps> = ({
         value={value}
         sx={{
           flexDirection: direction,
-          paddingTop: label ? "calc(8.5px + 1.5px)" : 0, // 8.5 lấy từ default theme không phải tự nhiên mà có
+          paddingTop: label ? 'calc(8.5px + 1.5px)' : 0, // 8.5 lấy từ default theme không phải tự nhiên mà có
           gap: STYLE.PADDING_GAP_LAYOUT,
           ...sx,
         }}

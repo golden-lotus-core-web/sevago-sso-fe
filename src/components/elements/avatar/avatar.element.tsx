@@ -1,13 +1,7 @@
-import styled from "@emotion/styled";
-import {
-  Avatar,
-  AvatarProps,
-  Tooltip,
-  TooltipProps,
-  tooltipClasses,
-} from "@mui/material";
-import React, { ReactNode } from "react";
-import { SizeProps, MAP_SIZE } from "../../../common";
+import styled from '@emotion/styled';
+import { Avatar, AvatarProps, Tooltip, TooltipProps, tooltipClasses } from '@mui/material';
+import React, { ReactNode } from 'react';
+import { SizeProps, MAP_SIZE } from '../../../common';
 
 export interface AvatarElementProps extends AvatarProps {
   url?: string | null;
@@ -19,14 +13,14 @@ const ArrowTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
 ))(() => ({
   [`& .${tooltipClasses.arrow}`]: {
-    color: "white",
+    color: 'white',
   },
 }));
 
 export const AvatarElement: React.FC<AvatarElementProps> = ({
   url,
   sx = {},
-  size = "medium",
+  size = 'medium',
   tooltipContent,
   ...rest
 }) => {
@@ -35,12 +29,12 @@ export const AvatarElement: React.FC<AvatarElementProps> = ({
       <ArrowTooltip title={tooltipContent} arrow>
         <Avatar
           {...rest}
-          src={url || ""}
+          src={url || ''}
           sx={{
             ...MAP_SIZE[size],
-            bgcolor: "primary.main",
+            bgcolor: 'primary.main',
             ...sx,
-            cursor: "pointer",
+            cursor: 'pointer',
           }}
         />
       </ArrowTooltip>
@@ -49,12 +43,12 @@ export const AvatarElement: React.FC<AvatarElementProps> = ({
   return (
     <Avatar
       {...rest}
-      src={url || ""}
+      src={url || ''}
       sx={{
         ...MAP_SIZE[size],
-        bgcolor: "primary.main",
+        bgcolor: 'primary.main',
         ...sx,
-        cursor: "pointer",
+        cursor: 'pointer',
       }}
     />
   );

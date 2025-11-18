@@ -1,15 +1,12 @@
-import { Stack, useTheme } from "@mui/material";
-import { LayoutGroup, motion } from "framer-motion";
-import React, { useEffect, useId, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { StackTabs } from "../../styles";
-import {
-  IconContentBadgeCountElement,
-  IconContentBadgeCountSubsElement,
-} from "../icon";
-import { LinkElement } from "../link";
-import { TabBadgeCount } from "./tabs-badge-count.component";
-import { TAB_BACKGROUND_STYLES, TAB_STYLES } from "./tabs.constant";
+import { Stack, useTheme } from '@mui/material';
+import { LayoutGroup, motion } from 'framer-motion';
+import React, { useEffect, useId, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { StackTabs } from '../../styles';
+import { IconContentBadgeCountElement, IconContentBadgeCountSubsElement } from '../icon';
+import { LinkElement } from '../link';
+import { TabBadgeCount } from './tabs-badge-count.component';
+import { TAB_BACKGROUND_STYLES, TAB_STYLES } from './tabs.constant';
 
 export interface TabBadgeCountSubs {
   id?: string;
@@ -24,12 +21,10 @@ export interface TabBadgeCountSubs {
 export interface TabsBadgeCountSubsComponentProps {
   idSelect?: string;
   tabs: TabBadgeCountSubs[];
-  size?: "large" | "small" | "medium";
+  size?: 'large' | 'small' | 'medium';
 }
 
-export const TabsBadgeCountSubsComponent: React.FC<
-  TabsBadgeCountSubsComponentProps
-> = ({ idSelect, tabs, size }) => {
+export const TabsBadgeCountSubsComponent: React.FC<TabsBadgeCountSubsComponentProps> = ({ idSelect, tabs, size }) => {
   const { palette } = useTheme();
 
   const location = useLocation();
@@ -44,13 +39,10 @@ export const TabsBadgeCountSubsComponent: React.FC<
 
   return (
     <LayoutGroup id={layoutGroupId}>
-      <StackTabs
-        direction={"column"}
-        sx={{ background: "transparent", boxShadow: "none" }}
-      >
+      <StackTabs direction={'column'} sx={{ background: 'transparent', boxShadow: 'none' }}>
         {tabs.map((tab) => (
           <LinkElement
-            component={tab.href ? "a" : "span"}
+            component={tab.href ? 'a' : 'span'}
             href={tab.href}
             onClick={tab.onClick}
             key={tab.name}
@@ -60,16 +52,10 @@ export const TabsBadgeCountSubsComponent: React.FC<
               component={motion.div}
               sx={TAB_STYLES}
               initial={{
-                color:
-                  tab.id === idSelected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === idSelected ? palette.primary.contrastText : palette.text.primary,
               }}
               animate={{
-                color:
-                  tab.id === idSelected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === idSelected ? palette.primary.contrastText : palette.text.primary,
               }}
               transition={{ duration: 0.3 }}
               onTap={() => !tab.subs && setIdSelected(tab.id)}
@@ -82,10 +68,7 @@ export const TabsBadgeCountSubsComponent: React.FC<
                   sx={{ zIndex: 2 }}
                   size={size}
                   subs={tab.subs}
-                  idSubSelect={
-                    tab.subs.find((sub) => location.pathname.includes(sub.id))
-                      ?.id
-                  }
+                  idSubSelect={tab.subs.find((sub) => location.pathname.includes(sub.id))?.id}
                 />
               ) : (
                 <IconContentBadgeCountElement

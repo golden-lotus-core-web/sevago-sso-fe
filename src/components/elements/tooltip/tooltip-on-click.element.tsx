@@ -1,15 +1,14 @@
-import { ClickAwayListener, Tooltip, TooltipProps } from "@mui/material";
-import React, { ReactElement } from "react";
+import { ClickAwayListener, Tooltip, TooltipProps } from '@mui/material';
+import React, { ReactElement } from 'react';
 
-export interface TooltipOnClickElementProps
-  extends Partial<Omit<TooltipProps, "content">> {
+export interface TooltipOnClickElementProps extends Partial<Omit<TooltipProps, 'content'>> {
   content: ReactElement | string;
   onClickAway: () => void;
 }
 
 export const TooltipOnClickElement: React.FC<TooltipOnClickElementProps> = ({
   open,
-  placement = "top",
+  placement = 'top',
   content,
   children,
   onOpen,

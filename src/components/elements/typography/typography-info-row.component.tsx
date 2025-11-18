@@ -1,6 +1,6 @@
-import { Stack, SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import { getLimitLineCss } from "../../../common";
+import { Stack, SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { getLimitLineCss } from '../../../common';
 
 export interface TypographyInfoRowProps {
   label: React.ReactNode;
@@ -21,7 +21,7 @@ export const TypographyInfoRow: React.FC<TypographyInfoRowProps> = ({
 }) => {
   return (
     <Stack
-      direction={isColumn ? "column" : "row"}
+      direction={isColumn ? 'column' : 'row'}
       sx={{
         m: 0,
         gap: 1,
@@ -33,11 +33,8 @@ export const TypographyInfoRow: React.FC<TypographyInfoRowProps> = ({
           {label}:
         </Typography>
       )}
-      <Stack
-        color="text.secondary"
-        sx={{ ...getLimitLineCss(lineLimit), paddingTop: "2.5px", flex: 1 }}
-      >
-        {value || "Không có"}
+      <Stack color="text.secondary" sx={{ ...getLimitLineCss(lineLimit), paddingTop: '2.5px', flex: 1 }}>
+        {value || 'Không có'}
       </Stack>
     </Stack>
   );
