@@ -3,7 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField, { BaseTextFieldProps } from '@mui/material/TextField';
 import React from 'react';
 import { HEIGHT_LOGO_DEFAULT } from '../../../common/constant/style.constant';
-import { PaperSelect } from '../../styles/paper.style';
+import { PaperSelect } from '../../styles';
 import { IconElement } from '../icon';
 import { TextFieldLabelElement } from './text-field-label.element';
 
@@ -72,14 +72,7 @@ export const TextFieldSelectSearchElement: React.FC<TextFieldSelectSearchElement
         renderOption={
           showRadioBtn
             ? (props, option) => (
-                <ListItem
-                  {...props}
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    maxHeight: HEIGHT_LOGO_DEFAULT,
-                  }}
-                >
+                <ListItem {...props} sx={{ display: 'flex', alignItems: 'center', maxHeight: HEIGHT_LOGO_DEFAULT }}>
                   {showRadioBtn && <Radio checked={value === option} disableRipple size="small" />}
                   <ListItemText primary={getOptionLabel ? getOptionLabel(option) : option} />
                 </ListItem>
@@ -98,10 +91,7 @@ export const TextFieldSelectSearchElement: React.FC<TextFieldSelectSearchElement
         renderInput={(params) => (
           <TextField
             {...params}
-            InputLabelProps={{
-              shrink: isCheckIcon ? true : false,
-              sx: { display: 'flex' },
-            }}
+            InputLabelProps={{ shrink: isCheckIcon ? true : false, sx: { display: 'flex' } }}
             // label={
             //   isCheckIcon ? (
             //     <StackLabel color={colorLabel}>
