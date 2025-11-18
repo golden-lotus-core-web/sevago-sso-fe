@@ -1,4 +1,5 @@
-import { Paper, styled } from '@mui/material';
+import { Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { STYLE, TREE_COLOR } from '../../common';
 import { lightenColor } from '../elements/tag/tag.element';
 

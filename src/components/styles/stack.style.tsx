@@ -1,4 +1,5 @@
-import { LinearProgress, linearProgressClasses, Stack, styled, TableCell, tableCellClasses } from '@mui/material';
+import { LinearProgress, linearProgressClasses, Stack, TableCell, tableCellClasses } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { STYLE } from '../../common';
 
 export const StackRow = styled(Stack)(() => ({
