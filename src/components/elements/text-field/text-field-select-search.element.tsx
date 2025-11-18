@@ -3,8 +3,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField, { BaseTextFieldProps } from '@mui/material/TextField';
 import React from 'react';
 import { HEIGHT_LOGO_DEFAULT } from '../../../common/constant/style.constant';
-import { PaperSelect } from '../../styles';
-import { IconElement } from '../icon';
+import { PaperSelect } from '../../styles/paper.style';
+import { IconElement } from '../icon/icon.element';
 import { TextFieldLabelElement } from './text-field-label.element';
 
 interface TextFieldSelectSearchElementProps extends BaseTextFieldProps {
