@@ -10,11 +10,13 @@ import { MotionBox } from "../motion";
 export interface SystemMonitorScreenProps {
   blacklist?: string[];
   env: Environment;
+  onClickApp: (appInfo: AppInfo) => void;
 }
 
 export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
   blacklist,
   env,
+  onClickApp,
 }) => {
   const theme = useTheme();
   const [tab, setTab] = useState<AppGroup>(AppGroup.ALL);
@@ -65,20 +67,6 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
               >
                 {g}
               </Typography>
-
-              {/* {tab === g && (
-                <MotionBox
-                  preset="tabUnderline"
-                  sx={{
-                    position: "absolute",
-                    left: 0,
-                    right: 0,
-                    height: 2,
-                    backgroundColor: theme.palette.common.white,
-                    transformOrigin: "left",
-                  }}
-                ></MotionBox>
-              )} */}
             </MotionBox>
           ))}
         </Box>
@@ -95,7 +83,7 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({
             iconSize={80}
             iconRadius={7}
             gap={PADDING_GAP_TAB}
-            env={env}
+            onClickApp={onClickApp}
           />
         </MotionBox>
       </Box>
