@@ -1,2 +1,2 @@
-export { TagElement } from "./tag.element";
-export { TagOnClickElement } from "./tag-on-click.element";
+export { TagOnClickElement } from './tag-on-click.element';
+export { TagElement } from './tag.element';

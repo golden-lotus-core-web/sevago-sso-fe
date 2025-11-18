@@ -1,22 +1,21 @@
-import { Badge, SxProps } from "@mui/material";
-import React from "react";
-import { Theme } from "@emotion/react";
-import { StackRowJustBetween } from "../../styles";
-import {
-  IconContentElementProps,
-  IconContentElement,
-} from "./icon-content.element";
+import { Badge, SxProps } from '@mui/material';
+import React from 'react';
+import { Theme } from '@emotion/react';
+import { StackRowJustBetween } from '../../styles';
+import { IconContentElementProps, IconContentElement } from './icon-content.element';
 
-export interface IconContentBadgeCountElementProps
-  extends IconContentElementProps {
+export interface IconContentBadgeCountElementProps extends IconContentElementProps {
   badgeCount: number;
   sxBadge?: SxProps<Theme>;
   isAddCountToContent?: boolean;
 }
 
-export const IconContentBadgeCountElement: React.FC<
-  IconContentBadgeCountElementProps
-> = ({ badgeCount, sxBadge = {}, isAddCountToContent = false, ...rest }) => {
+export const IconContentBadgeCountElement: React.FC<IconContentBadgeCountElementProps> = ({
+  badgeCount,
+  sxBadge = {},
+  isAddCountToContent = false,
+  ...rest
+}) => {
   return isAddCountToContent ? (
     <StackRowJustBetween gap={1}>
       <IconContentElement {...rest} />
@@ -27,9 +26,9 @@ export const IconContentBadgeCountElement: React.FC<
           slotProps={{
             badge: {
               sx: {
-                position: "static",
-                transform: "none",
-                alignSelf: "center",
+                position: 'static',
+                transform: 'none',
+                alignSelf: 'center',
                 ...sxBadge,
               },
             },
@@ -38,11 +37,7 @@ export const IconContentBadgeCountElement: React.FC<
       )}
     </StackRowJustBetween>
   ) : (
-    <Badge
-      badgeContent={badgeCount}
-      color="error"
-      slotProps={{ badge: { sx: { top: -8, right: 3, ...sxBadge } } }}
-    >
+    <Badge badgeContent={badgeCount} color="error" slotProps={{ badge: { sx: { top: -8, right: 3, ...sxBadge } } }}>
       <IconContentElement {...rest} />
     </Badge>
   );

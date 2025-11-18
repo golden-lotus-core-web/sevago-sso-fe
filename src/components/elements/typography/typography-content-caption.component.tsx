@@ -1,10 +1,6 @@
-import { Stack, SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import {
-  checkEmptyText,
-  getLimitLineCss,
-  TYPOGRAPHY_STYLES,
-} from "../../../common";
+import { Stack, SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { checkEmptyText, getLimitLineCss, TYPOGRAPHY_STYLES } from '../../../common';
 
 export interface TypographyContentCaptionProps {
   sx?: SxProps<Theme>;
@@ -15,9 +11,14 @@ export interface TypographyContentCaptionProps {
   userTitleName?: string;
 }
 
-export const TypographyContentCaption: React.FC<
-  TypographyContentCaptionProps
-> = ({ content, caption, sx = {}, sxContent, sxCaption, userTitleName }) => {
+export const TypographyContentCaption: React.FC<TypographyContentCaptionProps> = ({
+  content,
+  caption,
+  sx = {},
+  sxContent,
+  sxCaption,
+  userTitleName,
+}) => {
   return (
     <Stack gap={0} sx={{ ...sx }}>
       <Typography

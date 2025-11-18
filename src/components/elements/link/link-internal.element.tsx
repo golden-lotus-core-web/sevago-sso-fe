@@ -1,6 +1,6 @@
-import { Typography } from "@mui/material";
-import { SxProps, Theme } from "@mui/material";
-import React from "react";
+import { Typography } from '@mui/material';
+import { SxProps, Theme } from '@mui/material';
+import React from 'react';
 
 export interface LinkInternalElementProps {
   content: string;
@@ -8,20 +8,16 @@ export interface LinkInternalElementProps {
   sx?: SxProps<Theme>;
 }
 
-export const LinkInternalElement: React.FC<LinkInternalElementProps> = ({
-  content,
-  onClick,
-  sx = {},
-}) => {
+export const LinkInternalElement: React.FC<LinkInternalElementProps> = ({ content, onClick, sx = {} }) => {
   return (
     <Typography
       onClick={onClick}
       sx={{
-        color: "inherit",
-        textDecorationColor: "inherit",
-        cursor: "pointer",
-        "&:hover": {
-          textDecoration: "underline",
+        color: 'inherit',
+        textDecorationColor: 'inherit',
+        cursor: 'pointer',
+        '&:hover': {
+          textDecoration: 'underline',
         },
         ...sx,
       }}

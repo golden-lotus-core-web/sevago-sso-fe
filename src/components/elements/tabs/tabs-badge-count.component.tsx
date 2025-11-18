@@ -1,11 +1,11 @@
-import { Stack, useTheme } from "@mui/material";
-import { LayoutGroup, motion } from "framer-motion";
-import React, { useEffect, useId, useState } from "react";
-import { StackTabs } from "../../styles";
-import { IconContentBadgeCountElement } from "../icon";
-import { LinkElement } from "../link";
-import { TabComponent } from "./tabs.component";
-import { TAB_BACKGROUND_STYLES, TAB_STYLES } from "./tabs.constant";
+import { Stack, useTheme } from '@mui/material';
+import { LayoutGroup, motion } from 'framer-motion';
+import React, { useEffect, useId, useState } from 'react';
+import { StackTabs } from '../../styles';
+import { IconContentBadgeCountElement } from '../icon';
+import { LinkElement } from '../link';
+import { TabComponent } from './tabs.component';
+import { TAB_BACKGROUND_STYLES, TAB_STYLES } from './tabs.constant';
 
 export interface TabBadgeCount extends TabComponent {
   badgeCount: number;
@@ -14,14 +14,18 @@ export interface TabBadgeCount extends TabComponent {
 export interface TabsBadgeCountComponentProps {
   idSelect?: string;
   tabs: TabBadgeCount[];
-  size?: "large" | "small" | "medium";
-  direction?: "column" | "row";
+  size?: 'large' | 'small' | 'medium';
+  direction?: 'column' | 'row';
   isSubs?: boolean;
 }
 
-export const TabsBadgeCountComponent: React.FC<
-  TabsBadgeCountComponentProps
-> = ({ idSelect, tabs, size, direction = "row", isSubs = false }) => {
+export const TabsBadgeCountComponent: React.FC<TabsBadgeCountComponentProps> = ({
+  idSelect,
+  tabs,
+  size,
+  direction = 'row',
+  isSubs = false,
+}) => {
   const { palette } = useTheme();
 
   const [selected, setSelected] = useState(idSelect);
@@ -36,26 +40,15 @@ export const TabsBadgeCountComponent: React.FC<
     <LayoutGroup id={layoutGroupId}>
       <StackTabs direction={direction}>
         {tabs.map((tab) => (
-          <LinkElement
-            href={tab.href}
-            onClick={tab.onClick}
-            key={tab.id}
-            id={tab.id}
-          >
+          <LinkElement href={tab.href} onClick={tab.onClick} key={tab.id} id={tab.id}>
             <Stack
               component={motion.div}
               sx={TAB_STYLES}
               initial={{
-                color:
-                  tab.id === selected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === selected ? palette.primary.contrastText : palette.text.primary,
               }}
               animate={{
-                color:
-                  tab.id === selected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === selected ? palette.primary.contrastText : palette.text.primary,
               }}
               transition={{ duration: 0.3 }}
               onTap={() => setSelected(tab.id)}

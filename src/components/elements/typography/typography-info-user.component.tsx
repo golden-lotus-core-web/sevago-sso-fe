@@ -1,8 +1,8 @@
-import { SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import { STYLE, TYPOGRAPHY_STYLES, COLOR_CONSTANT } from "../../../common";
-import { StackRow } from "../../styles";
-import { highlightYellow } from "../text-field/text-highlight.element";
+import { SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { COLOR_CONSTANT, STYLE, TYPOGRAPHY_STYLES } from '../../../common';
+import { StackRow } from '../../styles';
+import { highlightYellow } from '../text-field';
 
 export interface InfoItem {
   label: string;
@@ -21,20 +21,20 @@ interface TypographyInfoGridProps {
   highlightQuery?: string;
 }
 
-const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
+export const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
   items,
   columns = 2,
   sx,
-  columnGap = "60px",
+  columnGap = '60px',
   gap = STYLE.PADDING_GAP_BUTTON,
   showEmptyAsDots = true,
-  gridTemplateColumns = "1.75fr 2fr",
+  gridTemplateColumns = '1.75fr 2fr',
   highlightQuery,
 }) => {
   return (
     <StackRow
       sx={{
-        display: "grid",
+        display: 'grid',
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gap: gap,
         columnGap: columnGap,
@@ -45,10 +45,9 @@ const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
         <StackRow
           key={index}
           sx={{
-            display: "grid",
-            gridTemplateColumns:
-              columns === 1 ? "1fr 3fr" : gridTemplateColumns,
-            height: "fit-content",
+            display: 'grid',
+            gridTemplateColumns: columns === 1 ? '1fr 3fr' : gridTemplateColumns,
+            height: 'fit-content',
           }}
         >
           <Typography
@@ -58,8 +57,7 @@ const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
               flex: 1,
             }}
           >
-            {highlightYellow(item.label, highlightQuery ?? "", showEmptyAsDots)}
-            :
+            {highlightYellow(item.label, highlightQuery ?? '', showEmptyAsDots)}:
           </Typography>
 
           <Typography
@@ -68,16 +66,14 @@ const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
               color: COLOR_CONSTANT.black,
               flex: 1,
               borderBottom: `1px solid ${COLOR_CONSTANT.gray8}`,
-              textAlign: "right",
+              textAlign: 'right',
               ...item.sxValue,
             }}
           >
-            {highlightYellow(item.value, highlightQuery ?? "", showEmptyAsDots)}
+            {highlightYellow(item.value, highlightQuery ?? '', showEmptyAsDots)}
           </Typography>
         </StackRow>
       ))}
     </StackRow>
   );
 };
-
-export default TypographyInfoUser;

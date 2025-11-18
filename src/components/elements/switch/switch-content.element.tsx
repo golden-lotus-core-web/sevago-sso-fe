@@ -1,7 +1,7 @@
-import { SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import { SwitchElement } from "./switch.element";
-import { StackRowAlignCenterJustEnd } from "../../styles/stack.style";
+import { SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { SwitchElement } from './switch.element';
+import { StackRowAlignCenterJustEnd } from '../../styles/stack.style';
 
 export interface SwitchContentElementProps {
   name?: string;

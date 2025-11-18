@@ -1,8 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Box, Typography, IconButton } from "@mui/material";
-import { IconElement } from "../elements/icon/icon.element";
-import { TYPOGRAPHY_STYLES } from "../../common/constant/typography.constant";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box, Typography, IconButton } from '@mui/material';
+import { IconElement } from '../elements/icon/icon.element';
+import { TYPOGRAPHY_STYLES } from '../../common/constant/typography.constant';
 
 interface BreadcrumbsProps {
   content: string;
@@ -11,12 +11,7 @@ interface BreadcrumbsProps {
   sxLabel?: React.CSSProperties;
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
-  content,
-  showBackButton = true,
-  onBack,
-  sxLabel,
-}) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ content, showBackButton = true, onBack, sxLabel }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -30,9 +25,9 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center",
-        padding: "16px 0px",
+        display: 'flex',
+        alignItems: 'center',
+        padding: '16px 0px',
       }}
     >
       {showBackButton && (
@@ -41,9 +36,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
         </IconButton>
       )}
 
-      <Typography sx={{ ...TYPOGRAPHY_STYLES.textMd.semiBold, ...sxLabel }}>
-        {content}
-      </Typography>
+      <Typography sx={{ ...TYPOGRAPHY_STYLES.textMd.semiBold, ...sxLabel }}>{content}</Typography>
     </Box>
   );
 };

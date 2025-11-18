@@ -1,11 +1,11 @@
-import { Stack, SxProps, useTheme } from "@mui/material";
-import { LayoutGroup, motion } from "framer-motion";
-import React, { useEffect, useId, useState } from "react";
-import { COLOR_CONSTANT, STYLE } from "../../../common";
-import { StackTabs } from "../../styles";
-import { IconContentElement } from "../icon";
-import { LinkElement } from "../link";
-import { StyledTab, StyledTabs, TAB_BACKGROUND_STYLES } from "./tabs.constant";
+import { Stack, SxProps, useTheme } from '@mui/material';
+import { LayoutGroup, motion } from 'framer-motion';
+import React, { useEffect, useId, useState } from 'react';
+import { COLOR_CONSTANT, STYLE } from '../../../common';
+import { StackTabs } from '../../styles';
+import { IconContentElement } from '../icon';
+import { LinkElement } from '../link';
+import { StyledTab, StyledTabs, TAB_BACKGROUND_STYLES } from './tabs.constant';
 
 export interface TabComponent {
   id: string;
@@ -18,9 +18,9 @@ export interface TabComponent {
 export interface TabsComponentProps {
   idSelect?: string;
   tabs: TabComponent[];
-  size?: "large" | "small" | "medium";
-  direction?: "column" | "row";
-  variant?: "contained" | "outlined";
+  size?: 'large' | 'small' | 'medium';
+  direction?: 'column' | 'row';
+  variant?: 'contained' | 'outlined';
   onChange?: (newValue: string) => void;
   sx?: SxProps;
   sxTabs?: SxProps;
@@ -31,8 +31,8 @@ export const TabsComponent: React.FC<TabsComponentProps> = ({
   idSelect,
   tabs,
   size,
-  direction = "row",
-  variant = "contained",
+  direction = 'row',
+  variant = 'contained',
   onChange,
   sx,
   sxTabs,
@@ -48,7 +48,7 @@ export const TabsComponent: React.FC<TabsComponentProps> = ({
     setSelected(idSelect);
   }, [idSelect]);
 
-  if (variant === "outlined") {
+  if (variant === 'outlined') {
     const selectedIndex = tabs.findIndex((tab) => tab.id === selected);
     return (
       <StyledTabs
@@ -59,12 +59,7 @@ export const TabsComponent: React.FC<TabsComponentProps> = ({
         // aria-label="styled tabs example"
       >
         {tabs.map((it) => (
-          <StyledTab
-            icon={it.icon ?? ""}
-            key={it.id}
-            label={it.name}
-            sx={{ textTransform: "inherit", ...sx }}
-          />
+          <StyledTab icon={it.icon ?? ''} key={it.id} label={it.name} sx={{ textTransform: 'inherit', ...sx }} />
         ))}
       </StyledTabs>
     );
@@ -74,47 +69,27 @@ export const TabsComponent: React.FC<TabsComponentProps> = ({
     <LayoutGroup id={layoutGroupId}>
       <StackTabs sx={{ ...sxWrapper }} direction={direction}>
         {tabs.map((tab, index) => (
-          <LinkElement
-            href={tab.href}
-            onClick={() => tab.onClick?.()}
-            key={tab.id}
-            id={tab.id}
-          >
+          <LinkElement href={tab.href} onClick={() => tab.onClick?.()} key={tab.id} id={tab.id}>
             <Stack
               component={motion.div}
               sx={{
-                height: "auto",
-                position: "relative",
+                height: 'auto',
+                position: 'relative',
                 padding: `10px ${STYLE.PADDING_GAP_LAYOUT}`,
-                cursor: "pointer",
-                borderRight:
-                  index < tabs.length - 1
-                    ? `1px solid ${COLOR_CONSTANT.gray}`
-                    : "none",
+                cursor: 'pointer',
+                borderRight: index < tabs.length - 1 ? `1px solid ${COLOR_CONSTANT.gray}` : 'none',
                 ...sxTabs,
               }}
               initial={{
-                color:
-                  tab.id === selected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === selected ? palette.primary.contrastText : palette.text.primary,
               }}
               animate={{
-                color:
-                  tab.id === selected
-                    ? palette.primary.contrastText
-                    : palette.text.primary,
+                color: tab.id === selected ? palette.primary.contrastText : palette.text.primary,
               }}
               transition={{ duration: 0.3 }}
               onTap={() => setSelected(tab.id)}
             >
-              <IconContentElement
-                icon={tab.icon}
-                content={tab.name}
-                sx={{ zIndex: 1 }}
-                size={size}
-                isNowrap
-              />
+              <IconContentElement icon={tab.icon} content={tab.name} sx={{ zIndex: 1 }} size={size} isNowrap />
 
               {tab.id === selected && (
                 <Stack

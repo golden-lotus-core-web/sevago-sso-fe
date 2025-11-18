@@ -1,6 +1,6 @@
-import { Stack, SxProps, Theme, Typography } from "@mui/material";
-import React from "react";
-import { StackRow } from "../../styles";
+import { Stack, SxProps, Theme, Typography } from '@mui/material';
+import React from 'react';
+import { StackRow } from '../../styles';
 
 type TypographyGridInfoRowProps = {
   label: string;
@@ -8,30 +8,30 @@ type TypographyGridInfoRowProps = {
   sx?: SxProps<Theme>;
   lineLimit?: number;
   columns?: string;
-  layout?: "horizontal" | "vertical";
+  layout?: 'horizontal' | 'vertical';
   sxValue?: SxProps<Theme>;
   sxLabel?: SxProps<Theme>;
 };
 
-const TypographyGridInfoRow: React.FC<TypographyGridInfoRowProps> = ({
+export const TypographyGridInfoRow: React.FC<TypographyGridInfoRowProps> = ({
   label,
   value,
   sx,
-  columns = "1fr 2fr",
-  layout = "vertical",
+  columns = '1fr 2fr',
+  layout = 'vertical',
   sxValue,
   sxLabel,
 }) => {
-  if (layout === "vertical") {
+  if (layout === 'vertical') {
     return (
       <React.Fragment>
-        <StackRow sx={{ display: "grid", gridTemplateColumns: columns, ...sx }}>
+        <StackRow sx={{ display: 'grid', gridTemplateColumns: columns, ...sx }}>
           <Stack>
             <Typography fontWeight="bold" sx={{ ...sxLabel }}>
               {label}
             </Typography>
           </Stack>
-          <Stack sx={{ ...sxValue }}>{value || "Không có"}</Stack>
+          <Stack sx={{ ...sxValue }}>{value || 'Không có'}</Stack>
         </StackRow>
       </React.Fragment>
     );
@@ -43,10 +43,8 @@ const TypographyGridInfoRow: React.FC<TypographyGridInfoRowProps> = ({
         <Typography fontWeight="bold" sx={{ ...sxLabel }}>
           {label}
         </Typography>
-        <Stack sx={{ ...sxValue }}>{value || "Không có"}</Stack>
+        <Stack sx={{ ...sxValue }}>{value || 'Không có'}</Stack>
       </Stack>
     </React.Fragment>
   );
 };
-
-export default TypographyGridInfoRow;

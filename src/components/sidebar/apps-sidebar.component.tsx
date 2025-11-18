@@ -1,25 +1,17 @@
-import { Box, IconButton, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import React from "react";
-import { Environment } from "../../common";
-import {
-  APP_OBJ,
-  AppGroup,
-  AppInfo,
-  SSO,
-} from "../../common/constant/apps.data";
-import {
-  PADDING_GAP_ITEM,
-  PADDING_GAP_LAYOUT,
-} from "../../common/constant/style.constant";
-import { AppGrid } from "../app-grid/app-grid.component";
-import { IconElement } from "../elements/icon/icon.element";
-import { MotionBox } from "../motion/motion-box.component";
+import { Box, IconButton, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import React from 'react';
+import { Environment } from '../../common';
+import { APP_OBJ, AppGroup, AppInfo, SSO } from '../../common/constant/apps.data';
+import { PADDING_GAP_ITEM, PADDING_GAP_LAYOUT } from '../../common/constant/style.constant';
+import { AppGrid } from '../app-grid/app-grid.component';
+import { IconElement } from '../elements/icon/icon.element';
+import { MotionBox } from '../motion/motion-box.component';
 
 interface AppsSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  position?: "left" | "right";
+  position?: 'left' | 'right';
   blacklist?: string[]; // list of paths to show; if empty or no match -> show all
   env: Environment;
   onClickApp: (appInfo: AppInfo) => void;
@@ -28,7 +20,7 @@ interface AppsSidebarProps {
 export const AppsSidebar: React.FC<AppsSidebarProps> = ({
   isOpen,
   onClose,
-  position = "left",
+  position = 'left',
   blacklist = [],
   env,
   onClickApp,
@@ -46,7 +38,7 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
       return r;
     },
-    {} as Record<AppGroup, AppInfo[]>
+    {} as Record<AppGroup, AppInfo[]>,
   );
 
   return (
@@ -54,12 +46,12 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
       <Box
         onClick={onClose}
         sx={{
-          position: "fixed",
+          position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
           zIndex: 100,
         }}
       />
@@ -68,32 +60,32 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
       <MotionBox
         preset="fadeInLeft"
         sx={{
-          position: "fixed",
+          position: 'fixed',
           top: 0,
-          left: position === "left" ? 0 : "auto",
-          right: position === "right" ? 0 : "auto",
-          height: "100vh",
+          left: position === 'left' ? 0 : 'auto',
+          right: position === 'right' ? 0 : 'auto',
+          height: '100vh',
           backgroundColor: theme.palette.common.white,
           zIndex: 100,
           padding: PADDING_GAP_LAYOUT,
           gap: PADDING_GAP_ITEM,
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
         {/* Header */}
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
           <IconButton
             onClick={onClose}
             sx={{
               color: theme.palette.grey[600],
-              "&:hover": { backgroundColor: theme.palette.grey[100] },
+              '&:hover': { backgroundColor: theme.palette.grey[100] },
             }}
           >
             <IconElement icon="close" />
@@ -101,13 +93,10 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
           <IconButton
             sx={{
               color: theme.palette.grey[600],
-              "&:hover": { backgroundColor: theme.palette.grey[100] },
+              '&:hover': { backgroundColor: theme.palette.grey[100] },
             }}
           >
-            <IconElement
-              icon="home"
-              onClick={() => (window.location.href = SSO[env])}
-            />
+            <IconElement icon="home" onClick={() => (window.location.href = SSO[env])} />
           </IconButton>
         </Box>
 
@@ -116,12 +105,12 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
             key={group}
             sx={{
               gap: PADDING_GAP_ITEM,
-              display: "flex",
-              flexDirection: "column",
+              display: 'flex',
+              flexDirection: 'column',
             }}
           >
             <Typography variant="subtitle2">
-              {group === AppGroup.PLATFORM_AND_INFO ? "Platform & Info" : group}
+              {group === AppGroup.PLATFORM_AND_INFO ? 'Platform & Info' : group}
             </Typography>
             <AppGrid
               apps={appsGroupObj[group as AppGroup]}

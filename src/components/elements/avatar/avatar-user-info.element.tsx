@@ -1,13 +1,8 @@
-import { Stack, SxProps, Typography, useTheme } from "@mui/material";
-import React from "react";
-import {
-  SizeProps,
-  STYLE,
-  getLimitLineCss,
-  TYPOGRAPHY_STYLES,
-} from "../../../common";
-import { StackRow } from "../../styles";
-import { AvatarElement } from "./avatar.element";
+import { Stack, SxProps, Typography, useTheme } from '@mui/material';
+import React from 'react';
+import { SizeProps, STYLE, getLimitLineCss, TYPOGRAPHY_STYLES } from '../../../common';
+import { StackRow } from '../../styles';
+import { AvatarElement } from './avatar.element';
 
 export interface AvatarUserInfoProps {
   name: string;
@@ -24,24 +19,24 @@ export const AvatarUserInfo: React.FC<AvatarUserInfoProps> = ({
   name,
   url,
   positions = [],
-  maxWidth = "440px",
+  maxWidth = '440px',
   isTag = false,
   sxName,
   sxPosition,
-  sizeAvatar = "large",
+  sizeAvatar = 'large',
 }) => {
   const { palette } = useTheme();
 
   return (
-    <StackRow sx={{ alignItems: "center", gap: STYLE.PADDING_GAP_ITEM }}>
+    <StackRow sx={{ alignItems: 'center', gap: STYLE.PADDING_GAP_ITEM }}>
       <AvatarElement url={url} size={sizeAvatar} />
       {positions.length > 0 ? (
         <Stack sx={{ gap: 0 }}>
           <Typography
             sx={{
-              fontWeight: "600",
-              fontSize: "14px",
-              lineHeight: "20px",
+              fontWeight: '600',
+              fontSize: '14px',
+              lineHeight: '20px',
               ...getLimitLineCss(1),
               ...sxName,
             }}
@@ -56,20 +51,20 @@ export const AvatarUserInfo: React.FC<AvatarUserInfoProps> = ({
               color: palette.text.disabled,
               maxWidth,
               ...(isTag && {
-                display: "flex",
-                padding: "2px 4px",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "10px",
-                borderRadius: "4px",
-                background: " #EFF8FF",
-                color: " #035388",
-                width: "fit-content",
+                display: 'flex',
+                padding: '2px 4px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '10px',
+                borderRadius: '4px',
+                background: ' #EFF8FF',
+                color: ' #035388',
+                width: 'fit-content',
                 ...sxPosition,
               }),
             }}
           >
-            {positions.join(" / ")}
+            {positions.join(' / ')}
           </Typography>
         </Stack>
       ) : (

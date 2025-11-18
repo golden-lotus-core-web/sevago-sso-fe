@@ -1,8 +1,8 @@
-import { Typography, useTheme } from "@mui/material";
-import React from "react";
-import { STYLE } from "../../../common";
-import { PADDING_GAP_ITEM_SMALL } from "../../../common/constant/style.constant";
-import { IconElement } from "../icon";
+import { Typography, useTheme } from '@mui/material';
+import React from 'react';
+import { STYLE } from '../../../common';
+import { PADDING_GAP_ITEM_SMALL } from '../../../common/constant/style.constant';
+import { IconElement } from '../icon';
 
 interface TextFieldLabelElementProps {
   label?: string | React.ReactNode;
@@ -26,19 +26,14 @@ export const TextFieldLabelElement: React.FC<TextFieldLabelElementProps> = ({
       variant="subtitle1"
       sx={{
         color: colorLabel || palette.text.primary,
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         gap: PADDING_GAP_ITEM_SMALL,
       }}
     >
-      {iconLabel && (
-        <IconElement
-          icon={iconLabel}
-          sx={{ fontSize: STYLE.TEXT_FIELD.FONT_SIZE_LABEL }}
-        />
-      )}
+      {iconLabel && <IconElement icon={iconLabel} sx={{ fontSize: STYLE.TEXT_FIELD.FONT_SIZE_LABEL }} />}
       {label}
-      {required && <span style={{ color: "red" }}>*</span>}
+      {required && <span style={{ color: 'red' }}>*</span>}
     </Typography>
   );
 };

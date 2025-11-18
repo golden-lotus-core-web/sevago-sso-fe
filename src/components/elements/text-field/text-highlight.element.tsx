@@ -1,12 +1,9 @@
-import React from "react";
-import { COLOR_CONSTANT } from "../../../common/constant/color.constant";
-import { COLOR_HIERARCHIAL } from "../../../common/constant/hierarchical.constant";
-import { normalizeText } from "../../../common/utils/other/hierarchical.utils";
+import React from 'react';
+import { COLOR_CONSTANT } from '../../../common/constant/color.constant';
+import { COLOR_HIERARCHIAL } from '../../../common/constant/hierarchical.constant';
+import { normalizeText } from '../../../common/utils/other/hierarchical.utils';
 
-export const highlightText = (
-  text: string,
-  searchTerm: string
-): React.ReactNode => {
+export const highlightText = (text: string, searchTerm: string): React.ReactNode => {
   if (!searchTerm || !text) return text;
 
   const normalizedText = normalizeText(text);
@@ -30,11 +27,11 @@ export const highlightText = (
           key={i}
           style={{
             color: COLOR_HIERARCHIAL.COLOR_HIGHLIGHT_TEXT,
-            textDecoration: "underline",
+            textDecoration: 'underline',
           }}
         >
           {text.substr(i, searchLen)}
-        </span>
+        </span>,
       );
       i += searchLen;
       lastIndex = i;
@@ -50,15 +47,10 @@ export const highlightText = (
   return result;
 };
 
-export const highlightYellow = (
-  text: string | React.ReactNode,
-  highlightQuery: string,
-  showEmptyAsDots: boolean
-) => {
-  const q = (highlightQuery ?? "").toString().trim().toLowerCase();
+export const highlightYellow = (text: string | React.ReactNode, highlightQuery: string, showEmptyAsDots: boolean) => {
+  const q = (highlightQuery ?? '').toString().trim().toLowerCase();
 
-  if (!q || typeof text !== "string")
-    return text || (showEmptyAsDots ? "..." : "");
+  if (!q || typeof text !== 'string') return text || (showEmptyAsDots ? '...' : '');
   const lower = text.toLowerCase();
   const idx = lower.indexOf(q);
   if (idx === -1) return text;
@@ -68,9 +60,7 @@ export const highlightYellow = (
   return (
     <span>
       {before}
-      <mark style={{ backgroundColor: COLOR_CONSTANT.yellow, padding: 0 }}>
-        {match}
-      </mark>
+      <mark style={{ backgroundColor: COLOR_CONSTANT.yellow, padding: 0 }}>{match}</mark>
       {after}
     </span>
   );

@@ -1,27 +1,24 @@
-import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
-import { STYLE } from "../../../common";
-import { StackRowAlignCenter } from "../../styles";
-import { TabsBadgeCountComponent } from "../tabs";
-import { TabBadgeCount } from "../tabs/tabs-badge-count.component";
-import { IconContentBadgeCountElement } from "./icon-content-badge-count.element";
-import { IconContentElementProps } from "./icon-content.element";
-import { IconElement } from "./icon.element";
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { STYLE } from '../../../common';
+import { StackRowAlignCenter } from '../../styles';
+import { TabsBadgeCountComponent } from '../tabs';
+import { TabBadgeCount } from '../tabs/tabs-badge-count.component';
+import { IconContentBadgeCountElement } from './icon-content-badge-count.element';
+import { IconContentElementProps } from './icon-content.element';
+import { IconElement } from './icon.element';
 
-export interface IconContentBadgeCountSubsElementProps
-  extends IconContentElementProps {
+export interface IconContentBadgeCountSubsElementProps extends IconContentElementProps {
   subs: TabBadgeCount[];
   idSubSelect?: string;
   badgeCount: number;
 }
 
-export const IconContentBadgeCountSubsElement: React.FC<
-  IconContentBadgeCountSubsElementProps
-> = ({
+export const IconContentBadgeCountSubsElement: React.FC<IconContentBadgeCountSubsElementProps> = ({
   icon,
   content,
   size,
-  color = "inherit",
+  color = 'inherit',
   sx = {},
   sxIcon = {},
   id,
@@ -37,18 +34,18 @@ export const IconContentBadgeCountSubsElement: React.FC<
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       sx={{
-        gap: STYLE.GAP_ICON_CONTENT_BY_SIZE[size || "medium"],
-        position: "relative",
-        cursor: "pointer",
+        gap: STYLE.GAP_ICON_CONTENT_BY_SIZE[size || 'medium'],
+        position: 'relative',
+        cursor: 'pointer',
         ...sx,
-        "&::after": {
+        '&::after': {
           content: '""',
-          position: "absolute",
-          top: "100%",
+          position: 'absolute',
+          top: '100%',
           left: 0,
           width: `calc(100% + ${STYLE.PADDING_GAP_ITEM})`,
           height: 20,
-          pointerEvents: "auto",
+          pointerEvents: 'auto',
           zIndex: 2,
         },
         zIndex: 6,
@@ -67,7 +64,7 @@ export const IconContentBadgeCountSubsElement: React.FC<
       <motion.span
         animate={{ rotate: hovered ? 180 : 0 }}
         transition={{ duration: 0.2 }}
-        style={{ display: "inline-flex" }}
+        style={{ display: 'inline-flex' }}
       >
         <IconElement icon="arrow_drop_down" sx={sxIcon} />
       </motion.span>
@@ -81,20 +78,15 @@ export const IconContentBadgeCountSubsElement: React.FC<
             exit={{ opacity: 0, y: -5 }}
             transition={{ duration: 0.15 }}
             style={{
-              position: "absolute",
-              top: "100%",
-              marginTop: "18px",
+              position: 'absolute',
+              top: '100%',
+              marginTop: '18px',
               right: 0,
               zIndex: 3,
-              width: "fit-content",
+              width: 'fit-content',
             }}
           >
-            <TabsBadgeCountComponent
-              tabs={subs}
-              idSelect={idSubSelect}
-              direction="column"
-              isSubs
-            />
+            <TabsBadgeCountComponent tabs={subs} idSelect={idSubSelect} direction="column" isSubs />
           </motion.div>
         ) : null}
       </AnimatePresence>

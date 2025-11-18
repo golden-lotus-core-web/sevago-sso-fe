@@ -1,6 +1,6 @@
 {
   "name": "sevago-sso-fe",
-  "version": "1.0.56",
+  "version": "1.0.57",
   "description": "Sevago SSO Frontend Library - A comprehensive SSO solution with React components",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -16,7 +16,11 @@
     "build:lib": "vite build --mode library",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepublishOnly": "npm run build:lib"
+    "prepublishOnly": "npm run build:lib",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx,json,css,md}",
+    "version:patch": "npm version patch",
+    "publish:public": "npm publish --access public",
+    "version:publish": "npm version patch && npm publish --access public"
   },
   "keywords": [
     "sso",
@@ -54,7 +58,9 @@
     "formik": "^2.4.6",
     "framer-motion": "^12.23.22",
     "socket.io-client": "^4.8.1",
-    "yup": "^1.7.1"
+    "yup": "^1.7.1",
+    "@mui/x-date-pickers": "^8.2.0",
+    "react-number-format": "^5.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
