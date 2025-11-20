@@ -68,6 +68,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
         {visibleApps.map((app, index) => {
           return (
             <MotionBox
+              key={index}
               preset="staggerItem"
               index={index}
               hover

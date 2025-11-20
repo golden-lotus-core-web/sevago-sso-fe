@@ -5,9 +5,9 @@ const IconRight = (props: React.SVGProps<SVGSVGElement>) => (
     <path
       d="M12 1L19 8M19 8L12 15M19 8L1 8"
       stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

@@ -29,17 +29,14 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
   const theme = useTheme();
 
-  const appsGroupObj = Object.values(APP_OBJ).reduce(
-    (r, e) => {
-      if (blacklist.includes(e.path[env])) return r;
+  const appsGroupObj = Object.values(APP_OBJ).reduce((r, e) => {
+    if (blacklist.includes(e.path[env])) return r;
 
-      if (r[e.group]) r[e.group].push(e);
-      else r[e.group] = [e];
+    if (r[e.group]) r[e.group].push(e);
+    else r[e.group] = [e];
 
-      return r;
-    },
-    {} as Record<AppGroup, AppInfo[]>,
-  );
+    return r;
+  }, {} as Record<AppGroup, AppInfo[]>);
 
   return (
     <>

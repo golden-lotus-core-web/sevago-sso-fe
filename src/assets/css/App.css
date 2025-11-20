@@ -105,9 +105,7 @@ p {
 /* RESET AUTOFILL */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition:
-    background-color 99999s,
-    color 99999s;
+  transition: background-color 99999s, color 99999s;
 }
 
 input[data-autocompleted] {
