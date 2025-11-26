@@ -57,7 +57,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
   const placeholdersCount = Math.max(0, pageSize - visibleApps.length);
-  const placeholderHeight = iconSize + 48;
+  const placeholderHeight = iconSize + 36.5;
 
   return (
     <Box sx={{ position: 'relative' }}>
