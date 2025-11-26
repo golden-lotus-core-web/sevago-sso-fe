@@ -23,12 +23,12 @@ export interface AppInfo {
 }
 
 export const APP_GROUP_COLOR = {
-  [AppGroup.WORKFLOW_ENGINE]: '#2E76FF',
-  [AppGroup.HRM]: '#09A569',
-  [AppGroup.PLATFORM_AND_INFO]: '#FF9454',
-  [AppGroup.B2B]: '#EB6262',
-  [AppGroup.CLIENT]: '#FF9454',
-  [AppGroup.OTHER]: '#EB6262',
+  [AppGroup.WORKFLOW_ENGINE]: 'linear-gradient(180deg, #3990FF 0%, #2662FF 100%)',
+  [AppGroup.HRM]: 'linear-gradient(180deg, #09D47B 0%, #07554B 100%)',
+  [AppGroup.PLATFORM_AND_INFO]: 'linear-gradient(180deg, #FF9A56 0%, #FF6A43 100%)',
+  [AppGroup.B2B]: 'linear-gradient(180deg, #FF9A56 0%, #EB6262 100%)',
+  [AppGroup.CLIENT]: 'linear-gradient(180deg, #FF9A56 0%, #FF6A43 100%)',
+  [AppGroup.OTHER]: 'linear-gradient(180deg, #A509D4 0%, #1B0755 100%)',
 };
 
 import {
@@ -249,7 +249,7 @@ export const APP_OBJ = {
       production: 'https://admin.e-catalogue.sevago.com.vn',
     }, // E-Catalogue
     icon: sevagoIcon,
-    content: 'Sevago - E-Catalogue',
+    content: 'E-Catalogue',
     group: AppGroup.B2B,
     color: APP_GROUP_COLOR[AppGroup.B2B],
   },
@@ -263,7 +263,7 @@ export const APP_OBJ = {
       production: 'https://admin.landing-page.sevago.com.vn',
     }, // Landing page
     icon: sevagoIcon,
-    content: 'Sevago - Landing page',
+    content: 'Landing page',
     group: AppGroup.OTHER,
     color: APP_GROUP_COLOR[AppGroup.OTHER],
   },

@@ -56,6 +56,9 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
+  const placeholdersCount = Math.max(0, pageSize - visibleApps.length);
+  const placeholderHeight = iconSize + 48;
+
   return (
     <Box sx={{ position: 'relative' }}>
       <Box
@@ -103,6 +106,17 @@ export const AppGrid: React.FC<AppGridProps> = ({
             </MotionBox>
           );
         })}
+        {placeholdersCount > 0 &&
+          Array.from({ length: placeholdersCount }).map((_, fillerIndex) => (
+            <Box
+              key={`placeholder-${fillerIndex}`}
+              sx={{
+                visibility: 'hidden',
+                width: 1,
+                minHeight: placeholderHeight,
+              }}
+            />
+          ))}
       </Box>
 
       {showPagination && totalPages > 1 && (
