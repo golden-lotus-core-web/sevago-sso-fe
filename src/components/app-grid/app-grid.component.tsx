@@ -28,6 +28,7 @@ export interface AppGridProps {
   captionColor?: string;
   showPagination?: boolean;
   onClickApp: (appInfo: AppInfo) => void;
+  isShowAppHidden?: boolean;
 }
 
 export const AppGrid: React.FC<AppGridProps> = ({
@@ -41,6 +42,7 @@ export const AppGrid: React.FC<AppGridProps> = ({
   titleColor,
   showPagination = true,
   onClickApp,
+  isShowAppHidden = false,
 }) => {
   const theme = useTheme();
 
@@ -56,8 +58,8 @@ export const AppGrid: React.FC<AppGridProps> = ({
   const end = start + pageSize;
   const visibleApps = totalPages > 1 ? apps.slice(start, end) : apps;
 
-  const placeholdersCount = Math.max(0, pageSize - visibleApps.length);
-  const placeholderHeight = iconSize + 36.5;
+  const placeholdersCount = isShowAppHidden ? Math.max(0, pageSize - visibleApps.length) : 0;
+  const placeholderHeight = isShowAppHidden ? iconSize + 36.5 : 0;
 
   return (
     <Box sx={{ position: 'relative' }}>

@@ -72,6 +72,7 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({ blackl
             iconRadius={7}
             gap={PADDING_GAP_TAB}
             onClickApp={onClickApp}
+            isShowAppHidden={true}
           />
         </MotionBox>
       </Box>
