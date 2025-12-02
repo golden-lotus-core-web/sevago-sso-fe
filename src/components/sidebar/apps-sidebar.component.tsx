@@ -29,8 +29,9 @@ export const AppsSidebar: React.FC<AppsSidebarProps> = ({
 
   const theme = useTheme();
 
-  const appsGroupObj = Object.values(APP_OBJ).reduce((r, e) => {
-    if (blacklist.includes(e.path[env])) return r;
+  const appsGroupObj = Object.keys(APP_OBJ).reduce((r, key) => {
+    if (blacklist.includes(key)) return r;
+    const e = (APP_OBJ as any)[key] as AppInfo;
 
     if (r[e.group]) r[e.group].push(e);
     else r[e.group] = [e];
