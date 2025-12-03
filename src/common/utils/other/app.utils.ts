@@ -1,5 +1,5 @@
 export enum Environment {
-  PRODUCTION_VPS = 'production_vps',
+  PRODUCTION_VPS = 'production-vps',
   DEVELOP = 'develop',
   STAGING = 'staging',
   PRODUCTION = 'production',
