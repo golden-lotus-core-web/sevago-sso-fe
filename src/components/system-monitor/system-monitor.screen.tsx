@@ -17,6 +17,18 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({ blackl
   const theme = useTheme();
   const [tab, setTab] = useState<AppGroup>(AppGroup.ALL);
 
+  const getAppsForGroup = (group: AppGroup): AppInfo[] =>
+    Object.keys(APP_OBJ)
+      .filter((key) => {
+        const e = (APP_OBJ as any)[key] as AppInfo;
+        const isBlacklisted = !!blacklist?.includes(key);
+        const isInSelectedGroup = group === AppGroup.ALL ? true : e.group === group;
+        return !isBlacklisted && isInSelectedGroup;
+      })
+      .map((key) => (APP_OBJ as any)[key] as AppInfo);
+
+  const appsForCurrentTab = getAppsForGroup(tab);
+
   return (
     <MotionBox
       preset="fadeInUp"
@@ -45,30 +57,30 @@ export const SystemMonitorScreen: React.FC<SystemMonitorScreenProps> = ({ blackl
             justifyContent: 'flex-start',
           }}
         >
-          {Object.values(AppGroup).map((g) => (
-            <MotionBox key={g} sx={{ position: 'relative' }} preset="tabUnderline">
-              <Typography
-                onClick={() => setTab(g)}
-                sx={{
-                  cursor: 'pointer',
-                  color: tab === g ? theme.palette.common.white : theme.palette.grey[300],
-                }}
-              >
-                {g}
-              </Typography>
-            </MotionBox>
-          ))}
+          {Object.values(AppGroup).map((g) => {
+            const appsForGroup = getAppsForGroup(g);
+            if (appsForGroup.length === 0) {
+              return null;
+            }
+
+            return (
+              <MotionBox key={g} sx={{ position: 'relative' }} preset="tabUnderline">
+                <Typography
+                  onClick={() => setTab(g)}
+                  sx={{
+                    cursor: 'pointer',
+                    color: tab === g ? theme.palette.common.white : theme.palette.grey[300],
+                  }}
+                >
+                  {g}
+                </Typography>
+              </MotionBox>
+            );
+          })}
         </Box>
         <MotionBox key={tab} preset="tabContent">
           <AppGrid
-            apps={Object.keys(APP_OBJ)
-              .filter((key) => {
-                const e = (APP_OBJ as any)[key] as AppInfo;
-                const isBlacklisted = !!blacklist?.includes(key);
-                const isInSelectedGroup = tab === AppGroup.ALL ? true : e.group === tab;
-                return !isBlacklisted && isInSelectedGroup;
-              })
-              .map((key) => (APP_OBJ as any)[key] as AppInfo)}
+            apps={appsForCurrentTab}
             iconSize={80}
             iconRadius={7}
             gap={PADDING_GAP_TAB}
