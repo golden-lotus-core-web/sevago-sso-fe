@@ -1,12 +1,11 @@
 import { Box, IconButton, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React from 'react';
-import { Environment } from '../../common';
-import { APP_OBJ, AppGroup, AppInfo, SSO } from '../../common/constant/apps.data';
-import { PADDING_GAP_ITEM, PADDING_GAP_LAYOUT } from '../../common/constant/style.constant';
 import { AppGrid } from '../app-grid/app-grid.component';
-import { IconElement } from '../elements/icon/icon.element';
-import { MotionBox } from '../motion/motion-box.component';
+import { Environment, AppInfo, APP_OBJ, AppGroup, SSO } from '../../common';
+import { PADDING_GAP_LAYOUT, PADDING_GAP_ITEM } from '../../common/constant/style.constant';
+import { IconElement } from '../elements';
+import { MotionBox } from '../motion';
 
 interface AppsSidebarProps {
   isOpen: boolean;

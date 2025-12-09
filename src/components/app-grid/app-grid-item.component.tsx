@@ -1,11 +1,8 @@
 import { Typography } from '@mui/material';
 import React from 'react';
-import { AppInfo } from '../../common/constant/apps.data';
-import { ImageElement } from '../elements/image/image.element';
-import { ImageSizeType } from '../elements/image/image.enum';
-import { StackRowAlignJustCenter } from '../styles';
-import { Stack } from '@mui/system';
-import { STYLE } from '../../common';
+import { AppInfo, STYLE } from '../../common';
+import { ImageElement, ImageSizeType } from '../elements';
+import { StackRowAlignCenter, StackRowAlignJustCenter } from '../styles';
 
 export interface AppGridItemProps {
   app: AppInfo;
@@ -27,7 +24,7 @@ export const AppGridItem: React.FC<AppGridItemProps> = ({
   direction = 'column',
 }) => {
   return (
-    <StackRowAlignJustCenter sx={{ flexDirection: direction, gap: STYLE.PADDING_GAP_ITEM }}>
+    <StackRowAlignCenter sx={{ flexDirection: direction, gap: STYLE.PADDING_GAP_ITEM }}>
       <StackRowAlignJustCenter
         sx={{
           width: iconSize,
@@ -48,6 +45,6 @@ export const AppGridItem: React.FC<AppGridItemProps> = ({
           {app.content}
         </Typography>
       )}
-    </StackRowAlignJustCenter>
+    </StackRowAlignCenter>
   );
 };

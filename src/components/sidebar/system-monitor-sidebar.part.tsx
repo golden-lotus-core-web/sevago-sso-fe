@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { APP_OBJ, AppInfo, Environment, IconAppsSidebar } from '../../common';
 import { AppGridItem } from '../app-grid';
-import { ImageElement, ImageSizeType } from '../elements';
 import { AppsSidebar } from './apps-sidebar.component';
+import { Environment, AppInfo, APP_OBJ, IconAppsSidebar } from '../../common';
+import { ImageElement, ImageSizeType } from '../elements';
 
 export interface SystemMonitorSidebarPartProps {
   position?: 'left' | 'right';
@@ -18,7 +18,7 @@ export const SystemMonitorSidebarPart: React.FC<SystemMonitorSidebarPartProps> =
   blacklist,
   env,
   onClickApp,
-  showNameApps = false,
+  showNameApps,
   direction = 'row',
 }) => {
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ export const SystemMonitorSidebarPart: React.FC<SystemMonitorSidebarPartProps> =
       <ImageElement url={IconAppsSidebar} onClick={() => setOpen(true)} sizeType={ImageSizeType.SQUARE} />
 
       {currentApp && (
-        <AppGridItem app={currentApp} iconSize={32} iconRadius={6} showNameApps={showNameApps} direction={direction} />
+        <AppGridItem app={currentApp} iconSize={32} iconRadius={3} showNameApps={showNameApps} direction={direction} />
       )}
 
       <AppsSidebar

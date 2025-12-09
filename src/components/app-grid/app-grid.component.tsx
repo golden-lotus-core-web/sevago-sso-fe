@@ -3,14 +3,14 @@ import { useTheme } from '@mui/material/styles';
 import React from 'react';
 import IconLeft from '../../assets/icon/icon-left';
 import IconRight from '../../assets/icon/icon-right';
-import { AppInfo } from '../../common/constant/apps.data';
+import { AppInfo } from '../../common';
 import {
-  BORDER_RADIUS_ELEMENT_WRAPPER,
-  PADDING_GAP_BUTTON,
   PADDING_GAP_ITEM,
+  PADDING_GAP_BUTTON,
   PADDING_GAP_ITEM_SMALL,
+  BORDER_RADIUS_ELEMENT_WRAPPER,
 } from '../../common/constant/style.constant';
-import { MotionBox } from '../motion/motion-box.component';
+import { MotionBox } from '../motion';
 import { AppGridItem } from './app-grid-item.component';
 
 export interface AppGridProps {
