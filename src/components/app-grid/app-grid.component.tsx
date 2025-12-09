@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import React from 'react';
 import IconLeft from '../../assets/icon/icon-left';
@@ -10,10 +10,8 @@ import {
   PADDING_GAP_ITEM,
   PADDING_GAP_ITEM_SMALL,
 } from '../../common/constant/style.constant';
-import { ImageElement } from '../elements/image/image.element';
-import { ImageSizeType } from '../elements/image/image.enum';
 import { MotionBox } from '../motion/motion-box.component';
-import { StackRowAlignJustCenter } from '../styles';
+import { AppGridItem } from './app-grid-item.component';
 
 export interface AppGridProps {
   apps: AppInfo[];
@@ -86,25 +84,13 @@ export const AppGrid: React.FC<AppGridProps> = ({
               }}
               onClick={() => onClickApp(app)}
             >
-              <StackRowAlignJustCenter
-                sx={{
-                  width: iconSize,
-                  height: iconSize,
-                  borderRadius: iconRadius,
-                  mb: 1.5,
-                  background: app.color,
-                }}
-              >
-                <ImageElement
-                  sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
-                  url={app.icon}
-                  sizeType={ImageSizeType.SQUARE}
-                />
-              </StackRowAlignJustCenter>
-
-              <Typography variant={titleVariant} sx={{ color: titleColor ?? theme.palette.common.white }}>
-                {app.content}
-              </Typography>
+              <AppGridItem
+                app={app}
+                iconSize={iconSize}
+                iconRadius={iconRadius}
+                titleVariant={titleVariant}
+                titleColor={titleColor ?? theme.palette.common.white}
+              />
             </MotionBox>
           );
         })}
