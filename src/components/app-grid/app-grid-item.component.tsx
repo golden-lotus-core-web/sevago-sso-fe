@@ -5,6 +5,7 @@ import { ImageElement } from '../elements/image/image.element';
 import { ImageSizeType } from '../elements/image/image.enum';
 import { StackRowAlignJustCenter } from '../styles';
 import { Stack } from '@mui/system';
+import { STYLE } from '../../common';
 
 export interface AppGridItemProps {
   app: AppInfo;
@@ -26,13 +27,12 @@ export const AppGridItem: React.FC<AppGridItemProps> = ({
   direction = 'column',
 }) => {
   return (
-    <Stack sx={{ flexDirection: direction }}>
+    <StackRowAlignJustCenter sx={{ flexDirection: direction, gap: STYLE.PADDING_GAP_ITEM }}>
       <StackRowAlignJustCenter
         sx={{
           width: iconSize,
           height: iconSize,
           borderRadius: iconRadius,
-          mb: 1.5,
           background: app.color,
         }}
       >
@@ -48,6 +48,6 @@ export const AppGridItem: React.FC<AppGridItemProps> = ({
           {app.content}
         </Typography>
       )}
-    </Stack>
+    </StackRowAlignJustCenter>
   );
 };

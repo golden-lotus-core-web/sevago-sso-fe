@@ -38,6 +38,7 @@ export const SystemMonitorSidebarPart: React.FC<SystemMonitorSidebarPartProps> =
   return (
     <>
       <ImageElement url={IconAppsSidebar} onClick={() => setOpen(true)} sizeType={ImageSizeType.SQUARE} />
+
       {currentApp && (
         <AppGridItem app={currentApp} iconSize={32} iconRadius={6} showNameApps={showNameApps} direction={direction} />
       )}
