@@ -1,17 +1,20 @@
 import { SxProps, Theme, Typography } from '@mui/material';
 import React from 'react';
-import { STYLE, TYPOGRAPHY_STYLES, getLimitLineCss } from '../../../common';
+import { COLOR_CONSTANT, STYLE, TYPOGRAPHY_STYLES, getLimitLineCss } from '../../../common';
 import { StackWrap } from '../../styles';
 
 export type TagType = 'success' | 'warning' | 'info' | 'secondary' | 'primary' | 'error';
 export type TagSize = 'large' | 'medium' | 'small';
 export type TagVariant = 'contained' | 'outlined' | 'outlined-border';
 
-export const lightenColor = (hex: string, percent: number): string => {
-  // Convert HEX to RGB
+export const lightenColor = (hex?: string, percent: number = 0): string => {
+  if (!hex || !/^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(hex)) {
+    return COLOR_CONSTANT.white;
+  }
+
   let r: number, g: number, b: number;
-  if (hex?.length === 7) {
-    // HEX in the form of #RRGGBB
+
+  if (hex.length === 7) {
     r = parseInt(hex.slice(1, 3), 16);
     g = parseInt(hex.slice(3, 5), 16);
     b = parseInt(hex.slice(5, 7), 16);
@@ -21,7 +24,6 @@ export const lightenColor = (hex: string, percent: number): string => {
     b = parseInt(hex[3] + hex[3], 16);
   }
 
-  // Calculate the adjustment to make the color lighter
   r = Math.round(r + (255 - r) * percent);
   g = Math.round(g + (255 - g) * percent);
   b = Math.round(b + (255 - b) * percent);
