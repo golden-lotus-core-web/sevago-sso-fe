@@ -10,7 +10,7 @@ export type TagVariant = 'contained' | 'outlined' | 'outlined-border';
 export const lightenColor = (hex: string, percent: number): string => {
   // Convert HEX to RGB
   let r: number, g: number, b: number;
-  if (hex.length === 7) {
+  if (hex?.length === 7) {
     // HEX in the form of #RRGGBB
     r = parseInt(hex.slice(1, 3), 16);
     g = parseInt(hex.slice(3, 5), 16);
