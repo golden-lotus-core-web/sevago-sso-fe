@@ -286,6 +286,48 @@ export const APP_OBJ = {
     group: AppGroup.OTHER,
     color: APP_GROUP_COLOR[AppGroup.OTHER],
   },
+
+  // HRM
+  TIMEKEEPING: {
+    path: {
+      local: 'http://localhost:3000/dashboard/simple-dashboard',
+      develop: 'https://dev.hrm-client.sevago.local/dashboard/simple-dashboard',
+    },
+    icon: sevagoIcon,
+    content: 'Chấm công',
+    group: AppGroup.HRM,
+    color: APP_GROUP_COLOR[AppGroup.HRM],
+  },
+  SALARY_CALCULATION: {
+    path: {
+      local: 'http://localhost:3000/dashboard/payroll-period',
+      develop: 'https://dev.hrm-client.sevago.local/dashboard/payroll-period',
+    },
+    icon: sevagoIcon,
+    content: 'Tính lương',
+    group: AppGroup.HRM,
+    color: APP_GROUP_COLOR[AppGroup.HRM],
+  },
+  ORDER_MEAL: {
+    path: {
+      local: 'http://localhost:3000/dashboard/meal-dashboard',
+      develop: 'https://dev.hrm-client.sevago.local/dashboard/meal-dashboard',
+    },
+    icon: sevagoIcon,
+    content: 'Đặt cơm',
+    group: AppGroup.HRM,
+    color: APP_GROUP_COLOR[AppGroup.HRM],
+  },
+  LEAVE_POLICY: {
+    path: {
+      local: 'http://localhost:3000/dashboard/maternity-leave',
+      develop: 'https://dev.hrm-client.sevago.local/dashboard/maternity-leave',
+    },
+    icon: sevagoIcon,
+    content: 'Chế độ nghỉ phép',
+    group: AppGroup.HRM,
+    color: APP_GROUP_COLOR[AppGroup.HRM],
+  },
 };
 
 const SIZE_LARGE = 32;
