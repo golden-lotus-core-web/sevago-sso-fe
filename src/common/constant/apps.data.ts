@@ -292,6 +292,9 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/dashboard/simple-dashboard',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/simple-dashboard',
+      staging: '',
+      production: '',
+      production_vps: '',
     },
     icon: sevagoIcon,
     content: 'Chấm công',
@@ -302,6 +305,9 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/dashboard/payroll-period',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/payroll-period',
+      staging: '',
+      production: '',
+      production_vps: '',
     },
     icon: sevagoIcon,
     content: 'Tính lương',
@@ -312,6 +318,9 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/dashboard/meal-dashboard',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/meal-dashboard',
+      staging: '',
+      production: '',
+      production_vps: '',
     },
     icon: sevagoIcon,
     content: 'Đặt cơm',
@@ -322,6 +331,9 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/dashboard/maternity-leave',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/maternity-leave',
+      staging: '',
+      production: '',
+      production_vps: '',
     },
     icon: sevagoIcon,
     content: 'Chế độ nghỉ phép',
