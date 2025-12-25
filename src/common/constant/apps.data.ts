@@ -47,6 +47,14 @@ import {
   sevagoTrainingIcon,
 } from './icons.constant';
 
+export const ACCOUNT = {
+  local: 'http://localhost:6003/account',
+  develop: 'https://dev.admin.office.sevago.local/account',
+  staging: 'https://sta.admin.office.sevago.local/account',
+  production: 'https://admin.office.sevago.com.vn/account',
+  production_vps: 'https://admin.office.sevago.com.vn/account',
+};
+
 export const SSO = {
   local: 'http://localhost:6000',
   develop: 'https://dev.account.sevago.local',
