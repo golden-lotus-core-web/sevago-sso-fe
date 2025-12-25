@@ -91,19 +91,7 @@ export const APP_OBJ = {
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
-  PAYROLL: {
-    path: {
-      local: 'http://localhost:6003/payroll',
-      develop: 'https://dev.admin.office.sevago.local/payroll',
-      staging: 'https://sta.admin.office.sevago.local/payroll',
-      production: 'https://admin.office.sevago.com.vn/payroll',
-      production_vps: 'https://admin.office.sevago.com.vn/payroll',
-    },
-    icon: sevagoPayrollIcon,
-    content: 'Sevago - Lương',
-    group: AppGroup.HRM,
-    color: APP_GROUP_COLOR[AppGroup.HRM],
-  },
+
   ORG: {
     path: {
       local: 'http://localhost:6003/org',
@@ -114,19 +102,6 @@ export const APP_OBJ = {
     },
     icon: sevagoChartIcon,
     content: 'Sevago - Tổ chức',
-    group: AppGroup.HRM,
-    color: APP_GROUP_COLOR[AppGroup.HRM],
-  },
-  CHECKIN: {
-    path: {
-      local: 'http://localhost:6003/checkin',
-      develop: 'https://dev.admin.office.sevago.local/checkin',
-      staging: 'https://sta.admin.office.sevago.local/checkin',
-      production: 'https://admin.office.sevago.com.vn/checkin',
-      production_vps: 'https://admin.office.sevago.com.vn/checkin',
-    },
-    icon: sevagoCheckinIcon,
-    content: 'Sevago - Chấm công',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
@@ -296,7 +271,7 @@ export const APP_OBJ = {
   },
 
   // HRM
-  TIMEKEEPING: {
+  CHECKIN: {
     path: {
       local: 'http://localhost:3000/dashboard/simple-dashboard',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/simple-dashboard',
@@ -304,12 +279,12 @@ export const APP_OBJ = {
       production: '',
       production_vps: '',
     },
-    icon: sevagoIcon,
-    content: 'Chấm công',
+    icon: sevagoCheckinIcon,
+    content: 'Sevago - Chấm công',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
-  SALARY_CALCULATION: {
+  PAYROLL: {
     path: {
       local: 'http://localhost:3000/dashboard/payroll-period',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/payroll-period',
@@ -317,12 +292,12 @@ export const APP_OBJ = {
       production: '',
       production_vps: '',
     },
-    icon: sevagoIcon,
-    content: 'Tính lương',
+    icon: sevagoPayrollIcon,
+    content: 'Sevago - Lương',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
-  ORDER_MEAL: {
+  MEAL: {
     path: {
       local: 'http://localhost:3000/dashboard/meal-dashboard',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/meal-dashboard',
@@ -331,11 +306,11 @@ export const APP_OBJ = {
       production_vps: '',
     },
     icon: sevagoIcon,
-    content: 'Đặt cơm',
+    content: 'Sevago - Đặt cơm',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
-  LEAVE_POLICY: {
+  LEAVE: {
     path: {
       local: 'http://localhost:3000/dashboard/maternity-leave',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/maternity-leave',
@@ -344,7 +319,7 @@ export const APP_OBJ = {
       production_vps: '',
     },
     icon: sevagoIcon,
-    content: 'Chế độ nghỉ phép',
+    content: 'Sevago - Chế độ nghỉ phép',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
   },
