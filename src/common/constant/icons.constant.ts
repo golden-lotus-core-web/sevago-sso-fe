@@ -12,6 +12,7 @@ import sevagoTrainingIcon from '../../assets/system/sevago-training.svg';
 import sevagoFormIcon from '../../assets/system/sevago-form.svg';
 import sevagoInsideIcon from '../../assets/system/sevago-inside.svg';
 import IconAppsSidebar from '../../assets/system/icon-apps-sidebar.svg';
+import sevagoSystemConfigIcon from '../../assets/system/sevago-system-config.svg';
 
 export {
   sevagoEHiringIcon,
@@ -27,6 +28,7 @@ export {
   sevagoFormIcon,
   sevagoInsideIcon,
   IconAppsSidebar,
+  sevagoSystemConfigIcon,
 };
 
 // Also export a default map for convenience

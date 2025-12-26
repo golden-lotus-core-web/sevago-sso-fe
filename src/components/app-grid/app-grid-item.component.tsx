@@ -11,6 +11,7 @@ export interface AppGridItemProps {
   titleVariant?: 'subtitle1' | 'body1' | 'caption';
   titleColor?: string;
   showNameApps?: boolean;
+  showIconApps?: boolean;
   direction?: 'row' | 'column';
 }
 
@@ -21,24 +22,27 @@ export const AppGridItem: React.FC<AppGridItemProps> = ({
   titleVariant = 'subtitle1',
   titleColor,
   showNameApps = true,
+  showIconApps = true,
   direction = 'column',
 }) => {
   return (
     <StackRowAlignCenter sx={{ flexDirection: direction, gap: STYLE.PADDING_GAP_ITEM }}>
-      <StackRowAlignJustCenter
-        sx={{
-          width: iconSize,
-          height: iconSize,
-          borderRadius: iconRadius,
-          background: app.color,
-        }}
-      >
-        <ImageElement
-          sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
-          url={app.icon}
-          sizeType={ImageSizeType.SQUARE}
-        />
-      </StackRowAlignJustCenter>
+      {showIconApps && (
+        <StackRowAlignJustCenter
+          sx={{
+            width: iconSize,
+            height: iconSize,
+            borderRadius: iconRadius,
+            background: app.color,
+          }}
+        >
+          <ImageElement
+            sx={{ width: iconSize * 0.56, height: iconSize * 0.56 }}
+            url={app.icon}
+            sizeType={ImageSizeType.SQUARE}
+          />
+        </StackRowAlignJustCenter>
+      )}
 
       {showNameApps && (
         <Typography variant={titleVariant} sx={{ color: titleColor }}>

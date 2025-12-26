@@ -45,6 +45,7 @@ import {
   sevagoProjectIcon,
   sevagoRequestIcon,
   sevagoTrainingIcon,
+  sevagoSystemConfigIcon,
 } from './icons.constant';
 
 export const ACCOUNT = {
@@ -319,9 +320,22 @@ export const APP_OBJ = {
       production_vps: '',
     },
     icon: sevagoIcon,
-    content: 'Sevago - Chế độ nghỉ phép',
+    content: 'Sevago - Nghỉ phép',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
+  },
+  SYSTEM_CONFIG: {
+    path: {
+      local: 'http://localhost:6003/dashboard/system-config',
+      develop: 'https://dev.hrm-client.sevago.local/dashboard/system-config',
+      staging: '',
+      production: '',
+      production_vps: '',
+    },
+    icon: sevagoSystemConfigIcon,
+    content: 'Sevago - Hệ thống',
+    group: AppGroup.HRM,
+    color: APP_GROUP_COLOR[AppGroup.OTHER],
   },
 };
 
