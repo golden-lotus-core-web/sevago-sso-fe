@@ -326,7 +326,7 @@ export const APP_OBJ = {
   },
   SYSTEM_CONFIG: {
     path: {
-      local: 'http://localhost:6003/dashboard/system-config',
+      local: 'http://localhost:3000/dashboard/system-config',
       develop: 'https://dev.hrm-client.sevago.local/dashboard/system-config',
       staging: '',
       production: '',
