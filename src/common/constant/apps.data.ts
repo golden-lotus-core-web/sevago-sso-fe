@@ -44,8 +44,8 @@ import {
   sevagoPayrollIcon,
   sevagoProjectIcon,
   sevagoRequestIcon,
-  sevagoTrainingIcon,
   sevagoSystemConfigIcon,
+  sevagoTrainingIcon,
 } from './icons.constant';
 
 export const ACCOUNT = {
@@ -274,8 +274,8 @@ export const APP_OBJ = {
   // HRM
   CHECKIN: {
     path: {
-      local: 'http://localhost:3000/dashboard/simple-dashboard',
-      develop: 'https://dev.hrm-client.sevago.local/dashboard/simple-dashboard',
+      local: 'http://localhost:3000/timekeeping/simple-dashboard',
+      develop: 'https://dev.hrm-client.sevago.local/timekeeping/simple-dashboard',
       staging: '',
       production: '',
       production_vps: '',
@@ -287,8 +287,8 @@ export const APP_OBJ = {
   },
   PAYROLL: {
     path: {
-      local: 'http://localhost:3000/dashboard/payroll-period',
-      develop: 'https://dev.hrm-client.sevago.local/dashboard/payroll-period',
+      local: 'http://localhost:3000/salary/payroll-period',
+      develop: 'https://dev.hrm-client.sevago.local/salary/payroll-period',
       staging: '',
       production: '',
       production_vps: '',
@@ -300,8 +300,8 @@ export const APP_OBJ = {
   },
   MEAL: {
     path: {
-      local: 'http://localhost:3000/dashboard/meal-dashboard',
-      develop: 'https://dev.hrm-client.sevago.local/dashboard/meal-dashboard',
+      local: 'http://localhost:3000/meal-management/meal-dashboard',
+      develop: 'https://dev.hrm-client.sevago.local/meal-management/meal-dashboard',
       staging: '',
       production: '',
       production_vps: '',
@@ -313,8 +313,8 @@ export const APP_OBJ = {
   },
   LEAVE: {
     path: {
-      local: 'http://localhost:3000/dashboard/maternity-leave',
-      develop: 'https://dev.hrm-client.sevago.local/dashboard/maternity-leave',
+      local: 'http://localhost:3000/leave/maternity-leave',
+      develop: 'https://dev.hrm-client.sevago.local/leave/maternity-leave',
       staging: '',
       production: '',
       production_vps: '',
@@ -326,8 +326,8 @@ export const APP_OBJ = {
   },
   SYSTEM_CONFIG: {
     path: {
-      local: 'http://localhost:3000/dashboard/system-config',
-      develop: 'https://dev.hrm-client.sevago.local/dashboard/system-config',
+      local: 'http://localhost:3000/system/system-config',
+      develop: 'https://dev.hrm-client.sevago.local/system/system-config',
       staging: '',
       production: '',
       production_vps: '',
