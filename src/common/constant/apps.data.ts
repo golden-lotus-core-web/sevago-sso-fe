@@ -274,8 +274,8 @@ export const APP_OBJ = {
   // HRM
   CHECKIN: {
     path: {
-      local: 'http://localhost:3000/timekeeping/simple-dashboard',
-      develop: 'https://dev.hrm-client.sevago.local/timekeeping/simple-dashboard',
+      local: 'http://localhost:3000/timekeeping',
+      develop: 'https://dev.hrm-client.sevago.local/timekeeping',
       staging: '',
       production: '',
       production_vps: '',
@@ -287,8 +287,8 @@ export const APP_OBJ = {
   },
   PAYROLL: {
     path: {
-      local: 'http://localhost:3000/salary/payroll-period',
-      develop: 'https://dev.hrm-client.sevago.local/salary/payroll-period',
+      local: 'http://localhost:3000/salary',
+      develop: 'https://dev.hrm-client.sevago.local/salary',
       staging: '',
       production: '',
       production_vps: '',
@@ -300,8 +300,8 @@ export const APP_OBJ = {
   },
   MEAL: {
     path: {
-      local: 'http://localhost:3000/meal-management/meal-dashboard',
-      develop: 'https://dev.hrm-client.sevago.local/meal-management/meal-dashboard',
+      local: 'http://localhost:3000/meal-management',
+      develop: 'https://dev.hrm-client.sevago.local/meal-management',
       staging: '',
       production: '',
       production_vps: '',
@@ -313,8 +313,8 @@ export const APP_OBJ = {
   },
   LEAVE: {
     path: {
-      local: 'http://localhost:3000/leave/maternity-leave',
-      develop: 'https://dev.hrm-client.sevago.local/leave/maternity-leave',
+      local: 'http://localhost:3000/leave',
+      develop: 'https://dev.hrm-client.sevago.local/leave',
       staging: '',
       production: '',
       production_vps: '',
@@ -326,8 +326,8 @@ export const APP_OBJ = {
   },
   SYSTEM_CONFIG: {
     path: {
-      local: 'http://localhost:3000/system/system-config',
-      develop: 'https://dev.hrm-client.sevago.local/system/system-config',
+      local: 'http://localhost:3000/system',
+      develop: 'https://dev.hrm-client.sevago.local/system',
       staging: '',
       production: '',
       production_vps: '',
