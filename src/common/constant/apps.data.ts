@@ -32,6 +32,7 @@ export const APP_GROUP_COLOR = {
   [AppGroup.OTHER]: 'linear-gradient(180deg, #A509D4 0%, #1B0755 100%)',
 };
 
+import { Environment } from '../utils';
 import {
   sevagoChartIcon,
   sevagoCheckinIcon,
@@ -355,4 +356,17 @@ export const MAP_SIZE: Record<string, { width: number; height: number }> = {
   extra_small: { width: SIZE_EXTRA_SMALL, height: SIZE_EXTRA_SMALL },
   extra_large: { width: SIZE_EXTRA_LARGE, height: SIZE_EXTRA_LARGE },
   avatar_group: { width: SIZE_AVATAR_GROUP, height: SIZE_AVATAR_GROUP },
+};
+
+export const getAppBlackList = (user: any, env: Environment, appBlackList: Record<string, string[]>) => {
+  if (!user) return [];
+
+  const baseList = appBlackList[env] || [];
+  const result = [...baseList];
+
+  //hardcode chị Đại MSNV = "01745" sẽ hiển thị app Đặt cơm
+  if (env === Environment.DEVELOP && user?.id !== '01745') {
+    return [...result, 'MEAL'];
+  }
+  return result;
 };
