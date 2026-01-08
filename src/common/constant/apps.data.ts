@@ -365,7 +365,7 @@ export const getAppBlackList = (user: any, env: Environment, appBlackList: Recor
   const result = [...baseList];
 
   //hardcode chị Đại MSNV = "01745" sẽ hiển thị app Đặt cơm
-  if (env === Environment.DEVELOP && user?.id !== '01745') {
+  if (env === Environment.DEVELOP && user?.code !== '01745') {
     return [...result, 'MEAL'];
   }
   return result;
