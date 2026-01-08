@@ -360,11 +360,9 @@ export const MAP_SIZE: Record<string, { width: number; height: number }> = {
 
 export const getAppBlackList = (user: any, env: Environment, appBlackList: Record<string, string[]>) => {
   if (!user) return [];
-
-  const baseList = appBlackList[env] || [];
+  const baseList = appBlackList[env];
   const result = [...baseList];
 
-  //hardcode chị Đại MSNV = "01745" sẽ hiển thị app Đặt cơm
   if (env === Environment.DEVELOP && user?.code !== '01745') {
     return [...result, 'MEAL'];
   }
