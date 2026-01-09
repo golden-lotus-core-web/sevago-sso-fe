@@ -41,6 +41,7 @@ import {
   sevagoHrmIcon,
   sevagoIcon,
   sevagoInsideIcon,
+  sevagoMealIcon,
   sevagoMessageIcon,
   sevagoPayrollIcon,
   sevagoProjectIcon,
@@ -307,7 +308,7 @@ export const APP_OBJ = {
       production: '',
       production_vps: '',
     },
-    icon: sevagoIcon,
+    icon: sevagoMealIcon,
     content: 'Sevago - Đặt cơm',
     group: AppGroup.HRM,
     color: APP_GROUP_COLOR[AppGroup.HRM],
@@ -363,7 +364,7 @@ export const getAppBlackList = (user: any, env: Environment, appBlackList: Recor
   const baseList = appBlackList[env] || [];
   const result = [...baseList];
 
-  if (env === Environment.DEVELOP && user?.code !== '01745') {
+  if (env === Environment.DEVELOP && !['01745', '04285', '04356', 'CEO79'].includes(user?.code)) {
     return [...result, 'MEAL'];
   }
   return result;

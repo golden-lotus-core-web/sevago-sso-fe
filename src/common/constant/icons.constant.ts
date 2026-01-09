@@ -7,6 +7,7 @@ import sevagoCheckinIcon from '../../assets/system/sevago-checkin.svg';
 import sevagoProjectIcon from '../../assets/system/sevago-project.svg';
 import sevagoRequestIcon from '../../assets/system/sevago-request.svg';
 import sevagoIcon from '../../assets/system/sevago.svg';
+import sevagoMealIcon from '../../assets/system/sevago-meal.svg';
 import sevagoMessageIcon from '../../assets/system/sevago-message.svg';
 import sevagoTrainingIcon from '../../assets/system/sevago-training.svg';
 import sevagoFormIcon from '../../assets/system/sevago-form.svg';
@@ -23,6 +24,7 @@ export {
   sevagoProjectIcon,
   sevagoRequestIcon,
   sevagoIcon,
+  sevagoMealIcon,
   sevagoMessageIcon,
   sevagoTrainingIcon,
   sevagoFormIcon,
@@ -41,6 +43,7 @@ export const ICONS = {
   sevagoProjectIcon,
   sevagoRequestIcon,
   sevagoIcon,
+  sevagoMealIcon,
   sevagoMessageIcon,
   sevagoTrainingIcon,
   sevagoFormIcon,
