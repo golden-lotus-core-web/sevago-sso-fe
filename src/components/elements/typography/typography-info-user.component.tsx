@@ -3,6 +3,7 @@ import React from 'react';
 import { COLOR_CONSTANT, STYLE, TYPOGRAPHY_STYLES } from '../../../common';
 import { StackRow } from '../../styles';
 import { highlightYellow } from '../text-field';
+import { Stack } from '@mui/system';
 
 export interface InfoItem {
   label: string;
@@ -19,6 +20,7 @@ interface TypographyInfoGridProps {
   gridTemplateColumns?: string;
   gap?: number;
   highlightQuery?: string;
+  direction?: 'row' | 'column';
 }
 
 export const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
@@ -30,6 +32,7 @@ export const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
   showEmptyAsDots = true,
   gridTemplateColumns = '1.75fr 2fr',
   highlightQuery,
+  direction = 'row',
 }) => {
   return (
     <StackRow
@@ -42,12 +45,13 @@ export const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
       }}
     >
       {items.map((item, index) => (
-        <StackRow
+        <Stack
           key={index}
           sx={{
-            display: 'grid',
-            gridTemplateColumns: columns === 1 ? '1fr 3fr' : gridTemplateColumns,
+            display: direction === 'row' ? 'grid' : 'flex',
+            gridTemplateColumns: direction === 'row' ? (columns === 1 ? '1fr 3fr' : gridTemplateColumns) : 'unset',
             height: 'fit-content',
+            flexDirection: direction === 'column' ? 'column' : 'row',
           }}
         >
           <Typography
@@ -72,7 +76,7 @@ export const TypographyInfoUser: React.FC<TypographyInfoGridProps> = ({
           >
             {highlightYellow(item.value, highlightQuery ?? '', showEmptyAsDots)}
           </Typography>
-        </StackRow>
+        </Stack>
       ))}
     </StackRow>
   );
