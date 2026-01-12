@@ -1,4 +1,4 @@
-import { Stack, useTheme } from '@mui/material';
+import { Stack, SxProps, useTheme } from '@mui/material';
 import { LayoutGroup, motion } from 'framer-motion';
 import React, { useEffect, useId, useState } from 'react';
 import { StackTabs } from '../../styles';
@@ -17,6 +17,8 @@ export interface TabsBadgeCountComponentProps {
   size?: 'large' | 'small' | 'medium';
   direction?: 'column' | 'row';
   isSubs?: boolean;
+  onSelect?: (id: string) => void;
+  sx?: SxProps;
 }
 
 export const TabsBadgeCountComponent: React.FC<TabsBadgeCountComponentProps> = ({
@@ -25,6 +27,8 @@ export const TabsBadgeCountComponent: React.FC<TabsBadgeCountComponentProps> = (
   size,
   direction = 'row',
   isSubs = false,
+  onSelect,
+  sx,
 }) => {
   const { palette } = useTheme();
 
@@ -38,7 +42,7 @@ export const TabsBadgeCountComponent: React.FC<TabsBadgeCountComponentProps> = (
 
   return (
     <LayoutGroup id={layoutGroupId}>
-      <StackTabs direction={direction}>
+      <StackTabs direction={direction} sx={sx}>
         {tabs.map((tab) => (
           <LinkElement href={tab.href} onClick={tab.onClick} key={tab.id} id={tab.id}>
             <Stack
@@ -51,7 +55,10 @@ export const TabsBadgeCountComponent: React.FC<TabsBadgeCountComponentProps> = (
                 color: tab.id === selected ? palette.primary.contrastText : palette.text.primary,
               }}
               transition={{ duration: 0.3 }}
-              onTap={() => setSelected(tab.id)}
+              onTap={() => {
+                setSelected(tab.id);
+                onSelect?.(tab.id);
+              }}
             >
               <IconContentBadgeCountElement
                 icon={tab.icon}
