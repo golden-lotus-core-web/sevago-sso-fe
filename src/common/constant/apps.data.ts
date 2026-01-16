@@ -291,7 +291,7 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/salary',
       develop: 'https://dev.hrm-client.sevago.local/salary',
-      staging: '',
+      staging: 'https://sta.hrm.sevago.local/salary',
       production: '',
       production_vps: '',
     },
@@ -304,7 +304,7 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/meal-management',
       develop: 'https://dev.hrm-client.sevago.local/meal-management',
-      staging: '',
+      staging: 'https://sta.hrm.sevago.local/meal-management',
       production: '',
       production_vps: '',
     },
@@ -317,7 +317,7 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/leave',
       develop: 'https://dev.hrm-client.sevago.local/leave',
-      staging: '',
+      staging: 'https://sta.hrm.sevago.local/leave',
       production: '',
       production_vps: '',
     },
@@ -330,7 +330,7 @@ export const APP_OBJ = {
     path: {
       local: 'http://localhost:3000/system',
       develop: 'https://dev.hrm-client.sevago.local/system',
-      staging: '',
+      staging: 'https://sta.hrm.sevago.local/system',
       production: '',
       production_vps: '',
     },
